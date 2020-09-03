@@ -1,52 +1,66 @@
 # install.packages(c("meteor", "terra"))
 # remotes::install_github("cropmodels/Recocrop")
+library(terra)
 library(Recocrop)
 library(data.table)
-dirname <- "AuxData"
-dir.create(dirname)
+dirn <- "AuxData"
+dir.create(dirn)
 
-cn <- ecocropPars() # crop names
-setDT(cn)
-cn[, RID:= 1:.N]
-setcolorder(cn, "RID")
-setorder(cn, "SCIENTNAME")
-cn
-fwrite(cn, file.path(dirname, "Ecocrop_names.csv"))
+fname <- system.file("parameters/ecocrop.rds", package="Recocrop")
+d <- readRDS(fname)
+setDT(d)
+d[, NAME:= sub(" \\*", "", NAME)]
+d[, NAME:= sub("\\*", "", NAME)]
+fwrite(d, file.path(dirn, "EcoCropPars.csv"))
+rm(fname, d)
+# FAO_Codes and categories added externally
+# see Ecocrops_metadata.txt for a description of the following table
 
-# dowload crop data from FAOSTAT (world totals)
-# link: http://www.fao.org/faostat/en/#data/QC (retrieved 08/10/2020)
-fao <- fread(file.path(dirname, "FAOSTAT_world_data.csv"))
-setnames(fao, names(fao), gsub(" ", "_", names(fao)))
-fcrops <- unique(fao[,.(Item_Code, Item)])
-setorder(fcrops, Item_Code)
-fwrite(fcrops, file.path(dirname, "FAOcrops.csv"))
+# Merge Data sets ####################################################
 
-#############################
+# Match EcoCrops with Monfreda data (~FAO) crop groups
+ecrops <- fread(file.path(dirn, "Ecocrops.csv"))
+monfcrops <- fread("D:/Monfreda/CropCat.csv")
+setnames(monfcrops, "CROPNAME", "Monf_Name")
+d <- merge(monfcrops, ecrops, by = "FAO_Code", all.x = T, all.y = F)
+nas <- d[is.na(NAME),]
+d <- d[!is.na(NAME),]
+d2 <- merge(nas[,colnames(monfcrops), with = F], ecrops, 
+            by.x = "FAO_Code", by.y = "FAO_Code2", all.x = T, all.y = F)
+nas <- d2[is.na(NAME),]
+d2 <- d2[!is.na(NAME),]
+setnames(d2, "FAO_Code.y", "FAO_Code2")
+d <- rbind(d, d2)
 
-# match FAO crops with ECOCROP crop species externally.
-# only crops included in FAOSTAT will be considered. Species level
-# see Ecicrios_metadata.txt for a description of the following table
-ecrops <- fread(file.path(dirname, "Ecocrops.csv"))
+d3 <- merge(nas[,colnames(monfcrops), with = F], ecrops, 
+            by.x = "FAO_Code", by.y = "FAO_Code3", all.x = T, all.y = F)
+nas <- d3[is.na(NAME),] # see notes
+fwrite(nas[,1:4], file.path(dirn, "ExcMonfCrops.csv"))
 
-# check if Row ID and names match
-setorder(cn, RID)
-setorder(ecrops, RID)
-mapply(function(x,y) all.equal(x,y), 
-       cn,
-       ecrops[,.(RID, NAME, SCIENTNAME)])
 
-# which FAO crops aren't represented in the selected crops
-fcrops[!fcrops$Item_Code %in% ecrops$FAO_Code &
-         !fcrops$Item_Code %in% ecrops$FAO_Code2 &
-         !fcrops$Item_Code %in% ecrops$FAO_Code3]
-# Triticale (97) isn't in Ecocrop database
-# Grain, mixed (103) doesn't specify the species included
+d3 <- d3[!is.na(NAME),]
+setnames(d3, "FAO_Code.y", "FAO_Code3")
+d <- rbind(d, d3)
+fwrite(d, file.path(dirn, "Monfcrops.csv"))
 
-logcols <- c("FAOSTAT", "crop", "food", "fiber", "fodder", "forestry", "industry", "plant")
-for(j in logcols) set(ecrops, j = j, value = as.logical(ecrops[[j]]))
-# selected crop species: cultivated plants for food included in FAOSTAT 
-sc <- ecrops[FAOSTAT & crop & food & plant,]
-nrow(sc)
 
-head(sc)
-fwrite(sc, file.path(dirname, "selsp.csv"))
+# Notes ---------
+
+# Crop categories in Monfreda data that aren't represented in Ecocrops
+# i. Species not included in Ecocrops data
+# - Triticale
+# ii. Categories with no specific/explicit species
+# - Mixed grain
+# - Oil Seeds for forage
+# - Forage Products nes
+# - Vegetables, roots fodder nes
+
+# Note that some categories may include species not available in Ecocrops.
+# (particularly "nes" categories) 
+# Ecocrop species may be repeated if they are included in more than one Monfreda category
+# Monfreda categories may be repeated if they include more than one crop species
+
+
+
+
+
