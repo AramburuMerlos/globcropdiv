@@ -1,0 +1,7 @@
+# dowload crop data from FAOSTAT (world totals)
+# link: http://www.fao.org/faostat/en/#data/QC (retrieved 08/10/2020)
+fao <- fread(file.path(dirname, "FAOSTAT_world_data.csv"))
+setnames(fao, names(fao), gsub(" ", "_", names(fao)))
+fcrops <- unique(fao[,.(Item_Code, Item)])
+setorder(fcrops, Item_Code)
+fwrite(fcrops, file.path(dirname, "FAOcrops.csv"))
