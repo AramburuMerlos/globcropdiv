@@ -1,4 +1,4 @@
-## World potential crop species diversity
+## World 'potential' crop species diversity
 
 This project aims to estimate the potential diversity of crop species around the world.
 The potential diversity is defined as the diversity that would be obtained if all suitable crop species were planted.
@@ -8,6 +8,10 @@ Two methods for suitability estimation will be considered:
  1. The FAO - Ecocrop model (as implemented in the Recocrop package in R). 		
  2. Based on Species Distribution Models (SDM)		
 
+### Data sources:
+https://www.worldclim.org/data/index.html
+http://www.earthstat.org/
+https://www.isric.org/explore/soilgrids/soilgrids-access
 
 
 
