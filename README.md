@@ -10,9 +10,9 @@ Two methods for suitability estimation will be considered:
 
 ### Data sources:
 https://www.worldclim.org/data/index.html   
-http://www.earthstat.org/    
+http://www.earthstat.org/      
 https://www.isric.org/explore/soilgrids/soilgrids-access   
-
+http://www.fao.org/aquastat/en/geospatial-information/global-maps-irrigated-areas/latest-version    
 
 
 
