@@ -4,3 +4,6 @@
 .Ruserdata
 test*
 wd.R
+InData/
+OutData/
+**/*.ini
