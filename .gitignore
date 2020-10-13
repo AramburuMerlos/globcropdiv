@@ -5,4 +5,8 @@
 test*
 InData/
 OutData/
+Maps/
+OldR/
 **/*.ini
+**/*.tif
+**/*.png
