@@ -1,6 +1,15 @@
 library(terra)
+
+nwd <- nchar(getwd())
+if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+
 # upload all Monfreda Crop Proportion Data
-fn <- Sys.glob("D:/Monfreda/GeoTiff/*/*HarvestedAreaFraction.tif")
+Ddrive <- dir.exists("D:/Monfreda") 
+if(Ddrive) {
+  fn <- Sys.glob("D:/Monfreda/GeoTiff/*/*HarvestedAreaFraction.tif")
+} else {
+  fn <- Sys.glob("InData/Monfreda/GeoTiff/*/*HarvestedAreaFraction.tif")
+}
 
 # exclude Crops that aren't in Ecocrops (see 00_CropSpeciesSelection.R)
 torm <- read.csv("AuxData/ExcMonfCrops.csv")
@@ -13,9 +22,15 @@ monf_area <- rast(fn)
 # create cropland mask
 f <- function(x) ifelse(all(x == 0), NA, 1)
 
-app(monf_area, fun = f, filename = "D:/Dp_World/Monf_Cropland_Mask.tif",
+if(Ddrive) dir.create("D:/globcropdiv") else dir.create("OutData")
+
+outfn <- file.path(ifelse(Ddrive, "D:/globcropdiv", "OutData"),
+                   "Monf_Cropland_Mask.tif")
+
+app(monf_area, fun = f, 
+    filename = outfn,
     nodes = 7, overwrite = T, 
     wopt = list(names = "CropMask", filetype = "GTiff", progress = 1))
 
-cm <- rast("D:/Dp_World/Monf_Cropland_Mask.tif")
+cm <- rast(outfn)
 plot(cm)

@@ -1,18 +1,33 @@
 library(terra)
 library(Recocrop)
 
+nwd <- nchar(getwd())
+if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+
+if(all(sapply(c("D:/WorldClim", "D:/SoilGrids", "D:/globcropdiv"), dir.exists))){
+  wcpath <- "D:/WorldClim"
+  sgpath <- "D:/SoilGrids"
+  gdpath <- "D:/globcropdiv"
+} else {
+  wcpath <- "InData/WorldClim"
+  sgpath <- "InData/SoilGrids"
+  gdpath <- "OutData"
+}
+
+
 # climatic data
-tavg <- rast(Sys.glob("D:/WorldClim/2.1/wc5min/tavg/*.tif")) 
-tmin <- rast(Sys.glob("D:/WorldClim/2.1/wc5min/tmin/*.tif")) 
-prec <- rast(Sys.glob("D:/WorldClim/2.1/wc5min/prec/*.tif")) 
+tavg <- rast(Sys.glob(file.path(wcpath, "2.1/wc5min/tavg/*.tif")))
+tmin <- rast(Sys.glob(file.path(wcpath, "2.1/wc5min/tmin/*.tif")))
+prec <- rast(Sys.glob(file.path(wcpath, "2.1/wc5min/prec/*.tif")))
+
 annprec <- app(prec, fun = sum, na.rm = T)
 
 # ph
-ph <- rast("D:/SoilGrids/phh2o/phh2o_0-15cm_mean_5min.tif")
+ph <- rast(file.path(sgpath, "phh2o/phh2o_0-15cm_mean_5min.tif"))
 ph <- ph/10
 
 # crop mask
-cm <- rast("D:/Dp_world/Monf_Cropland_Mask.tif")
+cm <- rast(file.path(gdpath, "Monf_Cropland_Mask.tif"))
 
 # mask data
 tavg <- mask(tavg, cm)
@@ -27,13 +42,14 @@ dcrops <- read.csv(here::here("AuxData/Monfcrops.csv"),
 crops <- unique(dcrops[, c("RID", "NAME", "SCIENTNAME")])
 crops <- crops[order(crops$RID),]
 
-dirn <- ("D:/Dp_world/CropSuit/")
+# create folders and subfolders
+dirn <- (paste0(gdpath, "/EcocropSuit"))
 dir.create(dirn)
-dirn <- ("D:/Dp_world/CropSuit/byEcoID")
+dirn <- (paste0(gdpath, "/EcocropSuit/byEcoID"))
 dir.create(dirn)
-dirn <- ("D:/Dp_world/CropSuit/byEcoID/Rainfed")
+dirn <- (paste0(gdpath, "/EcocropSuit/byEcoID/Rainfed"))
 dir.create(dirn)
-dirn <- ("D:/Dp_world/CropSuit/byEcoID/Rainfed/RID")
+dirn <- (paste0(gdpath, "/EcocropSuit/byEcoID/Rainfed/RID"))
 dir.create(dirn)
 
 # ecocrop data base

@@ -1,16 +1,22 @@
 library(terra)
 
+nwd <- nchar(getwd())
+if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+
+path <- "D:/globcropdiv"
+path <- ifelse(dir.exists(path), path, "OutData") 
+
 # for crop species with multiples entries in the EcoCrop Data base, 
 # keep the highest suitability value for the species. 
 crops <- read.csv("AuxData/MonfCrops.csv", stringsAsFactors = F) 
 monf_cat <- unique(crops$Monf_Name)
 
-fn <- Sys.glob("D:/Dp_world/CropSuit/byEcoID/*.tif")
+fn <- Sys.glob(file.path(path, "EcocropSuit/byEcoID/*.tif"))
 suit <- rast(fn)
 
-RIDs <- as.numeric(sub("D:/Dp_world/CropSuit/byEcoID/ID", "",
+RIDs <- as.numeric(sub(file.path(path, "EcocropSuit/byEcoID/ID"), "",
                        sub(".tif", "", fn)))
-dirn <- "D:/Dp_world/CropSuit/byMonfCat"
+dirn <- file.path(path, "EcocropSuit/byMonfCat")
 dir.create(dirn)
 
 for(i in 1:length(monf_cat)){

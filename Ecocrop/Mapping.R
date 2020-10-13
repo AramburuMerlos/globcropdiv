@@ -1,9 +1,14 @@
 library(terra)
 library(rnaturalearth)
 
+setwd(here::here())
+nwd <- nchar(getwd())
+if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+
+
 #### Diversity (Monfreda Categ) ###############
-Dp <- rast("D:/Dp_World/Dp_MonfCat.tif")
-Da <- rast("D:/Dp_World/Da_MonfCat.tif")
+Dp <- rast("D:/globcropdiv/Dp_MonfCat.tif")
+Da <- rast("D:/globcropdiv/Da_MonfCat.tif")
 
 dir.create("Maps")
 
@@ -74,7 +79,7 @@ ar = ncol(iperc)/nrow(iperc)
 crops <- c('maize', 'wheat', 'rice', 'soybean', 'oilpalm', 
           'avocado', 'grape', 'apple', 'almond', 'clover')
 
-sfn <- Sys.glob("D:/Dp_world/CropSuit/byMonfCat/*.tif")
+sfn <- Sys.glob("D:/globcropdiv/EcocropSuit/byMonfCat/*.tif")
 suit <- rast(sfn)
 smdir <- "Maps/Suitability"
 dir.create(smdir)
@@ -91,9 +96,7 @@ for(i in 1:length(crops)){
          type = "cairo", res = 300, 
          compression = "zip")
     {
-      par(mai = c(0,0,0,0), omi = c(0,0,0,0))
-      plot(suit[[ci]], axes = FALSE, maxcell = ncell(suit[[ci]]), 
-           mar = c(2,0,2,4), main = crops[i])
+      plot(suit[[ci]], axes = FALSE, maxcell = ncell(suit[[ci]]), main = crops[i])
       plot(ne_countries(), lwd = 1, add = T)
     }
     dev.off()
@@ -124,9 +127,11 @@ for(i in 1:length(crops)){
          type = "cairo", res = 300, 
          compression = "zip")
     {
-      par(mai = c(0,0,0,0), omi = c(0,0,0,0))
+      rmax <- unname(unlist(global(monf_area[[ci]], 'max')))
+      rlevels <- c(0,1e-8,0.01, if (rmax>0.1) c(0.1,rmax) else rmax)
       plot(monf_area[[ci]], axes = FALSE, maxcell = ncell(monf_area[[ci]]), 
-           mar = c(2,0,2,4), main = crops[i])
+           main = crops[i], type = "interval", levels = rlevels, 
+           col = rev(terrain.colors(length(rlevels)-1)))
       plot(ne_countries(), lwd = 1, add = T)
     }
     dev.off()

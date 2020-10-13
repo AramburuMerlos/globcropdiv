@@ -1,8 +1,9 @@
-# install.packages(c("meteor", "terra"))
+# install.packages(c("meteor", "terra", "here", "data.table"))
 # remotes::install_github("cropmodels/Recocrop")
 library(terra)
 library(Recocrop)
 library(data.table)
+
 dirn <- "AuxData"
 dir.create(dirn)
 
@@ -20,7 +21,13 @@ rm(fname, d)
 
 # Match EcoCrops with Monfreda data (~FAO) crop groups
 ecrops <- fread(file.path(dirn, "Ecocrops.csv"))
-monfcrops <- fread("D:/Monfreda/CropCat.csv")
+
+if(dir.exists("D:/Monfreda")) {
+  monfcrops <- fread("D:/Monfreda/CropCat.csv")  
+} else {
+  monfcrops <- fread("InData/Monfreda/CropCat.csv")
+}
+
 setnames(monfcrops, "CROPNAME", "Monf_Name")
 d <- merge(monfcrops, ecrops, by = "FAO_Code", all.x = T, all.y = F)
 nas <- d[is.na(NAME),]
