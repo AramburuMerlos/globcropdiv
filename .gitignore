@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+.tif
 test*
 InData/
 OutData/
