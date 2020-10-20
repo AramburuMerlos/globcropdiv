@@ -20,7 +20,7 @@ f <- function(x){
   return(D)
 }
 
-app(suit, fun = f, filename = file.path(path, "Dp_MonfCat.tif"),
+app(suit, fun = f, filename = file.path(path, "Dp_EcoCrop_MonfCat.tif"),
     nodes = 7, overwrite = T, 
     wopt = list(names = "Dp_Monf", filetype = "GTiff", progress = 1))
 

@@ -15,7 +15,7 @@ dir.create("Maps")
 ar = ncol(Dp)/nrow(Dp)
 
 { # run this line to save plot 
-  fgfn = ('Maps/Dp_MonfCat.tif')
+  fgfn = ('Maps/Dp_EcoCrop_MonfCat.tif')
   tiff(filename = fgfn, units = "in",
        width = ncol(Dp)/300, 
        height = (ncol(Dp)/300)/ar, 
@@ -83,6 +83,9 @@ sfn <- Sys.glob("D:/globcropdiv/EcocropSuit/byMonfCat/*.tif")
 suit <- rast(sfn)
 smdir <- "Maps/Suitability"
 dir.create(smdir)
+smdir <- "Maps/Suitability/EcoCrop"
+dir.create(smdir)
+
 
 ar = ncol(suit[[1]])/nrow(suit[[1]])
 
