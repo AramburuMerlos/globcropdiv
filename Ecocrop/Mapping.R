@@ -77,7 +77,7 @@ ar = ncol(iperc)/nrow(iperc)
 
 ####### Suitabilities ################
 crops <- c('maize', 'wheat', 'rice', 'soybean', 'oilpalm', 
-          'avocado', 'grape', 'apple', 'almond', 'clover')
+          'avocado', 'grape', 'apple', 'almond')
 
 sfn <- Sys.glob("D:/globcropdiv/EcocropSuit/byMonfCat/*.tif")
 suit <- rast(sfn)
@@ -108,9 +108,9 @@ for(i in 1:length(crops)){
   
 ####### Areas ################
 crops <- c('maize', 'wheat', 'rice', 'soybean', 'oilpalm', 
-           'avocado', 'grape', 'apple', 'almond', 'clover')
+           'avocado', 'grape', 'apple', 'almond')
 
-
+cmask <- rast("OutData/Monf_Cropland_Mask.tif")
 afn <- Sys.glob("D:/Monfreda/GeoTiff/*/*HarvestedAreaFraction.tif")
 monf_area <- rast(afn)
 monf_names <- sub("_HarvestedAreaFraction", "", names(monf_area))
@@ -130,11 +130,13 @@ for(i in 1:length(crops)){
          type = "cairo", res = 300, 
          compression = "zip")
     {
-      rmax <- unname(unlist(global(monf_area[[ci]], 'max')))
-      rlevels <- c(0,1e-8,0.01, if (rmax>0.1) c(0.1,rmax) else rmax)
-      plot(monf_area[[ci]], axes = FALSE, maxcell = ncell(monf_area[[ci]]), 
-           main = crops[i], type = "interval", levels = rlevels, 
-           col = rev(terrain.colors(length(rlevels)-1)))
+      r <- mask(monf_area[[ci]], cmask)
+      v <- getValues(raster(r))
+      v <- v[!is.na(v) & v>0]
+      brks <- c(0, quantile(v,c(0.5,0.75,1)))
+      plot(r, axes = FALSE, maxcell = ncell(monf_area[[ci]]), 
+           main = crops[i], type = "interval", levels = brks, 
+           col = rev(terrain.colors(length(brks)-1)))
       plot(ne_countries(), lwd = 1, add = T)
     }
     dev.off()

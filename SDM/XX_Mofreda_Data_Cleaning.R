@@ -4,10 +4,17 @@ library(terra)
 # here I create a version of the Monfreda dataset that keeps only county data
 # Note that this reduces the total number of crops. 
 
-nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
-
-monpath <- if(dir.exists("D:/Monfreda")) "D:/Monfreda" else "InData/Monfreda"
+if(dir.exists("D:/Monfreda")){
+  wcpath <- "D:/WorldClim/2.1/wc5min"
+  sgpath <- "D:/SoilGrids"
+  aqpath <- "D:/AQUASTAT"
+  monpath <- "D:/Monfreda"
+} else {
+  wcpath <- "InData/WorldClim/2.1/wc5min"
+  sgpath <- "InData/SoilGrids"
+  aqpath <- "InData/AQUASTAT"
+  monpath <- "InData/Monfreda"
+}
 
 # Crop Abundance Data and Data Quality ----------
 abfn <- Sys.glob(file.path(monpath, "GeoTiff/*/*HarvestedAreaFraction.tif"))
@@ -20,8 +27,19 @@ crops <- sub(file.path(monpath, "GeoTiff/*"), "",
              sub("/*_HarvestedAreaFraction.tif", "", abfn))
 crops <- substr(crops, 1, ceiling(nchar(crops)/2)-1)
 
-# Normalize all abundances to a max of 1
-outpath <- file.path(monpath, "CountyLevel")
+# Mask predictors NA values -----
+preds <- c(rast(file.path(wcpath, "extra/AI.tif")),  
+           rast(file.path(sgpath, "phh2o/phh2o_0-15cm_mean_5min.tif")), 
+           rast(file.path(aqpath, "gmia_v5_aei_pct.asc"))  # irrigation
+)
+
+for(i in 1:nlyr(preds)){
+  abund <- mask(abund, preds[[i]])
+}
+
+
+# Keep only County level data (dq == 1)
+outpath <- file.path(monpath, "OnlyCounty")
 dir.create(outpath)
 
 for(i in 1:length(crops)){

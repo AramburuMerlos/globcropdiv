@@ -53,6 +53,9 @@ names(train_cells) <- crops
 outpath <- file.path(gdpath, "SDM")
 dir.create(outpath)
 # loop for all crops  ----
+outpath <- file.path(outpath, "RandomForest")
+dir.create(outpath)
+
 set.seed(1234)
 for(i in 1:length(crops)){
   d <- data.table(cell = (1:ncell(abund[[i]])),

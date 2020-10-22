@@ -1,3 +1,4 @@
+library(data.table)
 library(raster)
 options(java.parameters = "-Xmx20g" )
 library(dismo)
@@ -24,32 +25,27 @@ preds <- stack(raster(file.path(sgpath, "phh2o/phh2o_0-15cm_mean_5min.tif")),
                raster(file.path(wcpath, "extra/GDD.tif")), 
                raster(file.path(wcpath, "extra/AI.tif")),  
                raster(file.path(wcpath, "extra/PET_seasonality.tif")),  
-               raster(file.path(aqpath, "gmia_v5_aei_pct.asc")),
-               lapply(Sys.glob(file.path(wcpath, "bioc/*.tif")), raster))
+               raster(file.path(aqpath, "gmia_v5_aei_pct.asc")))
+bioc <- stack(lapply(Sys.glob(file.path(wcpath, "bioc/*.tif")), raster))
+preds <- stack(preds, bioc)
 cmask <- raster(file.path(gdpath, "Monf_Cropland_Mask.tif"))
 preds[[1]] <- mask(preds[[1]], cmask)
 
 # Crop Abundance Data at County Level----------
 fn <- Sys.glob(file.path(monpath, "*/*_CountyLevel.tif"))
-crops <- sub(paste0(monpath, "/CountyLevel/"), "", 
+crops <- sub(paste0(monpath, "/OnlyCounty/"), "", 
              sub("/*_CountyLevel.tif", "", fn))
 abund <- stack(lapply(fn, raster))
-
 
 # compare predictors and abundance Geometries
 compareRaster(preds, abund)
 
 # SET THRESHOLD  -----------
-# define threshold to identify a crop as present
-th <- 0 # I can play with this value
+# define proportion of abundance data to keep
+# i.e. consider as present the th {0,1} most abundant cells
+th <- 0.8 # I can play with this value
 
-# subsample size --------
-# eventually all presence data will be used to train the model(s)
-
-# in the meantime, let's fit Maxent with a "small" subsample
-np <- 5e4 # max number of training obs 
-
-outpath <- file.path(gdpath, "Maxent")
+outpath <- file.path(gdpath, "SDM/Maxent")
 dir.create(outpath)
 train_cells <- vector(mode = "list", length = length(crops))
 
@@ -58,32 +54,28 @@ maxent()
 # loop for all crops  ----
 set.seed(1234)
 for(i in 1:length(crops)){
-  d <- data.table(cell = (1:ncell(abund[[i]])),
-                  frac = getValues(abund[[i]]))
-  d <- d[frac > th, ]
-  if(nrow(d) > np){
-    d[, w:= frac/max(frac)*.9] # *.9 to aviod probabilities of 1
-    d[, w:= max(w, 0.3)] # set min p to 0.3 (high frac up to x3 more likely)
-    d <- d[sample(1:nrow(d), np, prob = w),]
-  } 
-  pts <- xyFromCell(abund[[i]], d$cell) 
-  train_cells[[i]] <- d$cell
-  rm(d)
-  
-  # Maxent Model -------
-  m <- 
-  saveRDS(m, file.path(outpath, paste0("Maxent_", crops[i], ".RDS")))
-  
-  # Predict ---------
-  predict(preds, m, na.rm = T, 
-          filename = file.path(outpath, paste0(crops[i], "_Maxent_pred.tif")), 
-          overwrite = T, 
-          wopt = list(names = crops[i], filetype = "GTiff",
-                      gdal = c("COMPRESS=Deflate","PREDICTOR=1","ZLEVEL=6")))
+  if(maxValue(abund[[i]] > 0)){
+    d <- data.table(cell = (1:ncell(abund[[i]])),
+                    frac = getValues(abund[[i]]))
+    th_frac <- quantile(d$frac, th, na.rm = T, names = F)
+    d <- d[frac > th_frac, ]
+    pts <- xyFromCell(abund[[i]], d$cell) 
+    train_cells[[i]] <- d$cell
+    rm(d)
+    
+    # Maxent Model -------
+    m <- maxent(preds, pts, path = file.path(outpath, crops[i]))
+    
+    # Predict ---------
+    predict(m, preds, 
+            filename = file.path(outpath, paste0(crops[i], "_Maxent_pred.tif")), 
+            overwrite = T, progress = 'text',
+            options = c("COMPRESS=Deflate","PREDICTOR=1","ZLEVEL=6"))
+  }
 }
 
 
-r = rast(file.path(outpath, paste0(crops[i], "_Maxent_pred.tif")))
+r = raster(file.path(outpath, paste0(crops[i], "_Maxent_pred.tif")))
 plot(r)
 plot(abund[[i]])
 
