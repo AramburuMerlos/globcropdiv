@@ -7,7 +7,7 @@ nwd <- nchar(getwd())
 if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
 
 path <- "D:/globcropdiv/SDM"
-path <- ifelse(dir.exists(path), path, "OutData/SDM") 
+path <- ifelse(dir.exists(path), path, "OutData") 
 
 ###################        RF       #######################################
 # Dp ----------
