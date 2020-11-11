@@ -18,37 +18,74 @@ rm(fname, d)
 # see Ecocrops_metadata.txt for a description of the following table
 
 # Merge Data sets ####################################################
+# Ecocrop - Monfreda - SPAM
+# Define selected crop categories and their corresponding Ecocrop species
 
-# Match EcoCrops with Monfreda data (~FAO) crop groups
-ecrops <- fread(file.path(dirn, "Ecocrops.csv"))
+# Match EcoCrops with Monfreda and SPAM data (~FAO) crop groups
+dirn <- "AuxData"
+ecoc <- fread(file.path(dirn, "Ecocrops.csv"))
 
-if(dir.exists("D:/Monfreda")) {
-  monfcrops <- fread("D:/Monfreda/CropCat.csv")  
-} else {
-  monfcrops <- fread("InData/Monfreda/CropCat.csv")
-}
+monf <- fread(paste0(ifelse(dir.exists("D:/Monfreda"), "D:/", "InData/"),
+                          "Monfreda/Cropcat.csv"))
+monf <- monf[!is.na(FAO_Code),]
 
-setnames(monfcrops, "CROPNAME", "Monf_Name")
-d <- merge(monfcrops, ecrops, by = "FAO_Code", all.x = T, all.y = F)
+spam <- fread(paste0(ifelse(dir.exists("D:/SPAM"), "D:/", "InData/"),
+                          "SPAM/4-Methodology-Crops-of-SPAM-2005-2015-02-26.csv"))
+
+spam[,FAO_Code:= as.numeric(FAOCODE)] #NA for categ with >1 FAO cat
+spam <- spam[!is.na(FAO_Code),]
+setnames(spam, 
+         c("SPAM short name", "SPAM long name", "FAONAMES"),
+         c("SPAM_Code","SPAM_Name", "FAO_Name"))
+spam[, c("No. crt. ", "FAOCODE"):= NULL]
+
+# does all SPAM categories match at least one Monf category
+all(spam$FAO_Code %in% monf$FAO_Code)
+
+# is there a SPAM category that matches more than one Monf Category?
+max(sapply(spam$FAO_Code, function(x)sum(x %in% monf$FAO_Code)))
+
+# remove Monfreda categories that are available in SPAM
+mns <- monf[!monf$FAO_Code %in% spam$FAO_Code,]
+
+# combine (bind) spam and monfreda crop categories
+spmo <- rbind(mns, spam, fill = T)
+
+# merge cobmined crop categories with ecocrop database
+d <- merge(spmo, ecoc, by = "FAO_Code", all.x = T, all.y = F)
 nas <- d[is.na(NAME),]
 d <- d[!is.na(NAME),]
-d2 <- merge(nas[,colnames(monfcrops), with = F], ecrops, 
+d2 <- merge(nas[,colnames(spmo), with = F], ecoc, 
             by.x = "FAO_Code", by.y = "FAO_Code2", all.x = T, all.y = F)
 nas <- d2[is.na(NAME),]
 d2 <- d2[!is.na(NAME),]
 setnames(d2, "FAO_Code.y", "FAO_Code2")
 d <- rbind(d, d2)
 
-d3 <- merge(nas[,colnames(monfcrops), with = F], ecrops, 
+d3 <- merge(nas[,colnames(spmo), with = F], ecoc, 
             by.x = "FAO_Code", by.y = "FAO_Code3", all.x = T, all.y = F)
 nas <- d3[is.na(NAME),] # see notes
+
 fwrite(nas[,1:4], file.path(dirn, "ExcMonfCrops.csv"))
 
 
 d3 <- d3[!is.na(NAME),]
 setnames(d3, "FAO_Code.y", "FAO_Code3")
 d <- rbind(d, d3)
-fwrite(d, file.path(dirn, "Monfcrops.csv"))
+
+d[,source:= ifelse(is.na(SPAM_Code), "Monf", "SPAM")]
+setcolorder(d, c("FAO_Name", "FAO_Code", "source", 
+                 "SPAM_Name", "SPAM_Code", "Monf_Name"))
+
+fwrite(d, file.path(dirn, "EcocropSpeciesWithAbundanceData.csv"))
+
+# Selected crops ############
+
+spmo[,source:= ifelse(is.na(SPAM_Code), "Monf", "SPAM")]
+setcolorder(spmo, c("FAO_Name", "FAO_Code", "source", 
+                   "SPAM_Name", "SPAM_Code", "Monf_Name"))
+
+fwrite(spmo, file.path(dirn, "CropAbundanceSource.csv"))
 
 
 # Notes ---------

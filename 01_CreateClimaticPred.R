@@ -74,25 +74,14 @@ prec <- rast(Sys.glob(file.path(wcpath, "prec/*.tif"))) # mm per month
 pet_annual <- sum(pet)
 prec_annual <- sum(prec)
 
-# crop mask
-if(dir.exists("D:/globcropdiv")){
-  cm <- rast("D:/globcropdiv/Monf_Cropland_Mask.tif")
-} else {
-  cm <- rast("OutData/Monf_Cropland_Mask.tif")
-}
-pet_annual <- mask(pet_annual, cm)
-prec_annual <- mask(prec_annual, cm)
-
-# limit AI values up to 4
-fai <- function(prec, pet) ifelse(prec/pet > 4, 4, prec/pet) 
-lapp(c(prec_annual, pet_annual), fun = fai, 
+lapp(c(prec_annual, pet_annual), fun = function(x,y)pmin(pmax(x/y,0),10), 
      filename = file.path(outpath, "AI.tif"), 
      overwrite = T, 
      wopt = list(names = "Aridity_Index", filetype = "GTiff",
                  gdal = c("COMPRESS=Deflate","PREDICTOR=1","ZLEVEL=6"))) 
 
 ai <- rast(file.path(outpath, "AI.tif"))
-
+plot(ai)
 # Pet seasonality ------------
 fps <- function(x) sd(x, na.rm = T)
 app(pet, fps, 

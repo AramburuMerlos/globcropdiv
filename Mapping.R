@@ -1,9 +1,64 @@
+library(data.table)
+library(raster)
 library(terra)
 library(rnaturalearth)
+
 
 setwd(here::here())
 nwd <- nchar(getwd())
 if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+
+# directory or drive where the raw data is storage
+rd <- "D:/"
+
+####### Crop Abundance ################
+# for selected crops
+sc <- fread("AuxData/CropAbundanceSource.csv")
+# SPAM ----
+# upload SPAM data
+scode <- sc[source == "SPAM", SPAM_Code]
+sfn <- vector(length = length(scode))
+for(i in 1:length(scode)){
+  sfn[i] <- paste0(rd, "SPAM/Physical_Area/spam2010V2r0_global_A_", 
+                   toupper(scode[i]), "_A.tif")
+}
+scrops <- rast(sfn)
+names(scrops) <- paste0("SPAM_", sc[source == "SPAM", SPAM_Name], "_(ha)")
+
+# change 0 to NA
+scrops <- classify(scrops, cbind(0, NA), othersNA = FALSE)
+
+
+cadir <- "Maps/CropAbundance"
+dir.create(cadir)
+
+ar = ncol(scrops[[1]])/nrow(scrops[[1]])
+
+for(i in 1:nlyr(scrops)){
+  { # run this line to save plot
+    fgfn = file.path(cadir, paste0(names(scrops[[i]]), '.tif'))
+    tiff(filename = fgfn, units = "in",
+         width = ncol(scrops[[i]])/300, 
+         height = (ncol(scrops[[i]])/300)/ar, 
+         type = "cairo", res = 300, 
+         compression = "zip")
+    {
+      v <- getValues(raster(scrops[[i]]))
+      v <- v[!is.na(v)]
+      brks <- c(0, quantile(v,c(0.5,0.75,1)))
+      plot(scrops[[i]], axes = FALSE, maxcell = ncell(scrops[[i]]), 
+           main = names(scrops[[i]]), type = "interval", levels = brks, 
+           col = rev(terrain.colors(length(brks)))[2:length(brks)])
+      plot(ne_countries(), lwd = 1, add = T)
+    }
+    dev.off()
+  }
+}
+
+
+
+
+
 
 
 #### Diversity (Monfreda Categ) ###############
@@ -106,42 +161,3 @@ for(i in 1:length(crops)){
   }
 }
   
-####### Areas ################
-crops <- c('maize', 'wheat', 'rice', 'soybean', 'oilpalm', 
-           'avocado', 'grape', 'apple', 'almond')
-
-cmask <- rast("OutData/Monf_Cropland_Mask.tif")
-afn <- Sys.glob("D:/Monfreda/GeoTiff/*/*HarvestedAreaFraction.tif")
-monf_area <- rast(afn)
-monf_names <- sub("_HarvestedAreaFraction", "", names(monf_area))
-
-adir <- "Maps/Area"
-dir.create(adir)
-
-ar = ncol(monf_area[[1]])/nrow(monf_area[[1]])
-
-for(i in 1:length(crops)){
-  { # run this line to save plot 
-    ci <- which(crops[i] == monf_names)
-    fgfn = file.path(adir, paste0(crops[i], '.tif'))
-    tiff(filename = fgfn, units = "in",
-         width = ncol(monf_area[[ci]])/300, 
-         height = (ncol(monf_area[[ci]])/300)/ar, 
-         type = "cairo", res = 300, 
-         compression = "zip")
-    {
-      r <- mask(monf_area[[ci]], cmask)
-      v <- getValues(raster(r))
-      v <- v[!is.na(v) & v>0]
-      brks <- c(0, quantile(v,c(0.5,0.75,1)))
-      plot(r, axes = FALSE, maxcell = ncell(monf_area[[ci]]), 
-           main = crops[i], type = "interval", levels = brks, 
-           col = rev(terrain.colors(length(brks)-1)))
-      plot(ne_countries(), lwd = 1, add = T)
-    }
-    dev.off()
-  }
-}
-
-
-
