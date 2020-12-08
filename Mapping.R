@@ -4,9 +4,8 @@ library(terra)
 library(rnaturalearth)
 
 
-setwd(here::here())
 nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") warning("See 0000_wd.R")
 
 # directory or drive where the raw data is storage
 rd <- "D:/"

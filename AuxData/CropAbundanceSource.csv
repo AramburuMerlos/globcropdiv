@@ -1,177 +1,176 @@
-filename,SPAM_Code,Monf_Name,FAO_Name,FAO_Code,source,SPAM_Name,GROUP,Total_ha,Total_p,nonFiltered_ha,nonFiltered_p,nf_prop_ha,nf_prop_p
-abaca,"",abaca,Manila Fibre (Abaca),809,Monf,"",Fiber,128286.188789182,117520,111516.04733,20680,0.869275550100404,0.175970047651464
-acof,acof,"",coffee,656,SPAM,arabica coffee,stimulant,5917829.7009457,65733,5917829.7009457,65733,1,1
-agave,"",agave,Agave Fibres Nes,800,Monf,"",Fiber,51691.1782740713,178278,22279.8375093816,6172,0.431018178600068,0.0346200877281549
-alfalfa,"",alfalfa,alfalfa,641,Monf,"",Forage,20083540.4801283,279249,17835234.4716262,208559,0.888052307772789,0.746856747920315
-almond,"",almond,"Almonds, with shell",221,Monf,"",Treenuts,1462552.25379211,250845,501974.065780659,48238,0.343217867586706,0.192302019175188
-aniseetc,"",aniseetc,"Anise, badian, fennel, corian",711,Monf,"",OtherCrops,559390.67445767,345024,121964.702728235,109692,0.218031347852697,0.31792570951586
-apple,"",apple,Apples,515,Monf,"",Fruit,5279000.27616995,483935,4297523.79808322,325446,0.81407910082573,0.672499405911951
-apricot,"",apricot,Apricots,526,Monf,"",Fruit,377276.05879284,461680,211330.194189329,174267,0.56014737554648,0.377462744758274
-areca,"",areca,Arecanuts,226,Monf,"",OtherCrops,562647.191714676,339011,357054.86092901,44039,0.634598139272463,0.129904339387218
-artichoke,"",artichoke,Artichokes,366,Monf,"",Vegetables&Melons,113545.953762918,227149,25374.0620961078,72809,0.223469540350934,0.320534098763367
-asparagus,"",asparagus,Asparagus,367,Monf,"",Vegetables&Melons,1002756.72868639,305817,938537.853235447,155153,0.935957671872149,0.507339356543292
-avocado,"",avocado,Avocados,572,Monf,"",Fruit,342398.795276835,320326,237270.521088063,148830,0.692965408643526,0.464620417949214
-bambara,"",bambara,Bambara beans,203,Monf,"",Pulses,65883.8962509156,370085,39660.4202858768,11086,0.601974420802802,0.0299552805436589
-bana,bana,"",banana,486,SPAM,banana,fruits,5162790.59985687,184760,5162790.59985687,184760,1,1
-barl,barl,"",barley,44,SPAM,barley,cereals,49238338.5000851,334577,49238338.5000851,334577,1,1
-bean,bean,"","beans, dry",176,SPAM,bean,pulses,27350592.6031092,437728,27350592.6031092,437728,1,1
-beetfor,"",beetfor,beetfor,647,Monf,"",Forage,189730.804647313,93811,144959.475232733,40833,0.764027093556024,0.435268785110488
-berrynes,"",berrynes,Berries Nes,558,Monf,"",Fruit,62740.1097289978,378460,31956.4218166741,85393,0.509345966315774,0.225632827775723
-blueberry,"",blueberry,Blueberries,552,Monf,"",Fruit,44418.9344358596,280940,27776.7720685275,28424,0.625336299064915,0.101174628034456
-brazil,"",brazil,"Brazil nuts, with shell",216,Monf,"",Treenuts,1217.42319514915,505915,0.0786844380199909,2,6.4631952416802e-05,3.95323325064487e-06
-broadbean,"",broadbean,"Broad beans, horse beans, dry",181,Monf,"",Pulses,2411193.65761191,382178,1808823.35672039,215379,0.750177552520556,0.563556771975362
-buckwheat,"",buckwheat,Buckwheat,89,Monf,"",Cereals,2593870.72160879,430489,2445863.2584421,205346,0.94293953745124,0.477006381115429
-cabbage,"",cabbage,Cabbages and other brassicas,358,Monf,"",Vegetables&Melons,2656639.47226893,663961,2116240.45034047,343854,0.796585487955985,0.517882827455227
-cabbagefor,"",cabbagefor,cabbagefor,644,Monf,"",Forage,81227.8147671565,193258,25064.2534073833,2635,0.308567372878751,0.0136346231462604
-canaryseed,"",canaryseed,Canary seed,101,Monf,"",Cereals,247249.314722934,75435,238758.932052809,38680,0.965660642256422,0.512759329223835
-carob,"",carob,Carobs,461,Monf,"",Fruit,115625.69377254,175182,29991.1188971894,23180,0.259381093584512,0.132319530545376
-carrot,"",carrot,Carrots and turnips,426,Monf,"",Vegetables&Melons,910900.11604292,578118,734153.499640863,339416,0.805964876621304,0.587105054677419
-carrotfor,"",carrotfor,carrotfor,648,Monf,"",Forage,612.728645494841,48084,371.080890318379,292,0.605620274238514,0.00607270609766242
-cashew,"",cashew,"Cashew nuts, with shell",217,Monf,"",Treenuts,2705022.31585666,304588,2036002.18158151,102483,0.752674818853287,0.336464338713278
-cashewapple,"",cashewapple,Cashewapple,591,Monf,"",Fruit,617440.614951726,213402,1260.78896754794,255,0.0020419598857236,0.00119492788258779
-cass,cass,"",cassava,125,SPAM,cassava,roots&tubers or starchy roots,19027202.3940924,210551,19027202.3940924,210551,1,1
-castor,"",castor,Castor oil seed,265,Monf,"",Oilcrops,1238511.43438688,394422,885936.397062149,174941,0.715323550888915,0.443537632282175
-cauliflower,"",cauliflower,Cauliflowers and broccoli,393,Monf,"",Vegetables&Melons,754423.294765889,538316,367754.408362085,213126,0.487464280217124,0.395912438047541
-cerealnes,"",cerealnes,"cerealnes, nes Cereals",108,Monf,"",Cereals,1987047.66579324,322430,1810094.35932052,207269,0.910946622207936,0.642834103526347
-cherry,"",cherry,Cherries,531,Monf,"",Fruit,342033.39962651,455144,207721.78571245,185901,0.60731433228239,0.408444360466138
-chestnut,"",chestnut,Chestnuts,220,Monf,"",Treenuts,311846.265502053,333950,118784.522008629,88538,0.380907309623839,0.265123521485252
-chic,chic,"",chickpea,191,SPAM,chickpea,pulses,11515252.6963957,159285,11515252.6963957,159285,1,1
-chicory,"",chicory,Chicory roots,459,Monf,"",OtherCrops,17895.2832505117,198985,9730.62195345387,15406,0.543753447052907,0.0774229213257281
-chilleetc,"",chilleetc,"Chillies and peppers, green",401,Monf,"",Vegetables&Melons,1415979.14866021,500816,1255829.86505371,287264,0.886898557963911,0.573591898022427
-cinnamon,"",cinnamon,Cinnamon (canella),693,Monf,"",OtherCrops,148894.046430357,195737,88966.8606570205,25716,0.597517918210608,0.131380372642883
-citrusnes,"",citrusnes,"Citrus fruit, nes",512,Monf,"",Fruit,822545.357821805,447297,706259.47387867,73949,0.85862678229554,0.165324158221495
-clove,"",clove,Cloves,698,Monf,"",OtherCrops,437402.94427753,189997,351727.635586246,33639,0.80412727026153,0.177050163949957
-clover,"",clover,clover,640,Monf,"",Forage,2164545.75264136,110248,917470.52541377,20944,0.423862847109698,0.189971700166896
-cnut,cnut,"",coconut,249,SPAM,coconut,oilcrops,11605312.8992241,89730,11605312.8992241,89730,1,1
-coco,coco,"",cocoa,661,SPAM,cocoa,stimulant,9767624.40228736,64365,9767624.40228736,64365,1,1
-coir,"",coir,Coir,813,Monf,"",Fiber,1.89775615688416e-16,119144,0,0,0,0
-cott,cott,"",seed cotton,328,SPAM,cotton,fibres,31047735.6992616,171163,31047735.6992616,171163,1,1
-cowp,cowp,"",cowpea,195,SPAM,cowpea,pulses,8885458.99731545,80300,8885458.99731545,80300,1,1
-cranberry,"",cranberry,Cranberries,554,Monf,"",Fruit,29153.216728088,249374,13899.9596207691,21763,0.476789911398596,0.0872705253955906
-cucumberetc,"",cucumberetc,Cucumbers and gherkins,397,Monf,"",Vegetables&Melons,1922755.94337709,586854,1673507.05302341,363226,0.870368940368009,0.61893758924707
-currant,"",currant,Currants,550,Monf,"",Fruit,129370.121868652,258066,118945.917865598,99429,0.919423404318672,0.385285159610332
-date,"",date,Dates,577,Monf,"",Fruit,811053.319686737,176208,439414.165981204,85112,0.541782094117961,0.483020067193317
-eggplant,"",eggplant,Eggplants (aubergines),399,Monf,"",Vegetables&Melons,1419045.94228933,376568,1159530.03195348,220790,0.817119444408421,0.586321726753203
-fibrenes,"",fibrenes,Fibre Crops Nes,821,Monf,"",Fiber,302203.472221681,266452,20697.1431617374,16189,0.0684874432764789,0.0607576599162326
-fig,"",fig,Figs,569,Monf,"",Fruit,384637.561005303,289145,187588.246989432,48500,0.487701321990354,0.16773591104809
-flax,"",flax,Flax fibre and tow,773,Monf,"",Fiber,457035.238547192,206681,324427.462225847,60017,0.709852183952218,0.290384699125706
-fonio,"",fonio,Fonio,94,Monf,"",Cereals,223037.323263072,386319,222864.883872096,12093,0.999226858588271,0.0313031458457907
-fornes,"",fornes,fornes,651,Monf,"",Forage,17549686.2421045,359739,5036337.42317298,202674,0.286975923882332,0.563391792382811
-fruitnes,"",fruitnes,Fresh Nes Fruit,619,Monf,"",Fruit,3201922.83089081,672713,1891073.32211166,368916,0.590605527362303,0.548400283627639
-garlic,"",garlic,Garlic,406,Monf,"",Vegetables&Melons,1019288.16949857,498487,869659.903569851,304118,0.853203176092658,0.610082108460201
-ginger,"",ginger,Ginger,720,Monf,"",OtherCrops,303857.155843706,337980,78452.4551922875,62592,0.258188605018868,0.185194390200604
-gooseberry,"",gooseberry,Gooseberries,549,Monf,"",Fruit,32347.9150690282,362109,30814.9882291658,75729,0.95261126299512,0.20913316156185
-grape,"",grape,Grapes,560,Monf,"",Fruit,6927410.02965092,509929,6012629.24677464,336884,0.867947648693985,0.660648835426108
-grapefruitetc,"",grapefruitetc,Grapefruit (inc. pomelos),507,Monf,"",Fruit,245654.443952247,431149,158118.235031111,101004,0.64366120346615,0.234267039932831
-grassnes,"",grassnes,grassnes,639,Monf,"",Forage,7156630.63609536,137844,4431446.33302557,56284,0.619208473701998,0.408316647804765
-greenbean,"",greenbean,"Beans, green",414,Monf,"",Vegetables&Melons,810179.373914175,487527,599000.062744489,247480,0.739342523434746,0.507623167537388
-greenbroadbean,"",greenbroadbean,"Leguminous vegetables, nes",420,Monf,"",Vegetables&Melons,162450.805086699,317444,82297.5976645285,111522,0.506600121929877,0.351312357455173
-greencorn,"",greencorn,"Maize, green",446,Monf,"",Vegetables&Melons,998407.070761564,343467,699579.783179018,142356,0.700695942232654,0.414467765462184
-greenonion,"",greenonion,"Onions (inc. shallots), green",402,Monf,"",Vegetables&Melons,209711.172278279,249150,126846.131839003,112195,0.604861107116808,0.450311057595826
-greenpea,"",greenpea,"Peas, green",417,Monf,"",Vegetables&Melons,982318.08718937,522656,612184.997890725,262186,0.62320444454232,0.501641615135003
-grou,grou,"","groundnut, with shell",242,SPAM,groundnut,oilcrops,24373558.3985486,259864,24373558.3985486,259864,1,1
-gums,"",gums,Gums Natural,839,Monf,"",OtherCrops,9.66662306874314e-15,396051,0,0,0,0
-hazelnut,"",hazelnut,"Hazelnuts, with shell",225,Monf,"",Treenuts,482920.414313434,290325,362930.765424557,76910,0.75153328512843,0.264910014638767
-hemp,"",hemp,Hemp Tow Waste,777,Monf,"",Fiber,58748.7958151599,158058,43777.7458189446,110754,0.745168393862602,0.700717458148275
-hempseed,"",hempseed,Hempseed,336,Monf,"",Oilcrops,26796.5961533694,282644,7180.68081580009,75350,0.267969885977372,0.266589773708269
-hop,"",hop,Hops,677,Monf,"",OtherCrops,65672.150601212,304618,50030.1848795041,86899,0.761817367354204,0.285272045644053
-jute,"",jute,Jute,780,Monf,"",Fiber,1410378.6188674,97941,1313356.20252415,55078,0.931208247880864,0.562358971217366
-jutelikefiber,"",jutelikefiber,Other Bastfibres,782,Monf,"",Fiber,312936.997680328,256410,282829.037634024,171097,0.903789068504259,0.667278967278967
-kapokfiber,"",kapokfiber,Kapok Fibre,778,Monf,"",Fiber,390085.153933005,145696,389597.077355785,27336,0.998748794789296,0.18762354491544
-kapokseed,"",kapokseed,Kapokseed in Shell,311,Monf,"",Fiber,390085.153933005,185756,389597.077355785,27336,0.998748794789296,0.147160791576046
-karite,"",karite,Karite Nuts (Sheanuts),263,Monf,"",Oilcrops,310527.175519819,295615,72055.029137969,11342,0.232040976823847,0.0383674712040999
-kiwi,"",kiwi,Kiwi fruit,592,Monf,"",Fruit,54235.7639491397,105262,22212.0360151026,20087,0.409545923164874,0.19082859911459
-kolanut,"",kolanut,Kolanuts,224,Monf,"",OtherCrops,375996.39338568,179964,199304.655715807,8043,0.530070658181474,0.0446922717876909
-legumenes,"",legumenes,legumenes,643,Monf,"",Forage,2407531.7022061,266993,1990034.92254423,30110,0.826587214083493,0.112774492215152
-lemonlime,"",lemonlime,Lemons and limes,497,Monf,"",Fruit,717274.203653409,437712,368027.546423692,165005,0.513091847649278,0.37697161603977
-lent,lent,"",lentils,201,SPAM,lentil,pulses,3945968.3069085,142190,3945968.3069085,142190,1,1
-lettuce,"",lettuce,Lettuce and chicory,372,Monf,"",Vegetables&Melons,801318.332841125,406974,604992.809178661,188615,0.754996840061827,0.463457125025186
-linseed,"",linseed,Linseed,333,Monf,"",Oilcrops,2794620.29896919,412621,1999358.47269498,186883,0.715431170893755,0.452916841362897
-lupin,"",lupin,Lupins,210,Monf,"",Pulses,1285640.95486547,332052,1213531.30686151,83727,0.943911519206775,0.252150265621047
-maiz,maiz,"",maize,56,SPAM,maize,cereals,151344326.985361,561780,151344326.985406,561780,1.0000000000003,1
-maizefor,"",maizefor,maizefor,636,Monf,"",Forage,14404636.3774912,319468,12144503.5677974,268184,0.843096850870495,0.839470619905593
-mango,"",mango,"Mangoes, mangosteens, guavas",571,Monf,"",Fruit,3274016.63247184,433172,2523766.58724384,267580,0.77084721018611,0.617722290452753
-mate,"",mate,mate,671,Monf,"",OtherCrops,249020.604191079,381446,219304.759098123,5835,0.880669131016346,0.0152970538424836
-melonetc,"",melonetc,Other melons (inc.cantaloupes),568,Monf,"",Vegetables&Melons,1009498.01478548,447352,754735.482219846,239450,0.747634439261604,0.535260823691411
-melonseed,"",melonseed,Melonseed,299,Monf,"",Oilcrops,581883.297628841,258807,132607.039387202,21407,0.227892843681151,0.0827141460625099
-mixedgrain,"",mixedgrain,Mixed grain,103,Monf,"",Cereals,1812292.65080493,114762,1563814.20956404,36205,0.862892761204695,0.315478991303742
-mushroom,"",mushroom,Mushrooms and truffles,449,Monf,"",Vegetables&Melons,9877.51630155117,189351,9394.75197070185,60183,0.951124926944084,0.317838300299444
-mustard,"",mustard,Mustard seed,292,Monf,"",Oilcrops,759682.735287446,389410,495095.23118952,124099,0.651713153652476,0.318684676818777
-nutmeg,"",nutmeg,"Nutmeg, mace and cardamoms",702,Monf,"",OtherCrops,219669.036182754,145851,50733.9079001667,38010,0.230956118266748,0.260608429150297
-nutnes,"",nutnes,"Nuts, nes",234,Monf,"",Treenuts,417969.17310693,587861,192879.292690103,165112,0.461467747145932,0.280869117019159
-oats,"",oats,Oats,75,Monf,"",Cereals,12953977.9817947,515672,10794323.6172696,374015,0.833282535483676,0.725296312384617
-oilp,oilp,"",palmoil,254,SPAM,oilpalm,oilcrops,15594313.302211,42299,15594313.302211,42299,1,1
-oilseedfor,"",oilseedfor,oilseedfor,642,Monf,"",Forage,2445456.715641,253769,2412220.16665865,7129,0.986408858202326,0.0280924778046176
-oilseednes,"",oilseednes,"Oilseeds, Nes",339,Monf,"",Oilcrops,1251177.75896995,227098,1106506.68887439,142899,0.884372089370683,0.629239359219368
-okra,"",okra,Okra,430,Monf,"",Vegetables&Melons,690350.880906365,286314,296856.276158671,50453,0.430007818298033,0.17621562340647
-olive,"",olive,Olives,260,Monf,"",Oilcrops,6790305.33328153,272993,6186262.09619157,39303,0.911043287828406,0.143970724524072
-onion,"",onion,"Onions, dry",403,Monf,"",Vegetables&Melons,2680268.2982198,713649,1901274.2596176,422588,0.709359678984529,0.592151043440123
-orange,"",orange,Oranges,490,Monf,"",Fruit,3543818.60049326,508491,2403451.96180777,265086,0.678209646925279,0.521318961397547
-papaya,"",papaya,Papayas,600,Monf,"",Fruit,330105.885438172,369976,239041.277436401,157544,0.724135157781586,0.425822215495059
-pea,"",pea,"Peas, dry",187,Monf,"",Pulses,6021544.03453344,522502,4832019.37606689,346925,0.802455208889174,0.66396875035885
-peachetc,"",peachetc,Peaches and nectarines,534,Monf,"",Fruit,1237516.08960357,473013,879428.348545482,264918,0.710639931014716,0.56006494536091
-pear,"",pear,Pears,521,Monf,"",Fruit,1569621.12680032,497608,1365100.52437298,264539,0.869700656460801,0.53162127618527
-pepper,"",pepper,Pepper (Piper spp.),687,Monf,"",OtherCrops,403170.356225371,233938,344608.132287107,68520,0.854745709762631,0.29289811830485
-peppermint,"",peppermint,Peppermint,748,Monf,"",OtherCrops,2666.61249782198,44001,2640.12380234152,1956,0.990066537413254,0.0444535351469285
-persimmon,"",persimmon,Persimmons,587,Monf,"",Fruit,505401.315939846,193077,500986.691613043,79289,0.991265111135309,0.41065999575299
-pige,pige,"",pigeon pea,197,SPAM,pigeonpea,pulses,4864259.8013087,42635,4864259.8013087,42635,1,1
-pimento,"",pimento,"Chillies and peppers, dry",689,Monf,"",OtherCrops,1868943.62206423,410812,403991.849628151,119906,0.216160533072659,0.291875602465361
-pineapple,"",pineapple,Pineapples,574,Monf,"",Fruit,715310.518507943,366073,587338.727259447,249863,0.821096170212301,0.682549655396601
-pistachio,"",pistachio,Pistachios,223,Monf,"",Treenuts,391072.848384958,164890,352144.151625021,21122,0.900456661921934,0.128097519558494
-plnt,plnt,"",plantain,489,SPAM,plantain,fruits,4007943.99976915,57613,4007943.99976915,57613,1,1
-plum,"",plum,Plums and sloes,536,Monf,"",Fruit,2052206.96192898,517369,1867864.91060168,260159,0.910173752088814,0.502849996810787
-pmil,pmil,"",millet,79,SPAM,pearl millet,cereals,26318402.9070833,142367,26318402.9070833,142367,1,1
-popcorn,"",popcorn,Popcorn,68,Monf,"",Cereals,8.34706302552168e-14,567296,0,0,0,0
-poppy,"",poppy,Poppy seed,296,Monf,"",Oilcrops,112368.433368577,303395,100722.209740537,28165,0.896356803428603,0.0928327757543796
-pota,pota,"",potato,116,SPAM,potato,roots&tubers or starchy roots,18608067.599335,417999,18608067.599335,417999,1,1
-pulsenes,"",pulsenes,"pulsenes, nes Pulses",211,Monf,"",Pulses,4227833.02092087,508522,1863965.17481966,322282,0.44087956302817,0.633762157782751
-pumpkinetc,"",pumpkinetc,"Pumpkins, squash and gourds",394,Monf,"",Vegetables&Melons,1295232.54502225,490543,832879.467657583,278498,0.643034697405074,0.567734123206324
-pyrethrum,"",pyrethrum,"Pyrethrum,Dried",754,Monf,"",OtherCrops,23113.435643884,28648,13290.1154408222,13840,0.574995238509204,0.483105277855348
-quince,"",quince,Quinces,523,Monf,"",Fruit,47883.6311971885,362754,36336.2125633461,107815,0.758844132219439,0.297212435975896
-quinoa,"",quinoa,Quinoa,92,Monf,"",Cereals,66511.4737312967,385073,4.58275712840259,20,6.89017529053216e-05,5.19382039249701e-05
-ramie,"",ramie,Ramie,788,Monf,"",Fiber,102716.708051959,252046,3995.53687977139,6687,0.0388986072037109,0.0265308713488808
-rapeseed,"",rapeseed,Rapeseed,270,Monf,"",Oilcrops,23935890.2873766,476497,23445017.6738477,348001,0.979492193202949,0.730331985301062
-rasberry,"",rasberry,Raspberries,547,Monf,"",Fruit,79297.8777980347,410688,64211.4448358836,108854,0.809749852315404,0.265052789465482
-rcof,rcof,"",coffee,656,SPAM,robusta coffee,stimulant,4267726.70005824,75331,4267726.70005824,75331,1,1
-rice,rice,"",rice,27,SPAM,rice,cereals,113831515.08268,308565,113831515.082708,308565,1.00000000000024,1
-rootnes,"",rootnes,"Roots and Tubers, nes",149,Monf,"",Roots&Tubers,852740.928893103,290202,269462.328891696,88162,0.31599553834184,0.303795287420486
-rubber,"",rubber,Natural rubber,836,Monf,"",OtherCrops,7463483.99838979,391848,6772044.13121797,93031,0.907356957243963,0.237416038872216
-rye,"",rye,Rye,71,Monf,"",Cereals,9269557.88393668,404660,9109470.63434238,294824,0.982729785864791,0.728572134631543
-ryefor,"",ryefor,ryefor,638,Monf,"",Forage,934454.059336857,42487,195582.900506881,7599,0.20930178273898,0.17885470849907
-safflower,"",safflower,Safflower seed,280,Monf,"",Oilcrops,848833.479621836,321043,603341.007457485,110870,0.710788419568794,0.345343147179661
-sesa,sesa,"",sesame seed,289,SPAM,sesameseed,oilcrops,8005424.19681236,164314,8005424.19681236,164314,1,1
-sisal,"",sisal,Sisal,789,Monf,"",Fiber,341658.850351537,301021,201268.407064672,53779,0.589091741243009,0.178655309762442
-smil,smil,"",millet,79,SPAM,small millet,cereals,4147469.9034804,141500,4147469.9034804,141500,1,1
-sorg,sorg,"",sorghum,83,SPAM,sorghum,cereals,39260950.6068412,341751,39260950.6068412,341751,1,1
-sorghumfor,"",sorghumfor,sorghumfor,637,Monf,"",Forage,1021231.66749677,108530,897350.755302204,79424,0.878694603646382,0.731816087717682
-sourcherry,"",sourcherry,Sour cherries,530,Monf,"",Fruit,234547.985887352,427291,210440.987361564,114092,0.897219332604434,0.267012410745838
-soyb,soyb,"",soybean,236,SPAM,soybean,oilcrops,97906830.5879225,345296,97906830.5879321,345296,1.0000000000001,1
-spicenes,"",spicenes,"Spices, nes",723,Monf,"",OtherCrops,1158637.15046808,326368,91038.9753780393,80862,0.0785741898067575,0.24776326110403
-spinach,"",spinach,Spinach,373,Monf,"",Vegetables&Melons,638798.789507487,284232,603787.98343653,158370,0.94519274825497,0.55718567930423
-stonefruitnes,"",stonefruitnes,"Stone fruit, nes",541,Monf,"",Fruit,63282.1906922247,319435,26970.0599995917,73707,0.426187205350737,0.23074177845258
-strawberry,"",strawberry,Strawberries,544,Monf,"",Fruit,226639.45819107,573131,163753.17627313,178578,0.722527213840569,0.311583215704612
-stringbean,"",stringbean,String beans,423,Monf,"",Vegetables&Melons,187679.80730965,226586,131677.897695889,80823,0.701609297150628,0.356699001703547
-sugarnes,"",sugarnes,"Sugar crops, nes",161,Monf,"",SugarCrops,110879.887908647,209219,88486.0689655589,23032,0.798035339271464,0.110085604079935
-sugb,sugb,"",sugarbeet,157,SPAM,sugarbeet,sugar crops,4682821.10137408,122589,4682821.10137408,122589,1,1
-sugc,sugc,"",sugar cane,156,SPAM,sugarcane,sugar crops,24219660.9901256,153132,24219660.9901256,153132,1,1
-sunf,sunf,"",sunflower seed,267,SPAM,sunflower,oilcrops,24195081.0037259,277717,24195081.0037259,277717,1,1
-swedefor,"",swedefor,swedefor,649,Monf,"",Forage,50933.7345716293,42686,50923.5655189455,2797,0.999800347397076,0.0655249964859673
-swpo,swpo,"",sweet potato,122,SPAM,sweet potato,roots&tubers or starchy roots,7765573.29998046,234003,7765573.29998046,234003,1,1
-tangetc,"",tangetc,"Tangerines, mandarins, clem.",495,Monf,"",Fruit,1633315.90389901,450931,367408.496568201,107278,0.224946377912034,0.237903359937551
-taro,"",taro,Taro (cocoyam),136,Monf,"",Roots&Tubers,1380195.11290342,192901,1262407.34118683,62969,0.91465860832617,0.326431692940939
-teas,teas,"",tea,667,SPAM,tea,stimulant,3197546.09930269,45814,3197546.09930269,45814,1,1
-toba,toba,"",tobacco leaves,826,SPAM,tobacco,stimulant,4028251.09936071,169786,4028251.09936071,169786,1,1
-tomato,"",tomato,Tomatoes,388,Monf,"",Vegetables&Melons,3634019.62291713,732338,2584605.45218714,519322,0.711224957589086,0.709128844877639
-triticale,"",triticale,Triticale,97,Monf,"",Cereals,2566629.57519596,216068,2076702.61949706,119221,0.809116609411196,0.551775367014088
-tropicalnes,"",tropicalnes,"tropicalnes, tropical fresh nes Fruit",603,Monf,"",Fruit,1817365.79940565,362667,1466885.40271981,230690,0.807149228404944,0.636093165355547
-tung,"",tung,Tung Nuts,275,Monf,"",Oilcrops,174982.094108404,382308,3366.67750884779,2491,0.0192401258311727,0.00651568892097471
-turnipfor,"",turnipfor,turnipfor,646,Monf,"",Forage,110896.236925704,74775,66663.4556686906,9804,0.60113361387864,0.13111334002006
-vanilla,"",vanilla,Vanilla,692,Monf,"",OtherCrops,36348.1470366667,203576,9372.3862489704,25941,0.257850454921839,0.127426612174323
-vegetablenes,"",vegetablenes,Vegetables fresh nes,463,Monf,"",Vegetables&Melons,14265386.5253155,890638,10921120.8864309,471890,0.765567821597413,0.529833669796259
-vegfor,"",vegfor,vegfor,655,Monf,"",Forage,979660.508985354,203794,900165.548854672,116029,0.91885458339745,0.569344534186483
-vetch,"",vetch,Vetches,205,Monf,"",Pulses,962024.324896374,352963,673030.109792482,108424,0.699597808885944,0.307182339225358
-walnut,"",walnut,"Walnuts, with shell",222,Monf,"",Treenuts,563095.042889273,385537,252997.442113775,136712,0.449297938791346,0.354601503876411
-watermelon,"",watermelon,Watermelons,567,Monf,"",Vegetables&Melons,2882702.3485262,587822,2607263.16717463,380713,0.904451050420661,0.647667150940251
-whea,whea,"",wheat,15,SPAM,wheat,cereals,199497738.832057,462033,199497738.832124,462033,1.00000000000034,1
-yams,yams,"",yam,137,SPAM,yams,roots&tubers or starchy roots,5020052.19942233,102280,5020052.19942233,102280,1,1
-yautia,"",yautia,Yautia (cocoyam),135,Monf,"",Roots&Tubers,36399.201028318,232447,22793.5156890051,3047,0.626209231111204,0.0131083644873885
+FAO_Name,FAO_Code,source,SPAM_Name,SPAM_Code,Monf_Name,GROUP
+Manila Fibre (Abaca),809,Monf,,,abaca,Fiber
+Agave Fibres Nes,800,Monf,,,agave,Fiber
+alfalfa,641,Monf,,,alfalfa,Forage
+"Almonds, with shell",221,Monf,,,almond,Treenuts
+"Anise, badian, fennel, corian",711,Monf,,,aniseetc,OtherCrops
+Apples,515,Monf,,,apple,Fruit
+Apricots,526,Monf,,,apricot,Fruit
+Arecanuts,226,Monf,,,areca,OtherCrops
+Artichokes,366,Monf,,,artichoke,Vegetables&Melons
+Asparagus,367,Monf,,,asparagus,Vegetables&Melons
+Avocados,572,Monf,,,avocado,Fruit
+Bambara beans,203,Monf,,,bambara,Pulses
+beetfor,647,Monf,,,beetfor,Forage
+Berries Nes,558,Monf,,,berrynes,Fruit
+Blueberries,552,Monf,,,blueberry,Fruit
+"Brazil nuts, with shell",216,Monf,,,brazil,Treenuts
+"Broad beans, horse beans, dry",181,Monf,,,broadbean,Pulses
+Buckwheat,89,Monf,,,buckwheat,Cereals
+Cabbages and other brassicas,358,Monf,,,cabbage,Vegetables&Melons
+cabbagefor,644,Monf,,,cabbagefor,Forage
+Canary seed,101,Monf,,,canaryseed,Cereals
+Carobs,461,Monf,,,carob,Fruit
+Carrots and turnips,426,Monf,,,carrot,Vegetables&Melons
+carrotfor,648,Monf,,,carrotfor,Forage
+"Cashew nuts, with shell",217,Monf,,,cashew,Treenuts
+Cashewapple,591,Monf,,,cashewapple,Fruit
+Castor oil seed,265,Monf,,,castor,Oilcrops
+Cauliflowers and broccoli,393,Monf,,,cauliflower,Vegetables&Melons
+"cerealnes, nes Cereals",108,Monf,,,cerealnes,Cereals
+Cherries,531,Monf,,,cherry,Fruit
+Chestnuts,220,Monf,,,chestnut,Treenuts
+Chicory roots,459,Monf,,,chicory,OtherCrops
+"Chillies and peppers, green",401,Monf,,,chilleetc,Vegetables&Melons
+Cinnamon (canella),693,Monf,,,cinnamon,OtherCrops
+"Citrus fruit, nes",512,Monf,,,citrusnes,Fruit
+Cloves,698,Monf,,,clove,OtherCrops
+clover,640,Monf,,,clover,Forage
+Coir,813,Monf,,,coir,Fiber
+Cranberries,554,Monf,,,cranberry,Fruit
+Cucumbers and gherkins,397,Monf,,,cucumberetc,Vegetables&Melons
+Currants,550,Monf,,,currant,Fruit
+Dates,577,Monf,,,date,Fruit
+Eggplants (aubergines),399,Monf,,,eggplant,Vegetables&Melons
+Fibre Crops Nes,821,Monf,,,fibrenes,Fiber
+Figs,569,Monf,,,fig,Fruit
+Flax fibre and tow,773,Monf,,,flax,Fiber
+Fonio,94,Monf,,,fonio,Cereals
+fornes,651,Monf,,,fornes,Forage
+Fresh Nes Fruit,619,Monf,,,fruitnes,Fruit
+Garlic,406,Monf,,,garlic,Vegetables&Melons
+Ginger,720,Monf,,,ginger,OtherCrops
+Gooseberries,549,Monf,,,gooseberry,Fruit
+Grapes,560,Monf,,,grape,Fruit
+Grapefruit (inc. pomelos),507,Monf,,,grapefruitetc,Fruit
+grassnes,639,Monf,,,grassnes,Forage
+"Beans, green",414,Monf,,,greenbean,Vegetables&Melons
+"Leguminous vegetables, nes",420,Monf,,,greenbroadbean,Vegetables&Melons
+"Maize, green",446,Monf,,,greencorn,Vegetables&Melons
+"Onions (inc. shallots), green",402,Monf,,,greenonion,Vegetables&Melons
+"Peas, green",417,Monf,,,greenpea,Vegetables&Melons
+Gums Natural,839,Monf,,,gums,OtherCrops
+"Hazelnuts, with shell",225,Monf,,,hazelnut,Treenuts
+Hemp Tow Waste,777,Monf,,,hemp,Fiber
+Hempseed,336,Monf,,,hempseed,Oilcrops
+Hops,677,Monf,,,hop,OtherCrops
+Jute,780,Monf,,,jute,Fiber
+Other Bastfibres,782,Monf,,,jutelikefiber,Fiber
+Kapok Fibre,778,Monf,,,kapokfiber,Fiber
+Kapokseed in Shell,311,Monf,,,kapokseed,Fiber
+Karite Nuts (Sheanuts),263,Monf,,,karite,Oilcrops
+Kiwi fruit,592,Monf,,,kiwi,Fruit
+Kolanuts,224,Monf,,,kolanut,OtherCrops
+legumenes,643,Monf,,,legumenes,Forage
+Lemons and limes,497,Monf,,,lemonlime,Fruit
+Lettuce and chicory,372,Monf,,,lettuce,Vegetables&Melons
+Linseed,333,Monf,,,linseed,Oilcrops
+Lupins,210,Monf,,,lupin,Pulses
+maizefor,636,Monf,,,maizefor,Forage
+"Mangoes, mangosteens, guavas",571,Monf,,,mango,Fruit
+mate,671,Monf,,,mate,OtherCrops
+Other melons (inc.cantaloupes),568,Monf,,,melonetc,Vegetables&Melons
+Melonseed,299,Monf,,,melonseed,Oilcrops
+Mixed grain,103,Monf,,,mixedgrain,Cereals
+Mustard seed,292,Monf,,,mustard,Oilcrops
+"Nutmeg, mace and cardamoms",702,Monf,,,nutmeg,OtherCrops
+"Nuts, nes",234,Monf,,,nutnes,Treenuts
+Oats,75,Monf,,,oats,Cereals
+oilseedfor,642,Monf,,,oilseedfor,Forage
+"Oilseeds, Nes",339,Monf,,,oilseednes,Oilcrops
+Okra,430,Monf,,,okra,Vegetables&Melons
+Olives,260,Monf,,,olive,Oilcrops
+"Onions, dry",403,Monf,,,onion,Vegetables&Melons
+Oranges,490,Monf,,,orange,Fruit
+Papayas,600,Monf,,,papaya,Fruit
+"Peas, dry",187,Monf,,,pea,Pulses
+Peaches and nectarines,534,Monf,,,peachetc,Fruit
+Pears,521,Monf,,,pear,Fruit
+Pepper (Piper spp.),687,Monf,,,pepper,OtherCrops
+Peppermint,748,Monf,,,peppermint,OtherCrops
+Persimmons,587,Monf,,,persimmon,Fruit
+"Chillies and peppers, dry",689,Monf,,,pimento,OtherCrops
+Pineapples,574,Monf,,,pineapple,Fruit
+Pistachios,223,Monf,,,pistachio,Treenuts
+Plums and sloes,536,Monf,,,plum,Fruit
+Popcorn,68,Monf,,,popcorn,Cereals
+Poppy seed,296,Monf,,,poppy,Oilcrops
+"pulsenes, nes Pulses",211,Monf,,,pulsenes,Pulses
+"Pumpkins, squash and gourds",394,Monf,,,pumpkinetc,Vegetables&Melons
+"Pyrethrum,Dried",754,Monf,,,pyrethrum,OtherCrops
+Quinces,523,Monf,,,quince,Fruit
+Quinoa,92,Monf,,,quinoa,Cereals
+Ramie,788,Monf,,,ramie,Fiber
+Rapeseed,270,Monf,,,rapeseed,Oilcrops
+Raspberries,547,Monf,,,rasberry,Fruit
+"Roots and Tubers, nes",149,Monf,,,rootnes,Roots&Tubers
+Natural rubber,836,Monf,,,rubber,OtherCrops
+Rye,71,Monf,,,rye,Cereals
+ryefor,638,Monf,,,ryefor,Forage
+Safflower seed,280,Monf,,,safflower,Oilcrops
+Sisal,789,Monf,,,sisal,Fiber
+sorghumfor,637,Monf,,,sorghumfor,Forage
+Sour cherries,530,Monf,,,sourcherry,Fruit
+"Spices, nes",723,Monf,,,spicenes,OtherCrops
+Spinach,373,Monf,,,spinach,Vegetables&Melons
+"Stone fruit, nes",541,Monf,,,stonefruitnes,Fruit
+Strawberries,544,Monf,,,strawberry,Fruit
+String beans,423,Monf,,,stringbean,Vegetables&Melons
+"Sugar crops, nes",161,Monf,,,sugarnes,SugarCrops
+swedefor,649,Monf,,,swedefor,Forage
+"Tangerines, mandarins, clem.",495,Monf,,,tangetc,Fruit
+Taro (cocoyam),136,Monf,,,taro,Roots&Tubers
+Tomatoes,388,Monf,,,tomato,Vegetables&Melons
+Triticale,97,Monf,,,triticale,Cereals
+"tropicalnes, tropical fresh nes Fruit",603,Monf,,,tropicalnes,Fruit
+Tung Nuts,275,Monf,,,tung,Oilcrops
+turnipfor,646,Monf,,,turnipfor,Forage
+Vanilla,692,Monf,,,vanilla,OtherCrops
+Vegetables fresh nes,463,Monf,,,vegetablenes,Vegetables&Melons
+vegfor,655,Monf,,,vegfor,Forage
+Vetches,205,Monf,,,vetch,Pulses
+"Walnuts, with shell",222,Monf,,,walnut,Treenuts
+Watermelons,567,Monf,,,watermelon,Vegetables&Melons
+Yautia (cocoyam),135,Monf,,,yautia,Roots&Tubers
+wheat,15,SPAM,wheat,whea,,cereals
+rice,27,SPAM,rice,rice,,cereals
+maize,56,SPAM,maize,maiz,,cereals
+barley,44,SPAM,barley,barl,,cereals
+millet,79,SPAM,pearl millet,pmil,,cereals
+millet,79,SPAM,small millet,smil,,cereals
+sorghum,83,SPAM,sorghum,sorg,,cereals
+potato,116,SPAM,potato,pota,,roots&tubers or starchy roots
+sweet potato,122,SPAM,sweet potato,swpo,,roots&tubers or starchy roots
+yam,137,SPAM,yams,yams,,roots&tubers or starchy roots
+cassava,125,SPAM,cassava,cass,,roots&tubers or starchy roots
+"beans, dry",176,SPAM,bean,bean,,pulses
+chickpea,191,SPAM,chickpea,chic,,pulses
+cowpea,195,SPAM,cowpea,cowp,,pulses
+pigeon pea,197,SPAM,pigeonpea,pige,,pulses
+lentils,201,SPAM,lentil,lent,,pulses
+soybean,236,SPAM,soybean,soyb,,oilcrops
+"groundnut, with shell",242,SPAM,groundnut,grou,,oilcrops
+coconut,249,SPAM,coconut,cnut,,oilcrops
+palmoil,254,SPAM,oilpalm,oilp,,oilcrops
+sunflower seed,267,SPAM,sunflower,sunf,,oilcrops
+sesame seed,289,SPAM,sesameseed,sesa,,oilcrops
+sugar cane,156,SPAM,sugarcane,sugc,,sugar crops
+sugarbeet,157,SPAM,sugarbeet,sugb,,sugar crops
+seed cotton,328,SPAM,cotton,cott,,fibres
+coffee,656,SPAM,arabica coffee,acof,,stimulant
+coffee,656,SPAM,robusta coffee,rcof,,stimulant
+cocoa,661,SPAM,cocoa,coco,,stimulant
+tea,667,SPAM,tea,teas,,stimulant
+tobacco leaves,826,SPAM,tobacco,toba,,stimulant
+banana,486,SPAM,banana,bana,,fruits
+plantain,489,SPAM,plantain,plnt,,fruits

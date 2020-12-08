@@ -5,7 +5,7 @@ library(rnaturalearth)
 library(rnaturalearthhires)
 
 nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") warning("See 0000_wd.R")
 
 sc <- fread("AuxData/CropAbundanceSource.csv")
 
@@ -171,13 +171,6 @@ tps <- data.table(fullcode = rownames(tps), Total_p = tps$global)
 tps[, SPAM_Code:= tolower(substr(fullcode, 23,26))]
 tps[, fullcode:= NULL]
 
-# Total hectares and # of presence in filtered/masked data
-fh <- global(crops, fun = function(x) sum(x, na.rm = T)) 
-fp <- global(crops, fun = function(x) sum(x > 0, na.rm = T)) 
-df <- data.table(name = names(crops), 
-                 nonFiltered_ha = fh$global, 
-                 nonFiltered_p = fp$global)
-
 # merge results with source summary data. 
 sc <- merge.data.table(sc, thm, by = "Monf_Name", all.x = T)
 sc <- merge.data.table(sc, tpm, by = "Monf_Name", all.x = T)
@@ -205,7 +198,7 @@ sc <- merge.data.table(sc, tpc, by = "filename", all.x = T)
 sc[, nf_prop_ha:= nonFiltered_ha/Total_ha]
 sc[, nf_prop_p:= nonFiltered_p/Total_p]
 
-fwrite(sc, "AuxData/CropAbundanceSource.csv")
+fwrite(sc, "AuxData/CropAbundanceSource_Filtered.csv")
 
 
 # create cropland mask with total cropland (in ha)
