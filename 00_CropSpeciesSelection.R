@@ -84,6 +84,11 @@ fwrite(d, file.path(dirn, "EcocropSpeciesWithAbundanceData.csv"))
 spmo[,source:= ifelse(is.na(SPAM_Code), "Monf", "SPAM")]
 setcolorder(spmo, c("FAO_Name", "FAO_Code", "source", 
                    "SPAM_Name", "SPAM_Code", "Monf_Name"))
+# remove mushrooms because it is not a plant crop
+spmo <- spmo[-which(Monf_Name == "mushroom"),]
+
+# remove forage crops
+spmo <- spmo[GROUP != "Forage",]
 
 fwrite(spmo, file.path(dirn, "CropAbundanceSource.csv"))
 
