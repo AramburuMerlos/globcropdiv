@@ -1,90 +1,109 @@
+# the probability of deining a given cell as presence will be in function of its crop fraction. (p(cell = 1) = crop_fraction)
+# then, the resulting absence cells will be subsampled to reduce the amount of training data
+# here, the sampleing effort is the number of trials in each cell (size in rbinom)
+
 library(data.table)
-library(raster)
-options(java.parameters = "-Xmx20g" )
-library(dismo)
+library(terra)
+library(maxnet)
 
 nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") warning("See 0000_wd.R")
 
-if(dir.exists("D:/globcropdiv")){
-  wcpath <- "D:/WorldClim/2.1/wc5min"
-  sgpath <- "D:/SoilGrids"
-  gdpath <- "D:/globcropdiv"
-  aqpath <- "D:/AQUASTAT"
-  cpath <- "D:/WorldCropAbundance"
-} else {
-  wcpath <- "InData/WorldClim/2.1/wc5min"
-  sgpath <- "InData/SoilGrids"
-  aqpath <- "InData/AQUASTAT"
-  gdpath <- "OutData"
-  cpath <- "InData/WorldCropAbundance"
-}
-
-# Predictors --------------
-preds <- stack(raster(file.path(sgpath, "phh2o/phh2o_0-15cm_mean_5min.tif")), 
-               raster(file.path(wcpath, "extra/GDD.tif")), 
-               raster(file.path(wcpath, "extra/AI.tif")),  
-               raster(file.path(wcpath, "extra/PET_seasonality.tif")),  
-               raster(file.path(aqpath, "gmia_v5_aei_pct.asc")))
-bioc <- stack(lapply(Sys.glob(file.path(wcpath, "bioc/*.tif")), raster))
-preds <- stack(preds, bioc)
-cmask <- raster(file.path(cpath, "Total_Cropland_ha.tif"))
-preds[[1]] <- mask(preds[[1]], cmask)
+# directory of input data
+indir <- "D:"
+cpath <- file.path(indir, "WorldCropAbundance")
 
 # Crop Abundance Data ----------
-sc <- fread("AuxData/CropAbundanceSource.csv")
-# KEEP ONLY CROPS WITH >75% Of THEIR DATA NON-FILTERED
-crops <- sc[nf_prop_ha > 0.75, paste0(filename, "_", toupper(source))]
-fn <- file.path(cpath, paste0("fraction/", crops, "_fr.tif"))
-abund <- stack(lapply(fn, raster))
+sc <- fread("AuxData/CropAbundanceSource_Filtered.csv")
+# KEEP ONLY CROPS WITH >75% Of THEIR DATA NON-FILTERED 
+sel_sc <- sc[nf_prop_ha > 0.75,]
+crops <- sel_sc[, filename]
+crops.fn <- paste0(crops, "_", sel_sc[, source])
+fn <- file.path(cpath, paste0("fraction/", crops.fn, "_fr.tif"))
+abund <- rast(fn)
+
+# Predictors --------------
+preds.fn <- fread("AuxData/SelectedPreds.csv")$file_name
+preds <- rast(file.path(indir, preds.fn))
+names(preds) <- fread("AuxData/SelectedPreds.csv")$short_name
+
 # compare predictors and abundance Geometries
-compareRaster(preds, abund)
+compareGeom(preds, abund)
 
-# SET "SAMPLING EFFORT"  -----------
-# define proportion|number of abundance data (>0) to keep 
-# then, sample abundance data using crop fraction as weight 
-seff <- 0.2
+# Cropland Mask --------
+cmask <- rast(file.path(cpath, "Total_Cropland_ha.tif"))
+preds <- mask(preds, cmask)
 
-# sampling effort shuold be defined by cross validation (together with other tunning parameters) 
+# Mask cropland-mask based on predictors
+pred_mask <- app(preds, sum, na.rm = FALSE) # to get NA if any layer has NA
+cmask <- mask(cmask, pred_mask)
+
+# Predictors data.table to fit model
+dpreds <- data.table(cell = seq_len(ncell(preds)), values(preds))
+dpreds <- dpreds[complete.cases(dpreds),]
+
+# number of absence cells: 
+nab <- 2e4
+
+# Set sampling efforts ------
+# sampling effort is number of trials in each cell
+# ntrials is a function of total crop area. Rare crops -> more trials
+arealogs <- round(log(sel_sc[, nonFiltered_ha]))
+ntrials <- max(arealogs) - arealogs + 1
 
 # run MAXENT -----
-outpath <- file.path(gdpath, "SDM/Maxent")
+outpath <- file.path("OutData/SDM/Maxent")
 dir.create(outpath)
-train_cells <- vector(mode = "list", length = length(crops))
 
-maxent()
-
+r <- rast(cmask)
 # loop for all crops  ----
 set.seed(1234)
+np <- vector(length = length(crops)) # vector to save number of presence values
 for(i in 1:length(crops)){
-  #  for(s in seff){
   d <- data.table(cell = (1:ncell(abund[[i]])),
-                  frac = getValues(abund[[i]]))
-  d <- d[!is.na(frac),]
-  scells <- sample(d$cell, ceiling(nrow(d) * seff), prob = d$frac) # replace seff for s in seff loop
-  pts <- xyFromCell(abund[[i]], scells) 
-  train_cells[[i]] <- scells
-  rm(d)
+                  frac = values(abund[[i]])[,1])
+  # (un)mask cells using crop mask, add 0 in cropland cells without crop (NA in abund[[i]])
+  d[,cm:= values(cmask)]
+  d <- d[!is.na(cm),]
+  d[,cm:= NULL]
+  d[, frac:= ifelse(is.na(frac), 0, frac)]
+  d[, frac:= pmin(frac, 1)] # limit fraction to a max of 1 
+  
+  # is the crop detected in each cell?
+  d[, pres := rbinom(.N, ntrials[i], frac)]
+  # presence cells 
+  pcells <- d[pres > 0, cell]
+  # absence cells (keep only nab absence observations)
+  acells <- sample(d[pres == 0, cell], nab)
+  
+  # keep track of number of presence cells 
+  np[i] <- length(pcells)
+  
+  # predictor for absences
+  ap <- as.data.table(extract(preds, acells))
+  # predictors for presence cells
+  pp <- as.data.table(extract(preds, pcells))
+  # create data table with predictors and vector with 0/1 values
+  d <- rbindlist(list(ap, pp))
+  p <- c(rep(0L, nrow(ap)), rep(1L, nrow(pp)))
+  
   # fit
-  m <- maxent(preds, pts, path = file.path(outpath, crops[i]))
-  # Predict
-  mp <- predict(m, preds, 
-                filename = file.path(outpath, paste0(crops[i], "_Maxent_pred.tif")), 
-                overwrite = T, 
-                options = c("COMPRESS=Deflate","PREDICTOR=1","ZLEVEL=6"))
-  mpm <- mask(mp, abund[[i]])
-  mpmv <- getValues(mpm)
-  mpmv <- mpmv[!is.na(mpmv)]
-  #   if(sum(mpmv > 0)/ length(mpmv) > 0.99) break
-  #  }
-  #  sampling_effort[i] <- s
-  train_cells[[i]] <- scells
+  m <- maxnet(p, d)
+  
+  # Predict, set values in raster, save
+  mp <- predict(m, dpreds[,-1], type = "cloglog") 
+  v <- rep(NA_real_, ncell(preds))
+  v[dpreds$cell] <- mp[,1]
+  values(r) <- v
+  writeRaster(r,   
+              filename = file.path(outpath, paste0(crops[i], "_Maxent_pred.tif")),
+              overwrite = T, 
+              wopt = list(names=crops[i], filetype = "GTiff",
+                          gdal=c("COMPRESS=Deflate","PREDICTOR=1","ZLEVEL=6")))
 }
   
-#fwrite(data.table(crop = crops, sampling_effort = sampling_effort), 
-#       file.path(outpath, "sampling_effort.csv"))
-
-saveRDS(train_cells, file.path(outpath, "train_cells.RDS"))
-
-
-
+sel_sc[, npres_Maxent:= np]
+sel_sc[, ntrials_Maxent:= ntrials]
+fwrite(sel_sc, "AuxData/CroplandSampling_Maxent.csv")
+plot(log(npres_Maxent) ~ log(nonFiltered_ha), data = sel_sc, 
+     col = rainbow(max(ntrials))[ntrials], pch = 19)
