@@ -87,8 +87,6 @@ setcolorder(spmo, c("FAO_Name", "FAO_Code", "source",
 # remove mushrooms because it is not a plant crop
 spmo <- spmo[-which(Monf_Name == "mushroom"),]
 
-# remove forage crops
-spmo <- spmo[GROUP != "Forage",]
 
 fwrite(spmo, file.path(dirn, "CropAbundanceSource.csv"))
 
