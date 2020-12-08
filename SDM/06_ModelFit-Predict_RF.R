@@ -4,7 +4,7 @@ library(data.table)
 library(randomForest)
 
 nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") warning("See 0000_wd.R")
 
 if(dir.exists("D:/globcropdiv")){
   wcpath <- "D:/WorldClim/2.1/wc5min"
