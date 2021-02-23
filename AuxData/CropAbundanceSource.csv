@@ -1,176 +1,176 @@
-FAO_Name,FAO_Code,source,SPAM_Name,SPAM_Code,Monf_Name,GROUP
-Manila Fibre (Abaca),809,Monf,,,abaca,Fiber
-Agave Fibres Nes,800,Monf,,,agave,Fiber
-alfalfa,641,Monf,,,alfalfa,Forage
-"Almonds, with shell",221,Monf,,,almond,Treenuts
-"Anise, badian, fennel, corian",711,Monf,,,aniseetc,OtherCrops
-Apples,515,Monf,,,apple,Fruit
-Apricots,526,Monf,,,apricot,Fruit
-Arecanuts,226,Monf,,,areca,OtherCrops
-Artichokes,366,Monf,,,artichoke,Vegetables&Melons
-Asparagus,367,Monf,,,asparagus,Vegetables&Melons
-Avocados,572,Monf,,,avocado,Fruit
-Bambara beans,203,Monf,,,bambara,Pulses
-beetfor,647,Monf,,,beetfor,Forage
-Berries Nes,558,Monf,,,berrynes,Fruit
-Blueberries,552,Monf,,,blueberry,Fruit
-"Brazil nuts, with shell",216,Monf,,,brazil,Treenuts
-"Broad beans, horse beans, dry",181,Monf,,,broadbean,Pulses
-Buckwheat,89,Monf,,,buckwheat,Cereals
-Cabbages and other brassicas,358,Monf,,,cabbage,Vegetables&Melons
-cabbagefor,644,Monf,,,cabbagefor,Forage
-Canary seed,101,Monf,,,canaryseed,Cereals
-Carobs,461,Monf,,,carob,Fruit
-Carrots and turnips,426,Monf,,,carrot,Vegetables&Melons
-carrotfor,648,Monf,,,carrotfor,Forage
-"Cashew nuts, with shell",217,Monf,,,cashew,Treenuts
-Cashewapple,591,Monf,,,cashewapple,Fruit
-Castor oil seed,265,Monf,,,castor,Oilcrops
-Cauliflowers and broccoli,393,Monf,,,cauliflower,Vegetables&Melons
-"cerealnes, nes Cereals",108,Monf,,,cerealnes,Cereals
-Cherries,531,Monf,,,cherry,Fruit
-Chestnuts,220,Monf,,,chestnut,Treenuts
-Chicory roots,459,Monf,,,chicory,OtherCrops
-"Chillies and peppers, green",401,Monf,,,chilleetc,Vegetables&Melons
-Cinnamon (canella),693,Monf,,,cinnamon,OtherCrops
-"Citrus fruit, nes",512,Monf,,,citrusnes,Fruit
-Cloves,698,Monf,,,clove,OtherCrops
-clover,640,Monf,,,clover,Forage
-Coir,813,Monf,,,coir,Fiber
-Cranberries,554,Monf,,,cranberry,Fruit
-Cucumbers and gherkins,397,Monf,,,cucumberetc,Vegetables&Melons
-Currants,550,Monf,,,currant,Fruit
-Dates,577,Monf,,,date,Fruit
-Eggplants (aubergines),399,Monf,,,eggplant,Vegetables&Melons
-Fibre Crops Nes,821,Monf,,,fibrenes,Fiber
-Figs,569,Monf,,,fig,Fruit
-Flax fibre and tow,773,Monf,,,flax,Fiber
-Fonio,94,Monf,,,fonio,Cereals
-fornes,651,Monf,,,fornes,Forage
-Fresh Nes Fruit,619,Monf,,,fruitnes,Fruit
-Garlic,406,Monf,,,garlic,Vegetables&Melons
-Ginger,720,Monf,,,ginger,OtherCrops
-Gooseberries,549,Monf,,,gooseberry,Fruit
-Grapes,560,Monf,,,grape,Fruit
-Grapefruit (inc. pomelos),507,Monf,,,grapefruitetc,Fruit
-grassnes,639,Monf,,,grassnes,Forage
-"Beans, green",414,Monf,,,greenbean,Vegetables&Melons
-"Leguminous vegetables, nes",420,Monf,,,greenbroadbean,Vegetables&Melons
-"Maize, green",446,Monf,,,greencorn,Vegetables&Melons
-"Onions (inc. shallots), green",402,Monf,,,greenonion,Vegetables&Melons
-"Peas, green",417,Monf,,,greenpea,Vegetables&Melons
-Gums Natural,839,Monf,,,gums,OtherCrops
-"Hazelnuts, with shell",225,Monf,,,hazelnut,Treenuts
-Hemp Tow Waste,777,Monf,,,hemp,Fiber
-Hempseed,336,Monf,,,hempseed,Oilcrops
-Hops,677,Monf,,,hop,OtherCrops
-Jute,780,Monf,,,jute,Fiber
-Other Bastfibres,782,Monf,,,jutelikefiber,Fiber
-Kapok Fibre,778,Monf,,,kapokfiber,Fiber
-Kapokseed in Shell,311,Monf,,,kapokseed,Fiber
-Karite Nuts (Sheanuts),263,Monf,,,karite,Oilcrops
-Kiwi fruit,592,Monf,,,kiwi,Fruit
-Kolanuts,224,Monf,,,kolanut,OtherCrops
-legumenes,643,Monf,,,legumenes,Forage
-Lemons and limes,497,Monf,,,lemonlime,Fruit
-Lettuce and chicory,372,Monf,,,lettuce,Vegetables&Melons
-Linseed,333,Monf,,,linseed,Oilcrops
-Lupins,210,Monf,,,lupin,Pulses
-maizefor,636,Monf,,,maizefor,Forage
-"Mangoes, mangosteens, guavas",571,Monf,,,mango,Fruit
-mate,671,Monf,,,mate,OtherCrops
-Other melons (inc.cantaloupes),568,Monf,,,melonetc,Vegetables&Melons
-Melonseed,299,Monf,,,melonseed,Oilcrops
-Mixed grain,103,Monf,,,mixedgrain,Cereals
-Mustard seed,292,Monf,,,mustard,Oilcrops
-"Nutmeg, mace and cardamoms",702,Monf,,,nutmeg,OtherCrops
-"Nuts, nes",234,Monf,,,nutnes,Treenuts
-Oats,75,Monf,,,oats,Cereals
-oilseedfor,642,Monf,,,oilseedfor,Forage
-"Oilseeds, Nes",339,Monf,,,oilseednes,Oilcrops
-Okra,430,Monf,,,okra,Vegetables&Melons
-Olives,260,Monf,,,olive,Oilcrops
-"Onions, dry",403,Monf,,,onion,Vegetables&Melons
-Oranges,490,Monf,,,orange,Fruit
-Papayas,600,Monf,,,papaya,Fruit
-"Peas, dry",187,Monf,,,pea,Pulses
-Peaches and nectarines,534,Monf,,,peachetc,Fruit
-Pears,521,Monf,,,pear,Fruit
-Pepper (Piper spp.),687,Monf,,,pepper,OtherCrops
-Peppermint,748,Monf,,,peppermint,OtherCrops
-Persimmons,587,Monf,,,persimmon,Fruit
-"Chillies and peppers, dry",689,Monf,,,pimento,OtherCrops
-Pineapples,574,Monf,,,pineapple,Fruit
-Pistachios,223,Monf,,,pistachio,Treenuts
-Plums and sloes,536,Monf,,,plum,Fruit
-Popcorn,68,Monf,,,popcorn,Cereals
-Poppy seed,296,Monf,,,poppy,Oilcrops
-"pulsenes, nes Pulses",211,Monf,,,pulsenes,Pulses
-"Pumpkins, squash and gourds",394,Monf,,,pumpkinetc,Vegetables&Melons
-"Pyrethrum,Dried",754,Monf,,,pyrethrum,OtherCrops
-Quinces,523,Monf,,,quince,Fruit
-Quinoa,92,Monf,,,quinoa,Cereals
-Ramie,788,Monf,,,ramie,Fiber
-Rapeseed,270,Monf,,,rapeseed,Oilcrops
-Raspberries,547,Monf,,,rasberry,Fruit
-"Roots and Tubers, nes",149,Monf,,,rootnes,Roots&Tubers
-Natural rubber,836,Monf,,,rubber,OtherCrops
-Rye,71,Monf,,,rye,Cereals
-ryefor,638,Monf,,,ryefor,Forage
-Safflower seed,280,Monf,,,safflower,Oilcrops
-Sisal,789,Monf,,,sisal,Fiber
-sorghumfor,637,Monf,,,sorghumfor,Forage
-Sour cherries,530,Monf,,,sourcherry,Fruit
-"Spices, nes",723,Monf,,,spicenes,OtherCrops
-Spinach,373,Monf,,,spinach,Vegetables&Melons
-"Stone fruit, nes",541,Monf,,,stonefruitnes,Fruit
-Strawberries,544,Monf,,,strawberry,Fruit
-String beans,423,Monf,,,stringbean,Vegetables&Melons
-"Sugar crops, nes",161,Monf,,,sugarnes,SugarCrops
-swedefor,649,Monf,,,swedefor,Forage
-"Tangerines, mandarins, clem.",495,Monf,,,tangetc,Fruit
-Taro (cocoyam),136,Monf,,,taro,Roots&Tubers
-Tomatoes,388,Monf,,,tomato,Vegetables&Melons
-Triticale,97,Monf,,,triticale,Cereals
-"tropicalnes, tropical fresh nes Fruit",603,Monf,,,tropicalnes,Fruit
-Tung Nuts,275,Monf,,,tung,Oilcrops
-turnipfor,646,Monf,,,turnipfor,Forage
-Vanilla,692,Monf,,,vanilla,OtherCrops
-Vegetables fresh nes,463,Monf,,,vegetablenes,Vegetables&Melons
-vegfor,655,Monf,,,vegfor,Forage
-Vetches,205,Monf,,,vetch,Pulses
-"Walnuts, with shell",222,Monf,,,walnut,Treenuts
-Watermelons,567,Monf,,,watermelon,Vegetables&Melons
-Yautia (cocoyam),135,Monf,,,yautia,Roots&Tubers
-wheat,15,SPAM,wheat,whea,,cereals
-rice,27,SPAM,rice,rice,,cereals
-maize,56,SPAM,maize,maiz,,cereals
-barley,44,SPAM,barley,barl,,cereals
-millet,79,SPAM,pearl millet,pmil,,cereals
-millet,79,SPAM,small millet,smil,,cereals
-sorghum,83,SPAM,sorghum,sorg,,cereals
-potato,116,SPAM,potato,pota,,roots&tubers or starchy roots
-sweet potato,122,SPAM,sweet potato,swpo,,roots&tubers or starchy roots
-yam,137,SPAM,yams,yams,,roots&tubers or starchy roots
-cassava,125,SPAM,cassava,cass,,roots&tubers or starchy roots
-"beans, dry",176,SPAM,bean,bean,,pulses
-chickpea,191,SPAM,chickpea,chic,,pulses
-cowpea,195,SPAM,cowpea,cowp,,pulses
-pigeon pea,197,SPAM,pigeonpea,pige,,pulses
-lentils,201,SPAM,lentil,lent,,pulses
-soybean,236,SPAM,soybean,soyb,,oilcrops
-"groundnut, with shell",242,SPAM,groundnut,grou,,oilcrops
-coconut,249,SPAM,coconut,cnut,,oilcrops
-palmoil,254,SPAM,oilpalm,oilp,,oilcrops
-sunflower seed,267,SPAM,sunflower,sunf,,oilcrops
-sesame seed,289,SPAM,sesameseed,sesa,,oilcrops
-sugar cane,156,SPAM,sugarcane,sugc,,sugar crops
-sugarbeet,157,SPAM,sugarbeet,sugb,,sugar crops
-seed cotton,328,SPAM,cotton,cott,,fibres
-coffee,656,SPAM,arabica coffee,acof,,stimulant
-coffee,656,SPAM,robusta coffee,rcof,,stimulant
-cocoa,661,SPAM,cocoa,coco,,stimulant
-tea,667,SPAM,tea,teas,,stimulant
-tobacco leaves,826,SPAM,tobacco,toba,,stimulant
-banana,486,SPAM,banana,bana,,fruits
-plantain,489,SPAM,plantain,plnt,,fruits
+crop,FAO_Name,FAO_Code,source,SPAM_Name,SPAM_Code,Monf_Name,GROUP,file
+abaca,Manila Fibre (Abaca),809,Monf,,,abaca,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/abaca_HarvAreaYield_Geotiff/abaca_HarvestedAreaHectares.tif
+agave,Agave Fibres Nes,800,Monf,,,agave,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/agave_HarvAreaYield_Geotiff/agave_HarvestedAreaHectares.tif
+alfalfa,alfalfa,641,Monf,,,alfalfa,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/alfalfa_HarvAreaYield_Geotiff/alfalfa_HarvestedAreaHectares.tif
+almond,"Almonds, with shell",221,Monf,,,almond,Treenuts,Monfreda/HarvestedAreaYield175Crops_Geotiff/almond_HarvAreaYield_Geotiff/almond_HarvestedAreaHectares.tif
+aniseetc,"Anise, badian, fennel, corian",711,Monf,,,aniseetc,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/aniseetc_HarvAreaYield_Geotiff/aniseetc_HarvestedAreaHectares.tif
+apple,Apples,515,Monf,,,apple,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/apple_HarvAreaYield_Geotiff/apple_HarvestedAreaHectares.tif
+apricot,Apricots,526,Monf,,,apricot,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/apricot_HarvAreaYield_Geotiff/apricot_HarvestedAreaHectares.tif
+areca,Arecanuts,226,Monf,,,areca,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/areca_HarvAreaYield_Geotiff/areca_HarvestedAreaHectares.tif
+artichoke,Artichokes,366,Monf,,,artichoke,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/artichoke_HarvAreaYield_Geotiff/artichoke_HarvestedAreaHectares.tif
+asparagus,Asparagus,367,Monf,,,asparagus,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/asparagus_HarvAreaYield_Geotiff/asparagus_HarvestedAreaHectares.tif
+avocado,Avocados,572,Monf,,,avocado,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/avocado_HarvAreaYield_Geotiff/avocado_HarvestedAreaHectares.tif
+bambara,Bambara beans,203,Monf,,,bambara,Pulses,Monfreda/HarvestedAreaYield175Crops_Geotiff/bambara_HarvAreaYield_Geotiff/bambara_HarvestedAreaHectares.tif
+beetfor,beetfor,647,Monf,,,beetfor,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/beetfor_HarvAreaYield_Geotiff/beetfor_HarvestedAreaHectares.tif
+berrynes,Berries Nes,558,Monf,,,berrynes,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/berrynes_HarvAreaYield_Geotiff/berrynes_HarvestedAreaHectares.tif
+blueberry,Blueberries,552,Monf,,,blueberry,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/blueberry_HarvAreaYield_Geotiff/blueberry_HarvestedAreaHectares.tif
+brazil,"Brazil nuts, with shell",216,Monf,,,brazil,Treenuts,Monfreda/HarvestedAreaYield175Crops_Geotiff/brazil_HarvAreaYield_Geotiff/brazil_HarvestedAreaHectares.tif
+broadbean,"Broad beans, horse beans, dry",181,Monf,,,broadbean,Pulses,Monfreda/HarvestedAreaYield175Crops_Geotiff/broadbean_HarvAreaYield_Geotiff/broadbean_HarvestedAreaHectares.tif
+buckwheat,Buckwheat,89,Monf,,,buckwheat,Cereals,Monfreda/HarvestedAreaYield175Crops_Geotiff/buckwheat_HarvAreaYield_Geotiff/buckwheat_HarvestedAreaHectares.tif
+cabbage,Cabbages and other brassicas,358,Monf,,,cabbage,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/cabbage_HarvAreaYield_Geotiff/cabbage_HarvestedAreaHectares.tif
+cabbagefor,cabbagefor,644,Monf,,,cabbagefor,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/cabbagefor_HarvAreaYield_Geotiff/cabbagefor_HarvestedAreaHectares.tif
+canaryseed,Canary seed,101,Monf,,,canaryseed,Cereals,Monfreda/HarvestedAreaYield175Crops_Geotiff/canaryseed_HarvAreaYield_Geotiff/canaryseed_HarvestedAreaHectares.tif
+carob,Carobs,461,Monf,,,carob,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/carob_HarvAreaYield_Geotiff/carob_HarvestedAreaHectares.tif
+carrot,Carrots and turnips,426,Monf,,,carrot,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/carrot_HarvAreaYield_Geotiff/carrot_HarvestedAreaHectares.tif
+carrotfor,carrotfor,648,Monf,,,carrotfor,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/carrotfor_HarvAreaYield_Geotiff/carrotfor_HarvestedAreaHectares.tif
+cashew,"Cashew nuts, with shell",217,Monf,,,cashew,Treenuts,Monfreda/HarvestedAreaYield175Crops_Geotiff/cashew_HarvAreaYield_Geotiff/cashew_HarvestedAreaHectares.tif
+cashewapple,Cashewapple,591,Monf,,,cashewapple,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/cashewapple_HarvAreaYield_Geotiff/cashewapple_HarvestedAreaHectares.tif
+castor,Castor oil seed,265,Monf,,,castor,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/castor_HarvAreaYield_Geotiff/castor_HarvestedAreaHectares.tif
+cauliflower,Cauliflowers and broccoli,393,Monf,,,cauliflower,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/cauliflower_HarvAreaYield_Geotiff/cauliflower_HarvestedAreaHectares.tif
+cerealnes,"cerealnes, nes Cereals",108,Monf,,,cerealnes,Cereals,Monfreda/HarvestedAreaYield175Crops_Geotiff/cerealnes_HarvAreaYield_Geotiff/cerealnes_HarvestedAreaHectares.tif
+cherry,Cherries,531,Monf,,,cherry,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/cherry_HarvAreaYield_Geotiff/cherry_HarvestedAreaHectares.tif
+chestnut,Chestnuts,220,Monf,,,chestnut,Treenuts,Monfreda/HarvestedAreaYield175Crops_Geotiff/chestnut_HarvAreaYield_Geotiff/chestnut_HarvestedAreaHectares.tif
+chicory,Chicory roots,459,Monf,,,chicory,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/chicory_HarvAreaYield_Geotiff/chicory_HarvestedAreaHectares.tif
+chilleetc,"Chillies and peppers, green",401,Monf,,,chilleetc,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/chilleetc_HarvAreaYield_Geotiff/chilleetc_HarvestedAreaHectares.tif
+cinnamon,Cinnamon (canella),693,Monf,,,cinnamon,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/cinnamon_HarvAreaYield_Geotiff/cinnamon_HarvestedAreaHectares.tif
+citrusnes,"Citrus fruit, nes",512,Monf,,,citrusnes,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/citrusnes_HarvAreaYield_Geotiff/citrusnes_HarvestedAreaHectares.tif
+clove,Cloves,698,Monf,,,clove,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/clove_HarvAreaYield_Geotiff/clove_HarvestedAreaHectares.tif
+clover,clover,640,Monf,,,clover,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/clover_HarvAreaYield_Geotiff/clover_HarvestedAreaHectares.tif
+coir,Coir,813,Monf,,,coir,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/coir_HarvAreaYield_Geotiff/coir_HarvestedAreaHectares.tif
+cranberry,Cranberries,554,Monf,,,cranberry,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/cranberry_HarvAreaYield_Geotiff/cranberry_HarvestedAreaHectares.tif
+cucumberetc,Cucumbers and gherkins,397,Monf,,,cucumberetc,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/cucumberetc_HarvAreaYield_Geotiff/cucumberetc_HarvestedAreaHectares.tif
+currant,Currants,550,Monf,,,currant,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/currant_HarvAreaYield_Geotiff/currant_HarvestedAreaHectares.tif
+date,Dates,577,Monf,,,date,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/date_HarvAreaYield_Geotiff/date_HarvestedAreaHectares.tif
+eggplant,Eggplants (aubergines),399,Monf,,,eggplant,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/eggplant_HarvAreaYield_Geotiff/eggplant_HarvestedAreaHectares.tif
+fibrenes,Fibre Crops Nes,821,Monf,,,fibrenes,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/fibrenes_HarvAreaYield_Geotiff/fibrenes_HarvestedAreaHectares.tif
+fig,Figs,569,Monf,,,fig,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/fig_HarvAreaYield_Geotiff/fig_HarvestedAreaHectares.tif
+flax,Flax fibre and tow,773,Monf,,,flax,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/flax_HarvAreaYield_Geotiff/flax_HarvestedAreaHectares.tif
+fonio,Fonio,94,Monf,,,fonio,Cereals,Monfreda/HarvestedAreaYield175Crops_Geotiff/fonio_HarvAreaYield_Geotiff/fonio_HarvestedAreaHectares.tif
+fornes,fornes,651,Monf,,,fornes,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/fornes_HarvAreaYield_Geotiff/fornes_HarvestedAreaHectares.tif
+fruitnes,Fresh Nes Fruit,619,Monf,,,fruitnes,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/fruitnes_HarvAreaYield_Geotiff/fruitnes_HarvestedAreaHectares.tif
+garlic,Garlic,406,Monf,,,garlic,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/garlic_HarvAreaYield_Geotiff/garlic_HarvestedAreaHectares.tif
+ginger,Ginger,720,Monf,,,ginger,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/ginger_HarvAreaYield_Geotiff/ginger_HarvestedAreaHectares.tif
+gooseberry,Gooseberries,549,Monf,,,gooseberry,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/gooseberry_HarvAreaYield_Geotiff/gooseberry_HarvestedAreaHectares.tif
+grape,Grapes,560,Monf,,,grape,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/grape_HarvAreaYield_Geotiff/grape_HarvestedAreaHectares.tif
+grapefruitetc,Grapefruit (inc. pomelos),507,Monf,,,grapefruitetc,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/grapefruitetc_HarvAreaYield_Geotiff/grapefruitetc_HarvestedAreaHectares.tif
+grassnes,grassnes,639,Monf,,,grassnes,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/grassnes_HarvAreaYield_Geotiff/grassnes_HarvestedAreaHectares.tif
+greenbean,"Beans, green",414,Monf,,,greenbean,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/greenbean_HarvAreaYield_Geotiff/greenbean_HarvestedAreaHectares.tif
+greenbroadbean,"Leguminous vegetables, nes",420,Monf,,,greenbroadbean,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/greenbroadbean_HarvAreaYield_Geotiff/greenbroadbean_HarvestedAreaHectares.tif
+greencorn,"Maize, green",446,Monf,,,greencorn,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/greencorn_HarvAreaYield_Geotiff/greencorn_HarvestedAreaHectares.tif
+greenonion,"Onions (inc. shallots), green",402,Monf,,,greenonion,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/greenonion_HarvAreaYield_Geotiff/greenonion_HarvestedAreaHectares.tif
+greenpea,"Peas, green",417,Monf,,,greenpea,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/greenpea_HarvAreaYield_Geotiff/greenpea_HarvestedAreaHectares.tif
+gums,Gums Natural,839,Monf,,,gums,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/gums_HarvAreaYield_Geotiff/gums_HarvestedAreaHectares.tif
+hazelnut,"Hazelnuts, with shell",225,Monf,,,hazelnut,Treenuts,Monfreda/HarvestedAreaYield175Crops_Geotiff/hazelnut_HarvAreaYield_Geotiff/hazelnut_HarvestedAreaHectares.tif
+hemp,Hemp Tow Waste,777,Monf,,,hemp,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/hemp_HarvAreaYield_Geotiff/hemp_HarvestedAreaHectares.tif
+hempseed,Hempseed,336,Monf,,,hempseed,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/hempseed_HarvAreaYield_Geotiff/hempseed_HarvestedAreaHectares.tif
+hop,Hops,677,Monf,,,hop,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/hop_HarvAreaYield_Geotiff/hop_HarvestedAreaHectares.tif
+jute,Jute,780,Monf,,,jute,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/jute_HarvAreaYield_Geotiff/jute_HarvestedAreaHectares.tif
+jutelikefiber,Other Bastfibres,782,Monf,,,jutelikefiber,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/jutelikefiber_HarvAreaYield_Geotiff/jutelikefiber_HarvestedAreaHectares.tif
+kapokfiber,Kapok Fibre,778,Monf,,,kapokfiber,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/kapokfiber_HarvAreaYield_Geotiff/kapokfiber_HarvestedAreaHectares.tif
+kapokseed,Kapokseed in Shell,311,Monf,,,kapokseed,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/kapokseed_HarvAreaYield_Geotiff/kapokseed_HarvestedAreaHectares.tif
+karite,Karite Nuts (Sheanuts),263,Monf,,,karite,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/karite_HarvAreaYield_Geotiff/karite_HarvestedAreaHectares.tif
+kiwi,Kiwi fruit,592,Monf,,,kiwi,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/kiwi_HarvAreaYield_Geotiff/kiwi_HarvestedAreaHectares.tif
+kolanut,Kolanuts,224,Monf,,,kolanut,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/kolanut_HarvAreaYield_Geotiff/kolanut_HarvestedAreaHectares.tif
+legumenes,legumenes,643,Monf,,,legumenes,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/legumenes_HarvAreaYield_Geotiff/legumenes_HarvestedAreaHectares.tif
+lemonlime,Lemons and limes,497,Monf,,,lemonlime,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/lemonlime_HarvAreaYield_Geotiff/lemonlime_HarvestedAreaHectares.tif
+lettuce,Lettuce and chicory,372,Monf,,,lettuce,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/lettuce_HarvAreaYield_Geotiff/lettuce_HarvestedAreaHectares.tif
+linseed,Linseed,333,Monf,,,linseed,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/linseed_HarvAreaYield_Geotiff/linseed_HarvestedAreaHectares.tif
+lupin,Lupins,210,Monf,,,lupin,Pulses,Monfreda/HarvestedAreaYield175Crops_Geotiff/lupin_HarvAreaYield_Geotiff/lupin_HarvestedAreaHectares.tif
+maizefor,maizefor,636,Monf,,,maizefor,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/maizefor_HarvAreaYield_Geotiff/maizefor_HarvestedAreaHectares.tif
+mango,"Mangoes, mangosteens, guavas",571,Monf,,,mango,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/mango_HarvAreaYield_Geotiff/mango_HarvestedAreaHectares.tif
+mate,mate,671,Monf,,,mate,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/mate_HarvAreaYield_Geotiff/mate_HarvestedAreaHectares.tif
+melonetc,Other melons (inc.cantaloupes),568,Monf,,,melonetc,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/melonetc_HarvAreaYield_Geotiff/melonetc_HarvestedAreaHectares.tif
+melonseed,Melonseed,299,Monf,,,melonseed,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/melonseed_HarvAreaYield_Geotiff/melonseed_HarvestedAreaHectares.tif
+mixedgrain,Mixed grain,103,Monf,,,mixedgrain,Cereals,Monfreda/HarvestedAreaYield175Crops_Geotiff/mixedgrain_HarvAreaYield_Geotiff/mixedgrain_HarvestedAreaHectares.tif
+mustard,Mustard seed,292,Monf,,,mustard,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/mustard_HarvAreaYield_Geotiff/mustard_HarvestedAreaHectares.tif
+nutmeg,"Nutmeg, mace and cardamoms",702,Monf,,,nutmeg,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/nutmeg_HarvAreaYield_Geotiff/nutmeg_HarvestedAreaHectares.tif
+nutnes,"Nuts, nes",234,Monf,,,nutnes,Treenuts,Monfreda/HarvestedAreaYield175Crops_Geotiff/nutnes_HarvAreaYield_Geotiff/nutnes_HarvestedAreaHectares.tif
+oats,Oats,75,Monf,,,oats,Cereals,Monfreda/HarvestedAreaYield175Crops_Geotiff/oats_HarvAreaYield_Geotiff/oats_HarvestedAreaHectares.tif
+oilseedfor,oilseedfor,642,Monf,,,oilseedfor,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/oilseedfor_HarvAreaYield_Geotiff/oilseedfor_HarvestedAreaHectares.tif
+oilseednes,"Oilseeds, Nes",339,Monf,,,oilseednes,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/oilseednes_HarvAreaYield_Geotiff/oilseednes_HarvestedAreaHectares.tif
+okra,Okra,430,Monf,,,okra,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/okra_HarvAreaYield_Geotiff/okra_HarvestedAreaHectares.tif
+olive,Olives,260,Monf,,,olive,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/olive_HarvAreaYield_Geotiff/olive_HarvestedAreaHectares.tif
+onion,"Onions, dry",403,Monf,,,onion,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/onion_HarvAreaYield_Geotiff/onion_HarvestedAreaHectares.tif
+orange,Oranges,490,Monf,,,orange,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/orange_HarvAreaYield_Geotiff/orange_HarvestedAreaHectares.tif
+papaya,Papayas,600,Monf,,,papaya,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/papaya_HarvAreaYield_Geotiff/papaya_HarvestedAreaHectares.tif
+pea,"Peas, dry",187,Monf,,,pea,Pulses,Monfreda/HarvestedAreaYield175Crops_Geotiff/pea_HarvAreaYield_Geotiff/pea_HarvestedAreaHectares.tif
+peachetc,Peaches and nectarines,534,Monf,,,peachetc,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/peachetc_HarvAreaYield_Geotiff/peachetc_HarvestedAreaHectares.tif
+pear,Pears,521,Monf,,,pear,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/pear_HarvAreaYield_Geotiff/pear_HarvestedAreaHectares.tif
+pepper,Pepper (Piper spp.),687,Monf,,,pepper,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/pepper_HarvAreaYield_Geotiff/pepper_HarvestedAreaHectares.tif
+peppermint,Peppermint,748,Monf,,,peppermint,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/peppermint_HarvAreaYield_Geotiff/peppermint_HarvestedAreaHectares.tif
+persimmon,Persimmons,587,Monf,,,persimmon,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/persimmon_HarvAreaYield_Geotiff/persimmon_HarvestedAreaHectares.tif
+pimento,"Chillies and peppers, dry",689,Monf,,,pimento,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/pimento_HarvAreaYield_Geotiff/pimento_HarvestedAreaHectares.tif
+pineapple,Pineapples,574,Monf,,,pineapple,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/pineapple_HarvAreaYield_Geotiff/pineapple_HarvestedAreaHectares.tif
+pistachio,Pistachios,223,Monf,,,pistachio,Treenuts,Monfreda/HarvestedAreaYield175Crops_Geotiff/pistachio_HarvAreaYield_Geotiff/pistachio_HarvestedAreaHectares.tif
+plum,Plums and sloes,536,Monf,,,plum,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/plum_HarvAreaYield_Geotiff/plum_HarvestedAreaHectares.tif
+popcorn,Popcorn,68,Monf,,,popcorn,Cereals,Monfreda/HarvestedAreaYield175Crops_Geotiff/popcorn_HarvAreaYield_Geotiff/popcorn_HarvestedAreaHectares.tif
+poppy,Poppy seed,296,Monf,,,poppy,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/poppy_HarvAreaYield_Geotiff/poppy_HarvestedAreaHectares.tif
+pulsenes,"pulsenes, nes Pulses",211,Monf,,,pulsenes,Pulses,Monfreda/HarvestedAreaYield175Crops_Geotiff/pulsenes_HarvAreaYield_Geotiff/pulsenes_HarvestedAreaHectares.tif
+pumpkinetc,"Pumpkins, squash and gourds",394,Monf,,,pumpkinetc,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/pumpkinetc_HarvAreaYield_Geotiff/pumpkinetc_HarvestedAreaHectares.tif
+pyrethrum,"Pyrethrum,Dried",754,Monf,,,pyrethrum,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/pyrethrum_HarvAreaYield_Geotiff/pyrethrum_HarvestedAreaHectares.tif
+quince,Quinces,523,Monf,,,quince,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/quince_HarvAreaYield_Geotiff/quince_HarvestedAreaHectares.tif
+quinoa,Quinoa,92,Monf,,,quinoa,Cereals,Monfreda/HarvestedAreaYield175Crops_Geotiff/quinoa_HarvAreaYield_Geotiff/quinoa_HarvestedAreaHectares.tif
+ramie,Ramie,788,Monf,,,ramie,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/ramie_HarvAreaYield_Geotiff/ramie_HarvestedAreaHectares.tif
+rapeseed,Rapeseed,270,Monf,,,rapeseed,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/rapeseed_HarvAreaYield_Geotiff/rapeseed_HarvestedAreaHectares.tif
+rasberry,Raspberries,547,Monf,,,rasberry,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/rasberry_HarvAreaYield_Geotiff/rasberry_HarvestedAreaHectares.tif
+rootnes,"Roots and Tubers, nes",149,Monf,,,rootnes,Roots&Tubers,Monfreda/HarvestedAreaYield175Crops_Geotiff/rootnes_HarvAreaYield_Geotiff/rootnes_HarvestedAreaHectares.tif
+rubber,Natural rubber,836,Monf,,,rubber,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/rubber_HarvAreaYield_Geotiff/rubber_HarvestedAreaHectares.tif
+rye,Rye,71,Monf,,,rye,Cereals,Monfreda/HarvestedAreaYield175Crops_Geotiff/rye_HarvAreaYield_Geotiff/rye_HarvestedAreaHectares.tif
+ryefor,ryefor,638,Monf,,,ryefor,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/ryefor_HarvAreaYield_Geotiff/ryefor_HarvestedAreaHectares.tif
+safflower,Safflower seed,280,Monf,,,safflower,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/safflower_HarvAreaYield_Geotiff/safflower_HarvestedAreaHectares.tif
+sisal,Sisal,789,Monf,,,sisal,Fiber,Monfreda/HarvestedAreaYield175Crops_Geotiff/sisal_HarvAreaYield_Geotiff/sisal_HarvestedAreaHectares.tif
+sorghumfor,sorghumfor,637,Monf,,,sorghumfor,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/sorghumfor_HarvAreaYield_Geotiff/sorghumfor_HarvestedAreaHectares.tif
+sourcherry,Sour cherries,530,Monf,,,sourcherry,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/sourcherry_HarvAreaYield_Geotiff/sourcherry_HarvestedAreaHectares.tif
+spicenes,"Spices, nes",723,Monf,,,spicenes,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/spicenes_HarvAreaYield_Geotiff/spicenes_HarvestedAreaHectares.tif
+spinach,Spinach,373,Monf,,,spinach,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/spinach_HarvAreaYield_Geotiff/spinach_HarvestedAreaHectares.tif
+stonefruitnes,"Stone fruit, nes",541,Monf,,,stonefruitnes,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/stonefruitnes_HarvAreaYield_Geotiff/stonefruitnes_HarvestedAreaHectares.tif
+strawberry,Strawberries,544,Monf,,,strawberry,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/strawberry_HarvAreaYield_Geotiff/strawberry_HarvestedAreaHectares.tif
+stringbean,String beans,423,Monf,,,stringbean,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/stringbean_HarvAreaYield_Geotiff/stringbean_HarvestedAreaHectares.tif
+sugarnes,"Sugar crops, nes",161,Monf,,,sugarnes,SugarCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/sugarnes_HarvAreaYield_Geotiff/sugarnes_HarvestedAreaHectares.tif
+swedefor,swedefor,649,Monf,,,swedefor,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/swedefor_HarvAreaYield_Geotiff/swedefor_HarvestedAreaHectares.tif
+tangetc,"Tangerines, mandarins, clem.",495,Monf,,,tangetc,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/tangetc_HarvAreaYield_Geotiff/tangetc_HarvestedAreaHectares.tif
+taro,Taro (cocoyam),136,Monf,,,taro,Roots&Tubers,Monfreda/HarvestedAreaYield175Crops_Geotiff/taro_HarvAreaYield_Geotiff/taro_HarvestedAreaHectares.tif
+tomato,Tomatoes,388,Monf,,,tomato,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/tomato_HarvAreaYield_Geotiff/tomato_HarvestedAreaHectares.tif
+triticale,Triticale,97,Monf,,,triticale,Cereals,Monfreda/HarvestedAreaYield175Crops_Geotiff/triticale_HarvAreaYield_Geotiff/triticale_HarvestedAreaHectares.tif
+tropicalnes,"tropicalnes, tropical fresh nes Fruit",603,Monf,,,tropicalnes,Fruit,Monfreda/HarvestedAreaYield175Crops_Geotiff/tropicalnes_HarvAreaYield_Geotiff/tropicalnes_HarvestedAreaHectares.tif
+tung,Tung Nuts,275,Monf,,,tung,Oilcrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/tung_HarvAreaYield_Geotiff/tung_HarvestedAreaHectares.tif
+turnipfor,turnipfor,646,Monf,,,turnipfor,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/turnipfor_HarvAreaYield_Geotiff/turnipfor_HarvestedAreaHectares.tif
+vanilla,Vanilla,692,Monf,,,vanilla,OtherCrops,Monfreda/HarvestedAreaYield175Crops_Geotiff/vanilla_HarvAreaYield_Geotiff/vanilla_HarvestedAreaHectares.tif
+vegetablenes,Vegetables fresh nes,463,Monf,,,vegetablenes,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/vegetablenes_HarvAreaYield_Geotiff/vegetablenes_HarvestedAreaHectares.tif
+vegfor,vegfor,655,Monf,,,vegfor,Forage,Monfreda/HarvestedAreaYield175Crops_Geotiff/vegfor_HarvAreaYield_Geotiff/vegfor_HarvestedAreaHectares.tif
+vetch,Vetches,205,Monf,,,vetch,Pulses,Monfreda/HarvestedAreaYield175Crops_Geotiff/vetch_HarvAreaYield_Geotiff/vetch_HarvestedAreaHectares.tif
+walnut,"Walnuts, with shell",222,Monf,,,walnut,Treenuts,Monfreda/HarvestedAreaYield175Crops_Geotiff/walnut_HarvAreaYield_Geotiff/walnut_HarvestedAreaHectares.tif
+watermelon,Watermelons,567,Monf,,,watermelon,Vegetables&Melons,Monfreda/HarvestedAreaYield175Crops_Geotiff/watermelon_HarvAreaYield_Geotiff/watermelon_HarvestedAreaHectares.tif
+yautia,Yautia (cocoyam),135,Monf,,,yautia,Roots&Tubers,Monfreda/HarvestedAreaYield175Crops_Geotiff/yautia_HarvAreaYield_Geotiff/yautia_HarvestedAreaHectares.tif
+wheat,wheat,15,SPAM,wheat,whea,,cereals,SPAM/Physical_Area/spam2010V2r0_global_A_WHEA_A.tif
+rice,rice,27,SPAM,rice,rice,,cereals,SPAM/Physical_Area/spam2010V2r0_global_A_RICE_A.tif
+maize,maize,56,SPAM,maize,maiz,,cereals,SPAM/Physical_Area/spam2010V2r0_global_A_MAIZ_A.tif
+barley,barley,44,SPAM,barley,barl,,cereals,SPAM/Physical_Area/spam2010V2r0_global_A_BARL_A.tif
+pearl millet,millet,79,SPAM,pearl millet,pmil,,cereals,SPAM/Physical_Area/spam2010V2r0_global_A_PMIL_A.tif
+small millet,millet,79,SPAM,small millet,smil,,cereals,SPAM/Physical_Area/spam2010V2r0_global_A_SMIL_A.tif
+sorghum,sorghum,83,SPAM,sorghum,sorg,,cereals,SPAM/Physical_Area/spam2010V2r0_global_A_SORG_A.tif
+potato,potato,116,SPAM,potato,pota,,roots&tubers or starchy roots,SPAM/Physical_Area/spam2010V2r0_global_A_POTA_A.tif
+sweet potato,sweet potato,122,SPAM,sweet potato,swpo,,roots&tubers or starchy roots,SPAM/Physical_Area/spam2010V2r0_global_A_SWPO_A.tif
+yams,yam,137,SPAM,yams,yams,,roots&tubers or starchy roots,SPAM/Physical_Area/spam2010V2r0_global_A_YAMS_A.tif
+cassava,cassava,125,SPAM,cassava,cass,,roots&tubers or starchy roots,SPAM/Physical_Area/spam2010V2r0_global_A_CASS_A.tif
+bean,"beans, dry",176,SPAM,bean,bean,,pulses,SPAM/Physical_Area/spam2010V2r0_global_A_BEAN_A.tif
+chickpea,chickpea,191,SPAM,chickpea,chic,,pulses,SPAM/Physical_Area/spam2010V2r0_global_A_CHIC_A.tif
+cowpea,cowpea,195,SPAM,cowpea,cowp,,pulses,SPAM/Physical_Area/spam2010V2r0_global_A_COWP_A.tif
+pigeonpea,pigeon pea,197,SPAM,pigeonpea,pige,,pulses,SPAM/Physical_Area/spam2010V2r0_global_A_PIGE_A.tif
+lentil,lentils,201,SPAM,lentil,lent,,pulses,SPAM/Physical_Area/spam2010V2r0_global_A_LENT_A.tif
+soybean,soybean,236,SPAM,soybean,soyb,,oilcrops,SPAM/Physical_Area/spam2010V2r0_global_A_SOYB_A.tif
+groundnut,"groundnut, with shell",242,SPAM,groundnut,grou,,oilcrops,SPAM/Physical_Area/spam2010V2r0_global_A_GROU_A.tif
+coconut,coconut,249,SPAM,coconut,cnut,,oilcrops,SPAM/Physical_Area/spam2010V2r0_global_A_CNUT_A.tif
+oilpalm,palmoil,254,SPAM,oilpalm,oilp,,oilcrops,SPAM/Physical_Area/spam2010V2r0_global_A_OILP_A.tif
+sunflower,sunflower seed,267,SPAM,sunflower,sunf,,oilcrops,SPAM/Physical_Area/spam2010V2r0_global_A_SUNF_A.tif
+sesameseed,sesame seed,289,SPAM,sesameseed,sesa,,oilcrops,SPAM/Physical_Area/spam2010V2r0_global_A_SESA_A.tif
+sugarcane,sugar cane,156,SPAM,sugarcane,sugc,,sugar crops,SPAM/Physical_Area/spam2010V2r0_global_A_SUGC_A.tif
+sugarbeet,sugarbeet,157,SPAM,sugarbeet,sugb,,sugar crops,SPAM/Physical_Area/spam2010V2r0_global_A_SUGB_A.tif
+cotton,seed cotton,328,SPAM,cotton,cott,,fibres,SPAM/Physical_Area/spam2010V2r0_global_A_COTT_A.tif
+arabica coffee,coffee,656,SPAM,arabica coffee,acof,,stimulant,SPAM/Physical_Area/spam2010V2r0_global_A_ACOF_A.tif
+robusta coffee,coffee,656,SPAM,robusta coffee,rcof,,stimulant,SPAM/Physical_Area/spam2010V2r0_global_A_RCOF_A.tif
+cocoa,cocoa,661,SPAM,cocoa,coco,,stimulant,SPAM/Physical_Area/spam2010V2r0_global_A_COCO_A.tif
+tea,tea,667,SPAM,tea,teas,,stimulant,SPAM/Physical_Area/spam2010V2r0_global_A_TEAS_A.tif
+tobacco,tobacco leaves,826,SPAM,tobacco,toba,,stimulant,SPAM/Physical_Area/spam2010V2r0_global_A_TOBA_A.tif
+banana,banana,486,SPAM,banana,bana,,fruits,SPAM/Physical_Area/spam2010V2r0_global_A_BANA_A.tif
+plantain,plantain,489,SPAM,plantain,plnt,,fruits,SPAM/Physical_Area/spam2010V2r0_global_A_PLNT_A.tif

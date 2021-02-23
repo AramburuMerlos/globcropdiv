@@ -26,11 +26,11 @@ dirn <- "AuxData"
 ecoc <- fread(file.path(dirn, "Ecocrops.csv"))
 
 monf <- fread(paste0(ifelse(dir.exists("D:/Monfreda"), "D:/", "InData/"),
-                          "Monfreda/Cropcat.csv"))
+                     "Monfreda/Cropcat.csv"))
 monf <- monf[!is.na(FAO_Code),]
 
 spam <- fread(paste0(ifelse(dir.exists("D:/SPAM"), "D:/", "InData/"),
-                          "SPAM/4-Methodology-Crops-of-SPAM-2005-2015-02-26.csv"))
+                     "SPAM/4-Methodology-Crops-of-SPAM-2005-2015-02-26.csv"))
 
 spam[,FAO_Code:= as.numeric(FAOCODE)] #NA for categ with >1 FAO cat
 spam <- spam[!is.na(FAO_Code),]
@@ -82,14 +82,29 @@ fwrite(d, file.path(dirn, "EcocropSpeciesWithAbundanceData.csv"))
 # Selected crops ############
 
 spmo[,source:= ifelse(is.na(SPAM_Code), "Monf", "SPAM")]
-setcolorder(spmo, c("FAO_Name", "FAO_Code", "source", 
-                   "SPAM_Name", "SPAM_Code", "Monf_Name"))
+spmo[, crop:= ifelse(is.na(SPAM_Code), Monf_Name, SPAM_Name)]
+setcolorder(spmo, c("crop", "FAO_Name", "FAO_Code", "source",  
+                    "SPAM_Name", "SPAM_Code", "Monf_Name"))
 # remove mushrooms because it is not a plant crop
 spmo <- spmo[-which(Monf_Name == "mushroom"),]
 
+# add file.path and names
+spmo[, file := ifelse(source == "Monf",
+                      paste0("Monfreda/HarvestedAreaYield175Crops_Geotiff/", 
+                             Monf_Name, "_HarvAreaYield_Geotiff/", 
+                             Monf_Name, "_HarvestedAreaHectares.tif"),
+                      paste0("SPAM/Physical_Area/spam2010V2r0_global_A_",
+                             toupper(SPAM_Code),"_A.tif"))]
 
 fwrite(spmo, file.path(dirn, "CropAbundanceSource.csv"))
 
+# Total Cropland (ha per cell) --------
+allcrops <- rast(file.path("D:", spmo$file))
+totcl <- app(allcrops, fun = sum, na.rm = T) 
+classify(totcl, rcl = cbind(0,NA), 
+         filename = "InData/TotalCropland.tiff", overwrite = T, 
+         wopt = list(names="TotalCropland", filetype = "GTiff",
+                     gdal=c("COMPRESS=Deflate","PREDICTOR=1","ZLEVEL=6")))
 
 # Notes ---------
 
