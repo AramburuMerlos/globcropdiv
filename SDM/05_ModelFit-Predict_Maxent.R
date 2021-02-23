@@ -1,6 +1,8 @@
-# the probability of deining a given cell as presence will be in function of its crop fraction. (p(cell = 1) = crop_fraction)
-# then, the resulting absence cells will be subsampled to reduce the amount of training data
-# here, the sampleing effort is the number of trials in each cell (size in rbinom)
+# the prob of presence is a fun of crop fraction. (p(cell = 1) = crop_fraction)
+# this random process defines both presence and absence cells
+# that is, the crop can be considered as absent where it is present
+# absence cells will be subsampled to reduce the amount of training data
+# sampling effort is the number of trials in each cell (size in rbinom)
 
 library(data.table)
 library(terra)
@@ -11,16 +13,13 @@ if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") warning("See 0000_wd.R")
 
 # directory of input data
 indir <- "D:"
-cpath <- file.path(indir, "WorldCropAbundance")
 
+# DATA PREP ###########################################################
 # Crop Abundance Data ----------
-sc <- fread("AuxData/CropAbundanceSource_Filtered.csv")
-# KEEP ONLY CROPS WITH >75% Of THEIR DATA NON-FILTERED 
-sel_sc <- sc[nf_prop_ha > 0.75,]
-crops <- sel_sc[, filename]
-crops.fn <- paste0(crops, "_", sel_sc[, source])
-fn <- file.path(cpath, paste0("fraction/", crops.fn, "_fr.tif"))
-abund <- rast(fn)
+sc <- fread("AuxData/CropAbundanceSource.csv")
+crops <- sc[,ifelse(source == "SPAM", SPAM_Name, Monf_Name)]
+abund <- rast(file.path(indir,sc$file))
+names(abund) <- crops
 
 # Predictors --------------
 preds.fn <- fread("AuxData/SelectedPreds.csv")$file_name
@@ -31,8 +30,8 @@ names(preds) <- fread("AuxData/SelectedPreds.csv")$short_name
 compareGeom(preds, abund)
 
 # Cropland Mask --------
-cmask <- rast(file.path(cpath, "Total_Cropland_ha.tif"))
-preds <- mask(preds, cmask)
+cmask <- app(abund, fun = sum, na.rm = T)
+cmask <- classify(cmask, rcl = cbind(0,NA))
 
 # Mask cropland-mask based on predictors
 pred_mask <- app(preds, sum, na.rm = FALSE) # to get NA if any layer has NA
@@ -45,6 +44,12 @@ dpreds <- dpreds[complete.cases(dpreds),]
 # number of absence cells: 
 nab <- 2e4
 
+# BASE MODEL ##########################################################
+# data as is. 
+
+# <0.1ha 
+
+# BINOM SAMPLING MODEL #################################################
 # Set sampling efforts ------
 # sampling effort is number of trials in each cell
 # ntrials is a function of total crop area. Rare crops -> more trials
