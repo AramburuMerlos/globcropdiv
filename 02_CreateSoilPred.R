@@ -1,7 +1,7 @@
 library(terra)
+library(data.table)
 
-nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") warning("See 0000_wd.R")
+if(!getwd() %like%  "globcropdiv$") warning("See 0000_wd.R")
 
 Ddrive <- dir.exists("D:/SoilGrids")
 spath <- if(Ddrive) "D:/SoilGrids/phh2o/" else "InData/SoilGrids/phh2o/"

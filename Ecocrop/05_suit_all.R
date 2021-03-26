@@ -1,36 +1,29 @@
+library(magrittr)
 library(terra)
 
-nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
-
-dpath <- "D:/globcropdiv"
-ppath <- "OutData"
-Ddrive <- dir.exists(dpath) & dir.exists("D:/AQUASTAT")
+if(!grepl("globcropdiv$", getwd())) warning("See 0000_wd.R")
 
 # import rainfed suitability
-rpath <- paste0(ifelse(Ddrive, dpath, ppath) ,"/EcocropSuit/byEcoID/Rainfed/RID")
-rfn <- Sys.glob(file.path(rpath, "*.tif"))
-rainfed <- rast(rfn)
-
+rainfed <- "OutData/EcocropSuit/byEcoID/Rainfed/RID" %>% 
+  file.path("*.tif") %>% Sys.glob %>% rast
+  
 # import irrigated suitability
-ipath <- paste0(ifelse(Ddrive, dpath, ppath) ,"/EcocropSuit/byEcoID/Irrigated/RID")
-ifn <- Sys.glob(file.path(ipath, "*.tif"))
-irrigated <- rast(ifn)
+irrigated <- "OutData/EcocropSuit/byEcoID/Irrigated/RID" %>% 
+  file.path("*.tif") %>% Sys.glob %>% rast
 
 # check if IDs match 
-all.equal(sub(rpath, "", rfn), 
-          sub(ipath, "", ifn))
+all.equal(names(irrigated), names(rainfed))
 
-ids <- sub(paste0(rpath,"/"),  "", sub(".tif", "", rfn))
+ids <- names(irrigated)
 
 # area equipped with irrigation as fraction of total cropland
-iperc <- rast(paste0(ifelse(Ddrive, "D:/", "InData/"), "AQUASTAT/gmia_v5_aei_pct.asc"))
+iperc <- rast("D:/AQUASTAT/gmia_v5_aei_pct.asc")
 ifrac <- iperc/100
 
 # function to compute weighted average
 f <- function(rfed, irr, ifrac) rfed * (1-ifrac) + irr * ifrac
 
-outpath <- file.path(ifelse(Ddrive, dpath, ppath), "EcocropSuit/byEcoID")
+outpath <- file.path("OutData/EcocropSuit/byEcoID")
 
 for(i in 1:length(ids)){
   lapp(c(rainfed[[i]], irrigated[[i]], ifrac), fun = f,

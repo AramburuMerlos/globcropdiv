@@ -1,17 +1,14 @@
 library(terra)
 library(Recocrop)
 
-nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+if(!grepl("globcropdiv$", getwd())) warning("See 0000_wd.R")
 
-if(all(sapply(c("D:/WorldClim", "D:/SoilGrids", "D:/globcropdiv"), dir.exists))){
+if(all(sapply(c("D:/WorldClim", "D:/SoilGrids"), dir.exists))){
   wcpath <- "D:/WorldClim"
   sgpath <- "D:/SoilGrids"
-  gdpath <- "D:/globcropdiv"
 } else {
   wcpath <- "InData/WorldClim"
   sgpath <- "InData/SoilGrids"
-  gdpath <- "OutData"
 }
 
 
@@ -27,7 +24,7 @@ ph <- rast(file.path(sgpath, "phh2o/phh2o_0-15cm_mean_5min.tif"))
 ph <- ph/10
 
 # crop mask
-cm <- rast(file.path(gdpath, "Monf_Cropland_Mask.tif"))
+cm <- rast("InData/TotalCropland.tiff")
 
 # mask data
 tavg <- mask(tavg, cm)
@@ -36,21 +33,15 @@ prec <- mask(prec, cm)
 annprec <- mask(annprec, cm)
 ph <- mask(ph, cm)
 
-# crops to be modelled
-dcrops <- read.csv(here::here("AuxData/Monfcrops.csv"), 
-                  stringsAsFactors = F) 
+# crops to be modeled
+dcrops <- read.csv("AuxData/EcocropSpeciesWithAbundanceData.csv", 
+                   stringsAsFactors = F) 
 crops <- unique(dcrops[, c("RID", "NAME", "SCIENTNAME")])
 crops <- crops[order(crops$RID),]
 
-# create folders and subfolders
-dirn <- (paste0(gdpath, "/EcocropSuit"))
-dir.create(dirn)
-dirn <- (paste0(gdpath, "/EcocropSuit/byEcoID"))
-dir.create(dirn)
-dirn <- (paste0(gdpath, "/EcocropSuit/byEcoID/Rainfed"))
-dir.create(dirn)
-dirn <- (paste0(gdpath, "/EcocropSuit/byEcoID/Rainfed/RID"))
-dir.create(dirn)
+# outdir
+outdir <- ("OutData/EcocropSuit/byEcoID/Rainfed/RID")
+dir.create(outdir, F, T)
 
 # ecocrop data base
 fname <- system.file("parameters/ecocrop.rds", package="Recocrop")
@@ -60,7 +51,7 @@ ecodb$NAME <- trimws(ecodb$NAME)
 ecodb$nms <- paste(ecodb[,1], "; ", ecodb[,3], paste0(" (", ecodb[,2], ")"), sep="") 
 raincols <- match(c("RMIN","ROPMN","ROPMX","RMAX"), names(ecodb))
 
-# check if all Monf crops are found (by name or scientific name)
+# check if all crops are found (by name or scientific name)
 # 1. in ecocropPars function
 isfound <- function(x) is.list(ecocropPars(x))
 sink("NUL") # to avoid all messages

@@ -1,6 +1,5 @@
-cwd <- getwd()
-
-if(substr(cwd, nchar(cwd) - 10, nchar(cwd)) != "globcropdiv"){
+library(data.table)
+if(!getwd() %like%  "globcropdiv$"){
   thispc <- system('hostname', TRUE)
   if (thispc == "LAPTOP-IVSPBGCA") { 
     setwd("D:/gdrive/share/globcropdiv/") #I'm guessing

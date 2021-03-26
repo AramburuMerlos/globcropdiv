@@ -1,18 +1,16 @@
 library(terra)
 library(Recocrop)
 
-nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") stop("See 0000_wd.R")
+if(!grepl("globcropdiv$", getwd())) warning("See 0000_wd.R")
 
-if(all(sapply(c("D:/WorldClim", "D:/SoilGrids", "D:/globcropdiv"), dir.exists))){
+if(all(sapply(c("D:/WorldClim", "D:/SoilGrids"), dir.exists))){
   wcpath <- "D:/WorldClim"
   sgpath <- "D:/SoilGrids"
-  gdpath <- "D:/globcropdiv"
 } else {
   wcpath <- "InData/WorldClim"
   sgpath <- "InData/SoilGrids"
-  gdpath <- "OutData"
 }
+
 
 # climatic data
 tavg <- rast(Sys.glob(file.path(wcpath, "2.1/wc5min/tavg/*.tif")))
@@ -23,7 +21,7 @@ ph <- rast(file.path(sgpath, "phh2o/phh2o_0-15cm_mean_5min.tif"))
 ph <- ph/10
 
 # crop mask
-cm <- rast(file.path(gdpath, "Monf_Cropland_Mask.tif"))
+cm <- rast("InData/TotalCropland.tiff")
 
 # mask data
 tavg <- mask(tavg, cm)
@@ -31,16 +29,14 @@ tmin <- mask(tmin, cm)
 ph <- mask(ph, cm)
 
 # crops to be modelled
-dcrops <- read.csv(here::here("AuxData/Monfcrops.csv"), 
-                  stringsAsFactors = F) 
+dcrops <- read.csv("AuxData/EcocropSpeciesWithAbundanceData.csv", 
+                   stringsAsFactors = F) 
 crops <- unique(dcrops[, c("RID", "NAME", "SCIENTNAME")])
 crops <- crops[order(crops$RID),]
 
-dirn <- (paste0(gdpath, "/EcocropSuit/byEcoID/Irrigated"))
-dir.create(dirn)
-dirn <- (paste0(gdpath, "/EcocropSuit/byEcoID/Irrigated/RID"))
-dir.create(dirn)
-
+# outdir
+outdir <- ("OutData/EcocropSuit/byEcoID/Irrigated/RID")
+dir.create(outdir, F, T)
 
 # check if all crop names or scientific names are found
 isfound <- function(x) is.list(ecocropPars(x))

@@ -2,8 +2,7 @@ library(raster)
 library(terra)
 library(data.table)
 
-nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") warning("See 0000_wd.R")
+if(!getwd() %like%  "globcropdiv$") warning("See 0000_wd.R")
 
 if(dir.exists("D:/WorldClim")){
   wcpath <- "D:/WorldClim/2.1/wc5min"

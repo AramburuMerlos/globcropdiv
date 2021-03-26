@@ -1,19 +1,19 @@
 # install.packages(c("meteor", "terra", "here", "data.table"))
 # remotes::install_github("cropmodels/Recocrop")
+library(magrittr)
 library(terra)
 library(Recocrop)
 library(data.table)
 
 dirn <- "AuxData"
-dir.create(dirn)
+dir.create(dirn, F)
 
-fname <- system.file("parameters/ecocrop.rds", package="Recocrop")
-d <- readRDS(fname)
+d <- "parameters/ecocrop.rds" %>% system.file(package="Recocrop") %>% readRDS
 setDT(d)
 d[, NAME:= sub(" \\*", "", NAME)]
 d[, NAME:= sub("\\*", "", NAME)]
 fwrite(d, file.path(dirn, "EcoCropPars.csv"))
-rm(fname, d)
+rm(d)
 # FAO_Codes and categories added externally
 # see Ecocrops_metadata.txt for a description of the following table
 
@@ -22,15 +22,12 @@ rm(fname, d)
 # Define selected crop categories and their corresponding Ecocrop species
 
 # Match EcoCrops with Monfreda and SPAM data (~FAO) crop groups
-dirn <- "AuxData"
 ecoc <- fread(file.path(dirn, "Ecocrops.csv"))
 
-monf <- fread(paste0(ifelse(dir.exists("D:/Monfreda"), "D:/", "InData/"),
-                     "Monfreda/Cropcat.csv"))
+monf <- fread("D:/Monfreda/Cropcat.csv")
 monf <- monf[!is.na(FAO_Code),]
 
-spam <- fread(paste0(ifelse(dir.exists("D:/SPAM"), "D:/", "InData/"),
-                     "SPAM/4-Methodology-Crops-of-SPAM-2005-2015-02-26.csv"))
+spam <- fread("D:/SPAM/4-Methodology-Crops-of-SPAM-2005-2015-02-26.csv")
 
 spam[,FAO_Code:= as.numeric(FAOCODE)] #NA for categ with >1 FAO cat
 spam <- spam[!is.na(FAO_Code),]
@@ -76,6 +73,9 @@ d <- rbind(d, d3)
 d[,source:= ifelse(is.na(SPAM_Code), "Monf", "SPAM")]
 setcolorder(d, c("FAO_Name", "FAO_Code", "source", 
                  "SPAM_Name", "SPAM_Code", "Monf_Name"))
+
+# remove mushrooms because it is not a plant crop
+d <- d[-which(Monf_Name == "mushroom"),]
 
 fwrite(d, file.path(dirn, "EcocropSpeciesWithAbundanceData.csv"))
 

@@ -3,8 +3,7 @@ library(raster)
 library(terra)
 library(rnaturalearth)
 
-nwd <- nchar(getwd())
-if(substr(getwd(),  nwd - 10, nwd) != "globcropdiv") warning("See 0000_wd.R")
+if(!getwd() %like%  "globcropdiv$") warning("See 0000_wd.R")
 
 sc <- fread("AuxData/CropAbundanceSource.csv")
 
