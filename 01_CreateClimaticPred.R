@@ -2,16 +2,16 @@ library(raster)
 library(terra)
 library(data.table)
 
-if(!getwd() %like%  "globcropdiv$") warning("See 0000_wd.R")
-
-if(dir.exists("D:/WorldClim")){
-  wcpath <- "D:/WorldClim/2.1/wc5min"
-} else {
-  wcpath <- "InData/WorldClim/2.1/wc5min"
+if(!grepl("globcropdiv$", getwd())){
+  if (system('hostname', TRUE) %in% c("ESP-RH-9891", "LAPTOP-ST129J47")) { 
+    setwd("G:/My Drive/globcropdiv/")
+  } # else if { ... 
 }
 
+wcpath <- "InData/WorldClim/2.1/wc5min"
+
 outpath <- file.path(wcpath, "extra")
-dir.create(outpath)
+dir.create(outpath, F, T)
 
 # Growing Degree Days ---------
 tavg <- rast(Sys.glob(file.path(wcpath, "tavg/*.tif")))

@@ -154,6 +154,34 @@ for(i in 1:length(crops)){
 }
 
 
+## Integrated ----
+fn <- Sys.glob("OutData/Int_Suit/*.tif") 
+suit <- rast(fn)
+dir <- "Maps/Suitability/Integrated"
+dir.create(dir, F, T)
+crops <- gsub("OutData/Int_Suit/", "",
+              gsub(".suit.tif", "", fn))
+
+ar = ncol(suit[[1]])/nrow(suit[[1]])
+
+for(i in 1:length(crops)){
+  { 
+    fgfn = file.path(dir, paste0(crops[i], '_suit.tif'))
+    tiff(filename = fgfn, units = "in",
+         width = ncol(suit[[i]])/300, 
+         height = (ncol(suit[[i]])/300)/ar, 
+         type = "cairo", res = 300, 
+         compression = "zip")
+    {
+      plot(suit[[i]], axes = FALSE, maxcell = ncell(suit[[i]]), 
+           main = crops[i])
+      plot(ne_countries(), lwd = 1, add = T)
+    }
+    dev.off()
+  }
+}
+
+
 # Actual and Potential Diversity ##############################################
 Da <- rast("OutData/Da.tif")
 Dp_me <- rast("OutData/Dp_MEsuit.tif")
