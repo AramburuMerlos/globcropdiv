@@ -11,11 +11,16 @@
 fpr <- function(d, crop, method, npr, totcl = "tot", colk = NULL, k = NULL){
   
   # probability of cells being identify as presence
-  if(method == 1) prob = d[[crop]] > 0 
-  if(method %in% c(2,5)) prob = d[[crop]]     
-  if(method %in% c(3,6)) prob = d[[crop]] * d[[totcl]] / max(d[[totcl]])
-  if(method %in% c(4,7)){         
-    prob = d[[crop]] * d[[totcl]]/max(d[[totcl]]) * d[[paste0(crop, "_dqi")]]
+  if(method == 1){
+    prob <- d[[crop]] > 0 
+  } else if(method == 2){
+    prob <- d[[crop]]     
+  } else if(method == 3){
+    prob <- d[[crop]] * d[[paste0(crop, "_dqi")]]
+  } else if(method == 4){
+    prob <- d[[crop]] * d[[totcl]] / max(d[[totcl]])
+  } else if(method == 5){         
+    prob <- d[[crop]] * d[[totcl]]/max(d[[totcl]]) * d[[paste0(crop, "_dqi")]]
   } 
   
   # for cross validation
@@ -25,17 +30,7 @@ fpr <- function(d, crop, method, npr, totcl = "tot", colk = NULL, k = NULL){
   # not enough presences?
   rpl = sum(prob > 0) < npr
   
-  # methods based on 'common' sampling
-  if(method < 5){
-    pr <- sample(1:nrow(d), npr, replace = rpl, prob = prob)
-    # methods based on binomial sampling
-  } else {
-    prTF <- rep(F, d[,.N])
-    while(sum(prTF) < npr){
-      prTF = prTF | rbinom(d[,.N], 1, prob = prob)
-    }
-    pr <- which(prTF)
-    pr <- pr[1:npr]
-  }
+  pr <- sample(1:nrow(d), npr, replace = rpl, prob = prob)
+  
   return(pr)
 }
