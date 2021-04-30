@@ -8,7 +8,8 @@
 
 allocate <- function(d, crops, crop_area,  
                      scols = paste0("s.", crops),
-                     tccol = "tcl"){
+                     tccol = "tcl",
+                     showProgress = FALSE){
   
   if(!identical(crops, names(crop_area))) {
      stop ("crops and crop_area names must match") 
@@ -53,7 +54,7 @@ allocate <- function(d, crops, crop_area,
   d[, rs:= Reduce(`+`, .SD), .SDcols = acols]
   
   # Remove extra cropland per cell
-  d[rs>tcl, (acols):= lapply(.SD, function(x) x*tcl/rs), .SDcols=acols]
+  d[rs > tcl, (acols):= lapply(.SD, function(x) x * tcl/rs), .SDcols = acols]
   
   # Remove extra crop_area per crop
   aar <- colSums(d[, ..acols])/crop_area # allocation area ratio
@@ -71,12 +72,19 @@ allocate <- function(d, crops, crop_area,
   d[, ra:= tcl - Reduce(`+`, .SD), .SDcols = acols]
   d[ra < 0, ra:= 0] # to avoid rounding problems
   
+  if(showProgress){
+    mess <- paste0(round(sum(todo)/sum(crop_area) * 100, 2), 
+                   "% area left to allocate")
+    cat(paste(rep("\b", nchar(mess)), collapse = ""))
+    cat(mess)
+  }
+  
   # allocation loop ----------
   maxiter <- 100
   continue <- TRUE
   
   while(continue){
-    tot_todo_prev <- sum(todo)
+    sum_todo_b4 <- sum(todo)
     for(iter in 1:maxiter) {
       # order crops by todo
       crops <- crops[order(todo, decreasing = TRUE)]
@@ -114,12 +122,18 @@ allocate <- function(d, crops, crop_area,
       
       # what is left to do
       todo <- crop_area - colSums(d[, ..acols])
+      if(showProgress){
+        mess <- paste0(round(sum(todo)/sum(crop_area) * 100, 2), 
+                       "% area left to allocate")
+        cat(paste(rep("\b", nchar(mess)), collapse = ""))
+        cat(mess)
+      }
     }
     
     # has it converged?
-    continue <- any(abs(todo) > crop_area * 0.01)
+    continue <- any(todo > (crop_area * 0.01))
     
-    # if not, relocate cropland to under allocated crops and start over
+    # if not, reallocate cropland to under allocated crops and start over
     if(continue){
       # under allocated crops in order of remaining area
       under <- names(which(todo[order(todo, decreasing = TRUE)] > 0))
@@ -130,12 +144,12 @@ allocate <- function(d, crops, crop_area,
         suj <- paste0("s.", uj)
         auj <- paste0("a.", uj)
         setorderv(d, suj, -1L)
-        # max area that could be reallocated (proportionally to ujs)
+        # max area that could be reallocated (proportionally to suj)
         tora <- d[, ..afull][, .SD * d[[suj]]] 
         # needed area / max area ratio
         rat <- unname(todo[uj] / sum(tora))
         
-        if(rat > 1) x = 1   # this is unlikely, but just in case
+        if(rat > 1) x = 1   # this is extremely unlikely, but just in case
         while(rat > 1){     
           x <- x + 1
           tora <- d[, ..afull][, .SD * (d[[suj]] ^ (1/x))] 
@@ -148,36 +162,45 @@ allocate <- function(d, crops, crop_area,
           set(d, j = auj, value = d[[auj]] + (tora[[afj]] * rat)) #add
         }
       }
-      # update to do
+      # update to do (it shouldn't change, though)
       todo <- crop_area - colSums(d[, ..acols])
       # update remaining area
       d[, ra:= tcl - Reduce(`+`, .SD), .SDcols = acols]
-      # the relocation process introduced rounding problems
-      d[, ra:= round(ra, 6)]
+      d[ra < 0, ra:= 0] # to avoid rounding problems
     }
-    tot_todo_after <- sum(todo)
-    print(paste0(round(tot_todo_after/sum(crop_area) * 100, 2), 
-                 "% area left to allocate"))
-    if(tot_todo_after > tot_todo_prev){
+    
+    if(sum(todo) >= sum_todo_b4){
       warning("no improvement")
       break
     }  
   }
+  
+  if(showProgress){
+    cat("\n")  
+  }
+  
+  
   d[, (ncols):= NULL]
   d[, ra:= NULL]
   
   # reallocate ------------
+  ce0 <- .ce(d[,..acols], d[,..scols])
   
-  print("Reducing Cross Entropy...")
+  message("Allocation finished. \nCross Entropy = ", round(ce0))
   
   # all crop combinations pairs (without replacement, order doesn't matter)
   cc <- .comb(crops)
   setnames(cc, c("V1", "V2"), c("A", "B"))
   
-  ntry <- 1
+  nfail <- 0
+  ce_red <- 0
   
-  while(ntry < 100){
-    cc <- cc[sample(1:nrow(cc)),]
+  if(showProgress){
+    nsucc <- 0
+  }
+  
+  while(nfail < nrow(cc)){
+    cc <- cc[sample(1:nrow(cc)),]  # shuffle order
     # find pair of crops with room for reallocation
     for(i in 1:nrow(cc)){
       A <- cc[i,A]
@@ -238,11 +261,28 @@ allocate <- function(d, crops, crop_area,
     if(ce_af < ce_b4){
       d[iall, (aA):= naA]
       d[iall, (aB):= naB]
-      ce_b4 <- ce_af
-      ntry <- 1
+      ce_red <- ce_red + (ce_b4 - ce_af)
+    }
+    
+    if(ce_af < (ce_b4 - ce0/1e4)){
+      nfail <- 0
+      if(showProgress) nsucc <- nsucc + 1
     } else {
-      ntry <- ntry + 1
-    } 
+      nfail <- nfail + 1
+    }
+    if(showProgress){
+      if(nsucc == 2e5){
+        prog <- round((1 - .ce(d[,..acols], d[,..scols])/ce0) * 100, 2)
+        mess <- paste0("Cross Entropy Reduced in ", prog, "%")
+        cat(paste(rep("\b", nchar(mess)), collapse = ""))
+        cat(mess)
+        nsucc <- 0
+      }
+    }
+  }
+  
+  if(showProgress){
+    cat("\n")  
   }
   
   d[, AB:= NULL]
@@ -250,7 +290,6 @@ allocate <- function(d, crops, crop_area,
   # set column names back
   setnames(d, scols, orig_scols)
   setnames(d, "tcl", tccol)
-  
   
   return(d)
 }
