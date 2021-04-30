@@ -1,54 +1,55 @@
+library(magrittr)
 library(terra)
 library(data.table)
 library(corrplot)
 
-if(!getwd() %like%  "globcropdiv$") warning("See 0000_wd.R")
-
-if(dir.exists("D:/globcropdiv")){
-  wcpath <- "D:/WorldClim/2.1/wc5min"
-  sgpath <- "D:/SoilGrids"
-  gdpath <- "D:/globcropdiv"
-  aqpath <- "D:/AQUASTAT"
-  cpath <- "D:/WorldCropAbundance"
-} else {
-  wcpath <- "InData/WorldClim/2.1/wc5min"
-  sgpath <- "InData/SoilGrids"
-  aqpath <- "InData/AQUASTAT"
-  gdpath <- "OutData"
-  cpath <- "InData/WorldCropAbundance"
+if(!grepl("globcropdiv$", getwd())){
+  if (system('hostname', TRUE) %in% c("ESP-RH-9891", "LAPTOP-ST129J47")) { 
+    setwd("G:/My Drive/globcropdiv/")
+  } # else if { ... 
 }
 
-# Load Predictors and Mask Cropland --------------
-preds <- c(rast(Sys.glob(file.path(wcpath, "bioc/*.tif"))), # WorldClim Bioclim
-           rast(file.path(wcpath, "extra/GDD.tif")),
-           rast(Sys.glob(file.path(wcpath, "extra/AI?q.tif"))),
-           rast(file.path(wcpath, "extra/AI.tif")),  
-           rast(file.path(wcpath, "extra/PET_seasonality.tif")),  
-           rast(file.path(sgpath, "phh2o/phh2o_0-15cm_mean_5min.tif")), 
-           rast(file.path(aqpath, "gmia_v5_aei_pct.asc"))  # irrigation
+
+# Load Data -----------
+# Prepare data table
+DT <- "InData/TotalCropland.tif" %>% 
+  rast() %>% 
+  values() %>% 
+  is.na() %>% 
+  `!`() %>% 
+  which() %>% 
+  data.table(cell = .)
+  
+# Predictors
+wcdir <- "InData/WorldClim/2.1/wc5min"
+
+r_preds <- c(rast(Sys.glob(file.path(wcdir, "bioc/*.tif"))), # WorldClim Bioclim
+             rast(file.path(wcdir, "extra/GDD.tif")),
+             rast(Sys.glob(file.path(wcdir, "extra/AI?q.tif"))),
+             rast(file.path(wcdir, "extra/AI.tif")),  
+             rast(file.path(wcdir, "extra/PET_seasonality.tif")),  
+             rast("InData/SoilGrids/phh2o/phh2o_0-15cm_mean_5min.tif"), 
+             rast("InData/AQUASTAT/gmia_v5_aei_pct.asc")  # irrigation
 )
 
-cmask <- rast(file.path(cpath, "Total_Cropland_ha.tif"))
-preds <- mask(preds, cmask)
-
-# Get Values and rename preds
-DTp <- as.data.table(values(preds))
-DTp <- DTp[complete.cases(DTp),]
-oldn <- names(DTp)
-setnames(DTp, 
+# extract values and rename columns
+oldn <- names(r_preds)
+DT[, (oldn):= extract(r_preds, cell)]
+DT[, cell:= NULL]
+setnames(DT, 
          oldn[grepl("wc2.1", oldn)], 
          gsub("wc2.1_5m_bio_", "bc", oldn[grepl("wc2.1", oldn)]))
-setnames(DTp, 
-         c("Aridity_Index", "PET_seasonality", "pH0_15", "gmia_v5_aei_pct"),
+setnames(DT, 
+         c("Aridity_Index", "PET_seasonality", "pH0-15HR", "gmia_v5_aei_pct"),
          c("AI", "PETs", "pH", "Irr"))
 
 # Correlation Matrix to identify highly correlated variables
-M <- cor(DTp)
+M <- cor(DT)
 
 corrplot.mixed(M, order = "AOE")
 
 # PCA to see which variables explain most of the first dimensions and to keep enough variables to explain most of the variation. Only climatic variables
-d <- DTp[,-c("Irr", "pH")]
+d <- DT[,-c("Irr", "pH")]
 # PCA analysis
 pca <- prcomp (d, scale = TRUE)
 summary(pca)
@@ -75,16 +76,16 @@ text(t(cor(pca$x[,3], d)), t(cor(pca$x[,4], d)), names(d), pos=3 , cex = 0.8)
 
 # removed predictors
 rmp <- c("bc1", "bc11", "bc6", "bc10", "bc4", "bc13", "bc14", "AIcq", "AIhq")
-DTrmp <- DTp[, ..rmp]
+DTrmp <- DT[, ..rmp]
 
 # selected predictors
-DTp[, (rmp):= NULL]
+DT[, (rmp):= NULL]
 
-# min porcentage of variance explained of removed predictors with selected predictors
-min(sapply(DTrmp, function(x) summary(lm(x ~ ., data = DTp))$r.squared))
+# percentage of removed predictors variance explained by selected predictors
+sapply(DTrmp, function(x) summary(lm(x ~ ., data = DT))$r.squared)
 
 # create file with selected file names, path name and short name
-snpred <- names(DTp)
+snpred <- names(DT)
 npred <- gsub("bc", "wc2.1_5m_bio_", snpred)
 fn <- c("PET_seasonality", "phh2o_0-15cm_mean_5min", "gmia_v5_aei_pct")
 sn <- c("PETs", "pH", "Irr")
