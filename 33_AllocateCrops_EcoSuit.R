@@ -20,7 +20,7 @@ d <- "InData/TotalCropland.tif" %>%
   data.table(cell = .)
 
 # Suitability
-r_suit <- "OutData/Int_Suit/*.tif" %>% Sys.glob() %>% rast()
+r_suit <- "OutData/Ecocrop/*.tif" %>% Sys.glob() %>% rast()
 crops <- names(r_suit)
 scols <- paste0("s.", crops)
 d[, (scols):= extract(r_suit, cell)]
@@ -46,5 +46,5 @@ d <- allocate(d, crops, crop_area,
               scols = paste0("s.", crops),
               tccol = "tcl")
 
-fwrite(d, "OutData/allocated.csv")
+fwrite(d, "OutData/allocated_eco.csv")
 
