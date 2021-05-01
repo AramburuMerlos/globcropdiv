@@ -36,8 +36,11 @@ allocate <- function(d, crops, crop_area,
   d[, (ncols):= lapply(.SD, function(x) x/ss), .SDcols = scols]
   d[, ss:= NULL]
   
+  # normalized suitability times cell cropland per crop
+  nsxcl <-d[, lapply(.SD, function(x) sum(x * tcl, na.rm = T)), .SDcols = ncols]
   # crops relative abundance (factors)
-  fact <- crop_area/mean(crop_area)
+  fact <- crop_area/unlist(nsxcl)
+  #fact <- crop_area/mean(crop_area)
   
   # names of columns with allocated area
   acols <- paste0("a.", crops)
@@ -186,7 +189,10 @@ allocate <- function(d, crops, crop_area,
   # reallocate ------------
   ce0 <- .ce(d[,..acols], d[,..scols])
   
-  message("Allocation finished. \nCross Entropy = ", round(ce0))
+  if(showProgress){
+    message("Allocation finished. \nCross Entropy = ", round(ce0))  
+  }
+  
   
   # all crop combinations pairs (without replacement, order doesn't matter)
   cc <- .comb(crops)
