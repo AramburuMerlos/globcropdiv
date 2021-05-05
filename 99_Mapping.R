@@ -50,7 +50,7 @@ d[, (crops):= extract(actual, cell)]
 d[, (crops):= lapply(.SD, `/`, tcl), .SDcols = crops]
 
 # set 0 crop area as NA for plotting
-for(j in crops) set(d, d[[j]] == 0, j, NA)
+for(j in crops) set(d, which(d[[j]] == 0), j, NA)
 
 # empty raster
 r <- rast(totcl)
@@ -114,10 +114,10 @@ d[, tcl:= Reduce(`+`, .SD), .SDcols = acols]
 d[, (acols):= .SD/tcl, .SDcols = acols]
 
 # set 0 crop area as NA for plotting
-for(j in acols) set(d, d[[j]] == 0, j, NA)
+for(j in acols) set(d, which(d[[j]] == 0), j, NA)
 
 # set 0 crop suit as NA for plotting
-for(j in scols) set(d, d[[j]] == 0, j, NA)
+for(j in scols) set(d, which(d[[j]] == 0), j, NA)
 
 # empty raster
 r <- rast(totcl)
@@ -200,10 +200,10 @@ d[, tcl:= Reduce(`+`, .SD), .SDcols = acols]
 d[, (acols):= .SD/tcl, .SDcols = acols]
 
 # set 0 crop area as NA for plotting
-for(j in acols) set(d, d[[j]] == 0, j, NA)
+for(j in acols) set(d, which(d[[j]] == 0), j, NA)
 
 # set 0 crop suit as NA for plotting
-for(j in scols) set(d, d[[j]] == 0, j, NA)
+for(j in scols) set(d, which(d[[j]] == 0), j, NA)
 
 # empty raster
 r <- rast(totcl)
@@ -285,10 +285,10 @@ d[, tcl:= Reduce(`+`, .SD), .SDcols = acols]
 d[, (acols):= .SD/tcl, .SDcols = acols]
 
 # set 0 crop area as NA for plotting
-for(j in acols) set(d, d[[j]] == 0, j, NA)
+for(j in acols) set(d, which(d[[j]] == 0), j, NA)
 
 # set 0 crop suit as NA for plotting
-for(j in scols) set(d, d[[j]] == 0, j, NA)
+for(j in scols) set(d, which(d[[j]] == 0), j, NA)
 
 # empty raster
 r <- rast(totcl)
