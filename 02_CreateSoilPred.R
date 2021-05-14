@@ -7,9 +7,11 @@ if(!grepl("globcropdiv$", getwd())){
   } # else if { ... 
 }
 
+# pH ----
+
 spath <- "InData/SoilGrids/phh2o/"
 
-# High Resolution Average -----
+## High Resolution Average -----
 ph05 <- rast(file.path(spath, "phh2o_0-5cm_mean.vrt"))
 ph15 <- rast(file.path(spath, "phh2o_5-15cm_mean.vrt"))
 
@@ -20,7 +22,8 @@ app(ph015, fun = mean, na.rm = T,
     wopt = list(names = "pH0-15HR", filetype = "GTiff",
                 gdal = c("COMPRESS=Deflate","PREDICTOR=1","ZLEVEL=6")))
 
-# Lower the resolution -------
+
+## Lower the resolution -------
 ph <- rast(file.path(spath, "pH0-15HR.tif"))
 
 # first aggregate to lower resolution to avoid getting many NA 
