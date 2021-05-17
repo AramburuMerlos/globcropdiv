@@ -21,16 +21,8 @@ fd <- function(x, na.rm = na.rm){
 }
 
 
-dir_area <- 'Maps/Area'
-dir.create(dir_area, F, T)
-
-dir_suit <- 'Maps/Suit'
-dir.create(dir_suit, F, T)
-
-
 # total cropland and countries
 totcl <- rast("InData/TotalCropland.tif")
-ar = ncol(totcl)/nrow(totcl)
 
 #countries <- ne_download(scale = 10, type = "countries")
 countries <- vect("InData/countries/ne_10m_admin_0_countries.shp")
