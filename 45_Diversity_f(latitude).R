@@ -1,19 +1,13 @@
-# ideas:
-# use a model to describe diversity patterns. 
-# That is, how much of the variation in diversity (Da, Dp) can be explained by biophysical variables.
-# Other factors to considered: field size, crop composition (how dominant the crops within that cell are), crop suitability
-# analyze variable importance with random forest or something like that
 library(terra)
 library(data.table)
 library(magrittr)
 library(xgboost)
 
-if(!grepl("globcropdiv$", getwd())){
-  if (system('hostname', TRUE) %in% c("ESP-RH-9891", "LAPTOP-ST129J47")) { 
-    setwd("G:/My Drive/globcropdiv/")
-  } # else if { ... 
-}
-
+if(system('hostname', TRUE) == "ESP-RH-9891"){
+  setwd("D:/globcropdiv/")
+} else if(system('hostname', TRUE) == "LAPTOP-ST129J47"){ 
+  setwd("G:/My Drive/globcropdiv/")
+} # else if { ... 
 
 Da_r <- rast("OutData/Da.tif")
 Dp_int_r <- rast("OutData/Dp_int.tif")

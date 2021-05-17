@@ -4,11 +4,11 @@ library(terra)
 library(rnaturalearth)
 library(viridis)
 
-if(!grepl("globcropdiv$", getwd())){
-  if(system('hostname', TRUE) %in% c("ESP-RH-9891", "LAPTOP-ST129J47")){ 
-    setwd("G:/My Drive/globcropdiv/")
-  } # else if { ... 
-}
+if(system('hostname', TRUE) == "ESP-RH-9891"){
+  setwd("D:/globcropdiv/")
+} else if(system('hostname', TRUE) == "LAPTOP-ST129J47"){ 
+  setwd("G:/My Drive/globcropdiv/")
+} # else if { ... 
 
 # diversity function 
 fd <- function(x, na.rm = na.rm){

@@ -4,11 +4,11 @@ library(terra)
 library(rnaturalearth)
 library(viridis)
 
-if(!grepl("globcropdiv$", getwd())){
-  if(system('hostname', TRUE) %in% c("ESP-RH-9891", "LAPTOP-ST129J47")){ 
-    setwd("G:/My Drive/globcropdiv/")
-  } # else if { ... 
-}
+if(system('hostname', TRUE) == "ESP-RH-9891"){
+  setwd("D:/globcropdiv/")
+} else if(system('hostname', TRUE) == "LAPTOP-ST129J47"){ 
+  setwd("G:/My Drive/globcropdiv/")
+} # else if { ... 
 
 #countries <- ne_download(scale = 10, type = "countries")
 countries <- vect("InData/countries/ne_10m_admin_0_countries.shp")
