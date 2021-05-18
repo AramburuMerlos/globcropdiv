@@ -80,18 +80,3 @@ for(i in 1:nrow(tp)){
 fwrite(tp, "OutData/RF_tuning.csv")
 
 
-# FINAL MODELS ---------------
-tp <- fread("OutData/RF_tuning.csv")
-
-# Da ---------------
-param_Da <- tp[which.min(Da_oob_rmse),]
-cols <- c("Da", preds)
-
-rf_Da <- ranger(data = d[, ..cols], 
-                dependent.variable.name = "Da",
-                num.trees = 1000,
-                mtry = param_Da$mtry,
-                min.node.size = param_Da$min.node.size, 
-                save.memory = TRUE)
-
-saveRDS(rf_Da, "OutData/Da_rf_analysis.RDS")
