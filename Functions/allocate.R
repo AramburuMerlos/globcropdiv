@@ -37,7 +37,7 @@ allocate <- function(d, crops, crop_area,
   d[, ss:= NULL]
   
   # normalized suitability times cell cropland per crop
-  nsxcl <-d[, lapply(.SD, function(x) sum(x * tcl, na.rm = T)), .SDcols = ncols]
+  nsxcl <- d[, lapply(.SD, function(x) sum(x*tcl, na.rm = T)), .SDcols = ncols]
   # crops relative abundance (factors)
   fact <- crop_area/unlist(nsxcl)
   #fact <- crop_area/mean(crop_area)

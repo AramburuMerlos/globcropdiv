@@ -10,21 +10,40 @@ if(system('hostname', TRUE) == "ESP-RH-9891"){
 
 r <- rast("InData/TotalCropland.tif")
 
+# Elevation heterogeneity -----------
+# GMTED2010 downloaded from 
+# https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/topo/downloads/GMTED/
+r_elev_sd <- rast("InData/GMTED2010/sd30_grd/w001001.adf")
+
+# fix geometry
+r_elev_sd <- extend(r_elev_sd, r)
+f_agg_sd <- function(x) sqrt(mean(x^2, na.rm = T))
+r_elev_sd <- aggregate(r_elev_sd, fact = 10, fun = f_agg_sd)
+
+compareGeom(r, r_elev_sd)
+
+writeRaster(r_elev_sd, overwrite = T, 
+            filename = "InData/GMTED2010/elev_sd.tif", 
+            wopt = list(names = "field_size", filetype = "GTiff",
+                        gdal = c("COMPRESS=Deflate","PREDICTOR=1","ZLEVEL=6")))
+
+
 # Field size ---------
+# Data from Friz et al., 2015 (https://doi.org/10.1111/gcb.12838)
 # downloaded from geo wiki app
 r_field <- rast(Sys.glob("InData/field_size*/field_size*.img"))
 
 
 ## Fix geometry ------------
 # change 0 field size to NA so it doesn't affect the aggregation
-r_field <- expand(r_field, r)
+r_field <- extend(r_field, r)
 r_field <- classify(r_field, cbind(0, NA))
 r_field <- aggregate(r_field, fact = 10, fun = "median", na.rm = TRUE)
 
 compareGeom(r, r_field)
 
 
-# Fill NA -------------------
+## Fill NA -------------------
 
 # field data has NA values from cells where there is cropland. 
 # data will be filled by idw 

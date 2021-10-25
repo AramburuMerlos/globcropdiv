@@ -18,8 +18,8 @@ dir.create(outpath, F, T)
 tavg <- rast(Sys.glob(file.path(wcpath, "tavg/*.tif")))
 days_per_month <- c(31,28.25,31,30,31,30,31,31,30,31,30,31) 
 fgdd <- function(x){
-  x[x < 0] <- NA
-  return(sum(x * days_per_month, na.rm = T))
+  x[x < 0] <- 0
+  return(sum(x * days_per_month))
 }
 
 app(tavg, fgdd, 
