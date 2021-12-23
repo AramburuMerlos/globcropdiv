@@ -9,8 +9,9 @@ if(system('hostname', TRUE) == "ESP-RH-9891"){
 } # else if { ... 
 
 # upload data --------------
+pcl <- rast("OutData/projected/CroplandProp.tif")
+totcl <- pcl * prod(res(pcl))/1e4
 
-totcl <- rast("InData/TotalCropland.tif")
 
 # extract values
 d <- data.table(cells = which(!is.na(values(totcl))))

@@ -9,18 +9,20 @@ if(system('hostname', TRUE) == "ESP-RH-9891"){
 } # else if { ... 
 
 # upload data --------------
-
-totcl <- rast("InData/TotalCropland.tif")
-area <- cellSize(totcl, unit = "ha")
-pcl <- totcl/area
-cl_mask <- pcl < 0.005
+cl <- rast("OutData/projected/CroplandProp.tif")
+cl_mask <- cl < 0.005
+totcl <- cl * prod(res(cl))/10000
 totcl <- mask(totcl, cl_mask, maskvalue = 1)
-
 
 rGDD <- rast("InData/WorldClim/2.1/wc5min/extra/GDD.tif")
 rtm <- rast("InData/WorldClim/2.1/wc5min/bioc/wc2.1_5m_bio_1.tif")
 rpp <- rast("InData/WorldClim/2.1/wc5min/bioc/wc2.1_5m_bio_12.tif")
 rai <- rast("InData/WorldClim/2.1/wc5min/extra/AI.tif")
+
+rGDD <- project(rGDD, cl)
+rtm <- project(rtm, cl)
+rpo <- project(rpp, cl)
+rai <- project(rai, cl)
 
 
 # extract values

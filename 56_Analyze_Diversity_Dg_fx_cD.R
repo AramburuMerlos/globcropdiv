@@ -8,10 +8,9 @@ if(system('hostname', TRUE) == "ESP-RH-9891"){
   setwd("G:/My Drive/globcropdiv/")
 } # else if { ... 
 
-totcl <- rast("InData/TotalCropland.tif")
-area <- cellSize(totcl, unit = "ha")
-pcl <- totcl/area
+pcl <- rast("OutData/projected/CroplandProp.tif")
 cl_mask <- pcl < 0.005
+totcl <- pcl * prod(res(pcl))/1e4
 totcl <- mask(totcl, cl_mask, maskvalue = 1)
 
 
@@ -138,8 +137,7 @@ dev.off()
 
 
 
-
-
+# OLD R #############################################################
 
 
 

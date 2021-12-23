@@ -11,7 +11,7 @@ if(system('hostname', TRUE) == "ESP-RH-9891"){
 } # else if { ... 
 
 tdir <- "G:/My Drive/globcropdiv/Tables"
-dir.create("tdir", F, T)
+dir.create(tdir, F, T)
 
 
 # import data

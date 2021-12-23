@@ -6,14 +6,14 @@ setwd("D:/globcropdiv/")
 rpD <- rast("OutData/pot_D_sdm.tif")
 apD <- rast("OutData/pot_D_eco.tif")
 
-d <- fread("OutData/allocated_eco.csv") 
-scols <- names(d)[names(d) %like% "^s\\."] 
-d[, tot.asuit:= Reduce(`+`, .SD), .SDcols = scols]
+suit <- rast(Sys.glob("OutData/Ecocrop/*.tif"))
+totsuit <- app(suit, sum, na.rm = T)
+totsuit <- project(totsuit, rpD)
 
-acols <- names(d)[names(d) %like% "^a\\."] 
 
-d[, (scols):= NULL]
-d[, (acols):= NULL]
+d <- data.table(cell = which(!is.na(values(totsuit))))
+d[, tot.suit:= extract(totsuit, cell)]
+
 
 d[, ap:= extract(apD, cell)]
 d[, rp:= extract(rpD, cell)]
@@ -22,8 +22,8 @@ d[, rp_ap:= rp - ap]
 
 set.seed(0)
 ds <- d[sample(.N, 1e4)]
-setorder(ds, tot.asuit)
-lo <- loess(rp_ap ~ tot.asuit, data = ds)
+setorder(ds, tot.suit)
+lo <- loess(rp_ap ~ tot.suit, data = ds)
 
 fig.file = "G:/My Drive/globcropdiv/Plots/Dp_dif_fx_sum_asuit.png"
 # Delete file if it exists
@@ -33,9 +33,9 @@ png(filename = fig.file, units = 'in', width = 4.5,
 
 par(mar = c(4,4,1,1), mgp = c(3,0.8,0), las = 1)
 
-plot(ds$tot.asuit, ds$rp_ap, col = "#00000010", 
+plot(ds$tot.suit, ds$rp_ap, col = "#00000010", 
      xlab = "", ylab = "", cex.axis = 1.1)
-lines(predict(lo) ~ ds$tot.asuit, col = "red", lwd = 2)
+lines(predict(lo) ~ ds$tot.suit, col = "red", lwd = 2)
 mtext(bquote(Sigma ~ "absolute suitability"), side = 1, line = 2.5, cex = 1.5)
 mtext(bquote(Delta[italic(pD)]), 
       side = 2, outer = T, cex = 2, las = 0, line = -1.8)
@@ -50,7 +50,7 @@ dev.off()
 
 
 
-
+# OLD R #############################
 
 
 reco <- rast("OutData/att_D_eco.tif")

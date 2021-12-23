@@ -9,39 +9,43 @@ if(system('hostname', TRUE) == "ESP-RH-9891"){
   setwd("G:/My Drive/globcropdiv/")
 } # else if { ... 
 
+
+# total cropland (ha) per cell
+pcl <- rast("OutData/projected/CroplandProp.tif")
+totcl <- pcl * prod(res(pcl))/1e4
+
 # country borders
 countries <- geodata::world(resolution = 3, path = "InData/countries")
+countries <- project(countries, totcl)
 
-# tropics
-w <- countries
-# to use a faster buffering method (not lonlat)
-crs(w) <- "+proj=utm +zone=1"
-b <- buffer(w, 2)
+
+b <- buffer(countries, 1e5)
 trop <- vect(c("LINESTRING(-180 23, 180 23)", "LINESTRING(-180 -23, 180 -23)"))
+crs(trop) <- "+proj=longlat +datum=WGS84 +no_defs"
+trop <- project(trop, totcl)
 trop <- erase(trop, b)
+
 equ <- vect(c("LINESTRING(-180 0, 180 0)", "LINESTRING(-180 0, 180 0)"))
+crs(equ) <- "+proj=longlat +datum=WGS84 +no_defs"
+equ <- project(equ, totcl)
 equ <- erase(equ, b)
 
 
-
-# total cropland (ha) per cell
-totcl <- rast("InData/TotalCropland.tif")
-
 # crop high latitudes
-ex <- ext(countries)
-ylim <- c(-55, 71)
-ex[3] <- ylim[1]
-ex[4] <- ylim[2]
+ex <- ext(pcl)
+ylim <- vect(c("LINESTRING(-180 72, 180 72)", "LINESTRING(-180 -57, 180 -57)"))
+crs(ylim) <- "+proj=longlat +datum=WGS84 +no_defs"
+ylim <- project(ylim, totcl)
+ex[3] <- ext(ylim)[3]
+ex[4] <- ext(ylim)[4]
 
 b4 <- global(totcl, sum, na.rm = T)
 totcl <- crop(totcl, ex)
 af <- global(totcl, sum, na.rm = T)
 all.equal(b4, af) # no cropland was left behind
 
-# mask cells with less than 0.5% of cropland
-area <- cellSize(totcl, unit = "ha")
-pcl <- totcl/area
 cl_mask <- pcl < 0.005
+cl_mask <- crop(cl_mask, ex)
 
 ar = ncol(totcl)/nrow(totcl)
 
@@ -254,8 +258,17 @@ plot(trop, col = "grey50", lty = 3, lwd = 0.5, add = T)
 plot(equ, col = "grey50", lwd = 0.4, add = T)
 dev.off()
 
+
+
+
+
 # DQI ###################################################
+# unprojected total cropland
+totcl <- rast("InData/TotalCropland.tif")
 r <- totcl 
+
+# unprojected countries
+countries <- geodata::world(resolution = 3, path = "InData/countries")
 
 apple_dqi <- rast("InData/CropAbundance/DataQualityIndex/apple_DQI.tif")
 #apple <- rast("InData/CropAbundance/apple.tif")
@@ -303,6 +316,21 @@ plot(trop, col = "grey50", lty = 3, lwd = 0.5, add = T)
 plot(equ, col = "grey50", lwd = 0.4, add = T)
 mtext("b", line = .2, adj = .95, font = 2, cex = 2)
 dev.off()
+
+
+
+
+
+
+
+
+
+
+#################### OLD R #############################################
+
+
+
+
 
 
 

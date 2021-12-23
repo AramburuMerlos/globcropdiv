@@ -8,170 +8,186 @@ if(system('hostname', TRUE) == "ESP-RH-9891"){
   setwd("G:/My Drive/globcropdiv/")
 } # else if { ... 
 
+cl <- rast("OutData/projected/CroplandProp.tif")
+
 # Total diversity (Dgamma) ######################################
-
-## Actual diversity ------
-totcl <- rast("InData/TotalCropland.tif")
-actual <- "InData/CropAbundance/*.tif" %>%  Sys.glob() %>%  rast()
-crops <- names(actual)
-
-# extract values, long 
-cells <- values(totcl) %>% {which(!is.na(.))}
-
-dl <- vector(mode = "list", length = length(crops))
-
-for(i in 1:length(crops)){
-  dt <- data.table(crop = crops[i], 
-                   cell = cells,
-                   area = extract(actual[[i]], cells)[,1])
-  dt <- dt[!is.na(area),]
-  dt <- dt[area > 0,]
-  dt[, lat:= yFromCell(actual[[i]], cell)]
-  dl[[i]] <- dt
-  rm(dt)
-}
-
-d <- rbindlist(dl)
-rm(dl)
-
-d[, lat:= round(lat)]
-
-d <- d[, .(area = sum(area)), by = .(lat, crop)]
-
-d[, prop:= area/sum(area), by = .(lat)]
 
 # diversity function 
 fd <- function(x) exp(-sum(x * log(x), na.rm = T))
 
+# uplaod proportions 
+actual <- rast("OutData/projected/ActualCropProp.tif")
+pot_eco <- rast("OutData/projected/PotEcoCropProp.tif")
+pot_sdm <- rast("OutData/projected/PotSDMCropProp.tif")
+att_eco <- rast("OutData/projected/AttEcoCropProp.tif")
+att_sdm <- rast("OutData/projected/AttSDMCropProp.tif")
+
+crops <- names(actual)
+
+## Actual diversity ------
+
+# extract values, wide
+d <- data.table(cell = which(!is.na(values(cl))))
+d[, (crops):= extract(actual, cell)]
+d[, cl_prop:= extract(cl, cell)]
+
+# add latitude
+d[, lat_proj:= yFromCell(cl, cell)]
+d[, lat:= rgdal::project(cbind(0, lat_proj), crs(cl, proj=TRUE), inv=TRUE)[,2]]
+
+# from prop to area (in ha, although units doesn't matter)
+d[, totcl:= cl_prop * (prod(res(cl)))/1e4]
+d[, (crops):= lapply(.SD, function(x) x*totcl), .SDcols = crops]
+
+# reshape to long
+d <- melt(d, measure.vars = crops, variable.name = "crop", value.name = "area")
+d <- d[!is.na(area),]
+d <- d[area > 0,]
+
+d[, lat:= round(lat)]
+d <- d[, .(area = sum(area)), by = .(lat, crop)]
+
+d[, prop:= area/sum(area), by = .(lat)]
+
+# compute diversity
 dd <- d[, .(tot.area = sum(area), act_Dg = fd(prop)), by = .(lat)]
 
 
+## Attainable diversity ------
 
+### Ecocrop -----
 
-## Attainable diversity ---------
-### Ecocrop --------------
+# extract values, wide
+d <- data.table(cell = which(!is.na(values(cl))))
+d[, (crops):= extract(att_eco, cell)]
+d[, cl_prop:= extract(cl, cell)]
 
-alloc_eco <- fread("OutData/allocated_eco.csv")
-d <- melt(alloc_eco, id.vars = "cell", measure.vars = patterns("^a."),
-          variable.name = "crop", value.name = "area")
-d <- d[area > 0, ]
-d[, lat:= round(yFromCell(totcl, cell))]
+# add latitude
+d[, lat_proj:= yFromCell(cl, cell)]
+d[, lat:= rgdal::project(cbind(0, lat_proj), crs(cl, proj=TRUE), inv=TRUE)[,2]]
 
+# from prop to area (in ha, although units doesn't matter)
+d[, totcl:= cl_prop * (prod(res(cl)))/1e4]
+d[, (crops):= lapply(.SD, function(x) x*totcl), .SDcols = crops]
+
+# reshape to long
+d <- melt(d, measure.vars = crops, variable.name = "crop", value.name = "area")
+d <- d[!is.na(area),]
+d <- d[area > 0,]
+
+d[, lat:= round(lat)]
 d <- d[, .(area = sum(area)), by = .(lat, crop)]
-d[, prop := area/sum(area), by = .(lat)]
 
-d <- d[, .(att_Dg_eco = fd(prop)), by = .(lat)]
+d[, prop:= area/sum(area), by = .(lat)]
+
+# compute diversity
+d <- d[, .(tot.area = sum(area), att_Dg_eco = fd(prop)), by = .(lat)]
 dd <- d[dd, on = "lat"]
 
-
-rm(alloc_eco); gc(reset = T)
-
+gc(reset = T)
 
 
 ### SDM --------------------
-alloc_sdm <- fread("OutData/allocated_sdm.csv")
-d <- melt(alloc_sdm, id.vars = "cell", measure.vars = patterns("^a."),
-          variable.name = "crop", value.name = "area")
-d <- d[area > 0, ]
-d[, lat:= round(yFromCell(totcl, cell))]
 
+# extract values, wide
+d <- data.table(cell = which(!is.na(values(cl))))
+d[, (crops):= extract(att_sdm, cell)]
+d[, cl_prop:= extract(cl, cell)]
+
+# add latitude
+d[, lat_proj:= yFromCell(cl, cell)]
+d[, lat:= rgdal::project(cbind(0, lat_proj), crs(cl, proj=TRUE), inv=TRUE)[,2]]
+
+# from prop to area (in ha, although units doesn't matter)
+d[, totcl:= cl_prop * (prod(res(cl)))/1e4]
+d[, (crops):= lapply(.SD, function(x) x*totcl), .SDcols = crops]
+
+# reshape to long
+d <- melt(d, measure.vars = crops, variable.name = "crop", value.name = "area")
+d <- d[!is.na(area),]
+d <- d[area > 0,]
+
+d[, lat:= round(lat)]
 d <- d[, .(area = sum(area)), by = .(lat, crop)]
-d[, prop := area/sum(area), by = .(lat)]
 
-d <- d[, .(att_Dg_sdm = fd(prop)), by = .(lat)]
+d[, prop:= area/sum(area), by = .(lat)]
+
+# compute diversity
+d <- d[, .(tot.area = sum(area), att_Dg_sdm = fd(prop)), by = .(lat)]
 dd <- d[dd, on = "lat"]
 
+gc(reset = T)
 
-
-rm(alloc_sdm); gc(reset = T)
 
 ## Potential Diversity ########################
 
-### Ecocrop ############################
-eco_suit <- "OutData/Ecocrop/*.tif" %>%  Sys.glob() %>%  rast()
-all.equal(names(eco_suit), crops)
+### Ecocrop -----
 
-# extract values, long 
-l <- vector(mode = "list", length = length(crops))
+# extract values, wide
+d <- data.table(cell = which(!is.na(values(cl))))
+d[, (crops):= extract(pot_eco, cell)]
+d[, cl_prop:= extract(cl, cell)]
 
-for(i in 1:length(crops)){
-  dt <- data.table(crop = crops[i],
-                   cell = cells,
-                   tcl = extract(totcl, cells)[,1],
-                   suit = extract(eco_suit[[i]], cells)[,1], 
-                   lat = round(yFromCell(totcl, cells)))
-  dt <- dt[!is.na(suit),]
-  dt <- dt[suit > 0,]
-  l[[i]] <- dt
-  rm(dt)
-}
+# add latitude
+d[, lat_proj:= yFromCell(cl, cell)]
+d[, lat:= rgdal::project(cbind(0, lat_proj), crs(cl, proj=TRUE), inv=TRUE)[,2]]
 
-d <- rbindlist(l)
-rm(l); gc(reset = T)
+# from prop to area (in ha, although units doesn't matter)
+d[, totcl:= cl_prop * (prod(res(cl)))/1e4]
+d[, (crops):= lapply(.SD, function(x) x*totcl), .SDcols = crops]
 
-# normalize suitabilities
-d[, suit:= suit/sum(suit, na.rm = T), by = .(cell)]
+# reshape to long
+d <- melt(d, measure.vars = crops, variable.name = "crop", value.name = "area")
+d <- d[!is.na(area),]
+d <- d[area > 0,]
 
-# compute areas
-d[, area:= suit * tcl]
-
-# total crop areas by latitude 
+d[, lat:= round(lat)]
 d <- d[, .(area = sum(area)), by = .(lat, crop)]
 
 d[, prop:= area/sum(area), by = .(lat)]
 
-d <- d[, .(pot_Dg_eco = fd(prop)), by = .(lat)]
-
+# compute diversity
+d <- d[, .(tot.area = sum(area), pot_Dg_eco = fd(prop)), by = .(lat)]
 dd <- d[dd, on = "lat"]
 
+gc(reset = T)
 
-### SDM ############################
-sdm_suit <- "OutData/SDM/*_AVG.tif" %>%  Sys.glob() %>%  rast()
-all.equal(names(sdm_suit), crops)
 
-# extract values, long 
-l <- vector(mode = "list", length = length(crops))
+### SDM --------------------
 
-for(i in 1:length(crops)){
-  dt <- data.table(crop = crops[i],
-                   cell = cells,
-                   tcl = extract(totcl, cells)[,1],
-                   suit = extract(sdm_suit[[i]], cells)[,1], 
-                   lat = round(yFromCell(totcl, cells)))
-  dt <- dt[!is.na(suit),]
-  dt <- dt[suit > 0,]
-  l[[i]] <- dt
-  rm(dt)
-}
+# extract values, wide
+d <- data.table(cell = which(!is.na(values(cl))))
+d[, (crops):= extract(pot_sdm, cell)]
+d[, cl_prop:= extract(cl, cell)]
 
-d <- rbindlist(l)
-rm(l); gc(reset = T)
+# add latitude
+d[, lat_proj:= yFromCell(cl, cell)]
+d[, lat:= rgdal::project(cbind(0, lat_proj), crs(cl, proj=TRUE), inv=TRUE)[,2]]
 
-# normalize suitabilities
-d[, suit:= suit/sum(suit, na.rm = T), by = .(cell)]
+# from prop to area (in ha, although units doesn't matter)
+d[, totcl:= cl_prop * (prod(res(cl)))/1e4]
+d[, (crops):= lapply(.SD, function(x) x*totcl), .SDcols = crops]
 
-# compute areas
-d[, area:= suit * tcl]
+# reshape to long
+d <- melt(d, measure.vars = crops, variable.name = "crop", value.name = "area")
+d <- d[!is.na(area),]
+d <- d[area > 0,]
 
-# total crop areas by latitude 
+d[, lat:= round(lat)]
 d <- d[, .(area = sum(area)), by = .(lat, crop)]
 
 d[, prop:= area/sum(area), by = .(lat)]
 
-d <- d[, .(pot_Dg_sdm = fd(prop)), by = .(lat)]
-
+# compute diversity
+d <- d[, .(tot.area = sum(area), pot_Dg_sdm = fd(prop)), by = .(lat)]
 dd <- d[dd, on = "lat"]
 
-rm(d, eco_suit, sdm_suit, actual); gc(reset = T)
+gc(reset = T)
 
 setorder(dd, lat)
-dd
 
 
 fwrite(dd, "OutData/DfxLat.csv")
-
-
-
 
 ## PLOT ##########
 # Read data
@@ -266,6 +282,14 @@ dev.off()
 
 
 
+
+
+
+
+
+
+
+# OLD R #############################################
 
 
 ## Gaps  ##################
