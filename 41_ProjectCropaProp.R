@@ -366,41 +366,12 @@ gc()
 
 
 
-# avg attainable crop prop ----------
+# crop proportion gap SDM -----------
 library(terra)
 setwd("D:/globcropdiv/")
 
 dir <- "OutData/projected"
 
-att_eco <- rast("OutData/projected/AttEcoCropProp.tif")
-att_sdm <- rast("OutData/projected/AttSDMCropProp.tif")
-attain <- (att_eco + att_sdm)/2
-
-writeRaster(
-  attain,
-  filename = file.path(dir, "AttainCropProp.tif"), overwrite = T, 
-  wopt = list(names = names(att_sdm), filetype = "GTiff",
-              gdal=c("COMPRESS=Deflate","PREDICTOR=1","ZLEVEL=6"))
-)
-
-# crop proportion gap -----------
-# crop proportions in low diversity cells
-actual_area <- rast("OutData/projected/ActualCropProp.tif")
-crops <- names(actual_area)
-
-attain_area <-rast("OutData/projected/AttainCropProp.tif")
-all.equal(names(attain_area), crops)
-
-gap <- attain_area - actual_area
-
-writeRaster(
-  gap,
-  filename = file.path(dir, "CropPropGap.tif"), overwrite = T, 
-  wopt = list(names = names(att_sdm), filetype = "GTiff",
-              gdal=c("COMPRESS=Deflate","PREDICTOR=1","ZLEVEL=6"))
-)
-
-# crop proportion gap SDM -----------
 # crop proportions in low diversity cells
 actual_area <- rast("OutData/projected/ActualCropProp.tif")
 crops <- names(actual_area)
@@ -418,6 +389,11 @@ writeRaster(
 )
 
 # crop proportion gap Eco -----------
+library(terra)
+setwd("D:/globcropdiv/")
+
+dir <- "OutData/projected"
+
 # crop proportions in low diversity cells
 actual_area <- rast("OutData/projected/ActualCropProp.tif")
 crops <- names(actual_area)
