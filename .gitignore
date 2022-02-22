@@ -13,4 +13,5 @@ Maps/
 **/*.ini
 **/*.png
 Batch/
+Tables/
 Plots/

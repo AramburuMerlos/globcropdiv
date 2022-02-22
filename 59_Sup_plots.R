@@ -3,12 +3,48 @@ library(terra)
 
 setwd("D:/globcropdiv/")
 
+# one plot ######
+
+d <- fread("OutData/CropProp_lat8.csv")
+cats <- read.csv("G:/My Drive/globcropdiv/AuxData/CropCategories2.csv")
+#cats <- rbind(cats, data.frame(crop="none", crop.category="None", category=12))
+d <- merge(d, cats, by = "crop")
+setorderv(d, "prop", order = -1L)
+d <- d[prop > 0.01]
+d[, x:= rep(1:5, 4)]
+d[, y:= rep(4:1, each = 5)]
+
+colors_cat <- c(brewer.pal(9, "Set1"), brewer.pal(7, "Set2")[c(1,7)])
+
+fig.file = "G:/My Drive/globcropdiv/Plots/crop_prop_lat8.png"
+# Delete file if it exists
+if(file.exists(fig.file)) file.remove(fig.file)
+png(filename = fig.file, units = 'in', width = 4.5, 
+    height = 4, type = "cairo", res = 300, pointsize = 11)
+
+par(mar = c(0,0,0,11), xpd = TRUE)
+d[, plot(x,y, pch = 19, cex = prop * 100, col = colors_cat[category], 
+         axes = F, xlab = "", ylab = "", 
+         xlim = c(0, max(x)+1), ylim = c(0, max(y)+1))]
+
+legend(legend = c(unique(cats$crop.category)),
+       cex = 1, x = "right", fill = colors_cat, inset = -.7,
+       title = "Crop", title.adj = 0.5)
+
+
+dev.off()
+
+
+
+# another plot ###########
+
+
 rpD <- rast("OutData/pot_D_sdm.tif")
 apD <- rast("OutData/pot_D_eco.tif")
 
 suit <- rast(Sys.glob("OutData/Ecocrop/*.tif"))
 totsuit <- app(suit, sum, na.rm = T)
-totsuit <- project(totsuit, rpD)
+totsuit <- project(totsuit, rpD, mask = TRUE)
 
 
 d <- data.table(cell = which(!is.na(values(totsuit))))

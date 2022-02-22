@@ -1,0 +1,172 @@
+crop,crop category,category
+wheat,Wheat,1
+maize,Maize,2
+rice,Rice,3
+barley,Other Cereals,4
+pearl millet,Other Cereals,4
+small millet,Other Cereals,4
+popcorn,Other Cereals,4
+rye,Other Cereals,4
+oats,Other Cereals,4
+buckwheat,Other Cereals,4
+canaryseed,Other Cereals,4
+cerealnes,Other Cereals,4
+sorghum,Other Cereals,4
+soybean,Soybean,5
+coconut,Other Oil Crops,6
+groundnut,Other Oil Crops,6
+oilpalm,Other Oil Crops,6
+rapeseed,Other Oil Crops,6
+sesame,Other Oil Crops,6
+sunflower,Other Oil Crops,6
+olive,Other Oil Crops,6
+karite,Other Oil Crops,6
+castor,Other Oil Crops,6
+tung,Other Oil Crops,6
+safflower,Other Oil Crops,6
+mustard,Other Oil Crops,6
+poppy,Other Oil Crops,6
+melonseed,Other Oil Crops,6
+kapokseed,Other Oil Crops,6
+linseed,Other Oil Crops,6
+hempseed,Other Oil Crops,6
+oilseednes,Other Oil Crops,6
+bean,Pulses,7
+chickpea,Pulses,7
+cowpea,Pulses,7
+lentil,Pulses,7
+pigeonpea,Pulses,7
+broadbean,Pulses,7
+pea,Pulses,7
+bambara,Pulses,7
+vetch,Pulses,7
+lupin,Pulses,7
+pulsenes,Pulses,7
+yautia,Roots & Tubers,8
+taro,Roots & Tubers,8
+rootnes,Roots & Tubers,8
+cassava,Roots & Tubers,8
+potato,Roots & Tubers,8
+sweetpotato,Roots & Tubers,8
+yam,Roots & Tubers,8
+flax,Misc. Crops,9
+hemp,Misc. Crops,9
+kapokfiber,Misc. Crops,9
+jute,Misc. Crops,9
+jutelikefiber,Misc. Crops,9
+ramie,Misc. Crops,9
+sisal,Misc. Crops,9
+agave,Misc. Crops,9
+abaca,Misc. Crops,9
+coir,Misc. Crops,9
+fibrenes,Misc. Crops,9
+cotton,Misc. Crops,9
+orange,Misc. Crops,9
+tangetc,Misc. Crops,9
+lemonlime,Misc. Crops,9
+grapefruitetc,Misc. Crops,9
+citrusnes,Misc. Crops,9
+apple,Misc. Crops,9
+pear,Misc. Crops,9
+quince,Misc. Crops,9
+apricot,Misc. Crops,9
+sourcherry,Misc. Crops,9
+cherry,Misc. Crops,9
+peachetc,Misc. Crops,9
+plum,Misc. Crops,9
+stonefruitnes,Misc. Crops,9
+strawberry,Misc. Crops,9
+rasberry,Misc. Crops,9
+gooseberry,Misc. Crops,9
+currant,Misc. Crops,9
+blueberry,Misc. Crops,9
+cranberry,Misc. Crops,9
+berrynes,Misc. Crops,9
+grape,Misc. Crops,9
+kiwi,Misc. Crops,9
+fruitnes,Misc. Crops,9
+fig,Misc. Crops,9
+mango,Misc. Crops,9
+avocado,Misc. Crops,9
+pineapple,Misc. Crops,9
+date,Misc. Crops,9
+persimmon,Misc. Crops,9
+cashewapple,Misc. Crops,9
+papaya,Misc. Crops,9
+tropicalnes,Misc. Crops,9
+banana,Misc. Crops,9
+plantain,Misc. Crops,9
+brazil,Misc. Crops,9
+cashew,Misc. Crops,9
+chestnut,Misc. Crops,9
+almond,Misc. Crops,9
+walnut,Misc. Crops,9
+pistachio,Misc. Crops,9
+hazelnut,Misc. Crops,9
+nutnes,Misc. Crops,9
+maizefor,Misc. Crops,9
+sorghumfor,Misc. Crops,9
+ryefor,Misc. Crops,9
+grassnes,Misc. Crops,9
+clover,Misc. Crops,9
+alfalfa,Misc. Crops,9
+legumenes,Misc. Crops,9
+cabbagefor,Misc. Crops,9
+turnipfor,Misc. Crops,9
+beetfor,Misc. Crops,9
+carrotfor,Misc. Crops,9
+swedefor,Misc. Crops,9
+mixedgrass,Misc. Crops,9
+kolanut,Misc. Crops,9
+areca,Misc. Crops,9
+hop,Misc. Crops,9
+pepper,Misc. Crops,9
+pimento,Misc. Crops,9
+vanilla,Misc. Crops,9
+cinnamon,Misc. Crops,9
+clove,Misc. Crops,9
+nutmeg,Misc. Crops,9
+aniseetc,Misc. Crops,9
+ginger,Misc. Crops,9
+spicenes,Misc. Crops,9
+peppermint,Misc. Crops,9
+pyrethrum,Misc. Crops,9
+rubber,Misc. Crops,9
+gums,Misc. Crops,9
+quinoa,Misc. Crops,9
+fonio,Misc. Crops,9
+mate,Misc. Crops,9
+arabica coffee,Misc. Crops,9
+cocoa,Misc. Crops,9
+robusta coffee,Misc. Crops,9
+tea,Misc. Crops,9
+tobacco,Misc. Crops,9
+sugarbeet,Misc. Crops,9
+sugarcane,Misc. Crops,9
+sugarnes,Misc. Crops,9
+watermelon,Misc. Crops,9
+melonetc,Misc. Crops,9
+cabbage,Misc. Crops,9
+artichoke,Misc. Crops,9
+asparagus,Misc. Crops,9
+lettuce,Misc. Crops,9
+spinach,Misc. Crops,9
+tomato,Misc. Crops,9
+cauliflower,Misc. Crops,9
+pumpkinetc,Misc. Crops,9
+cucumberetc,Misc. Crops,9
+eggplant,Misc. Crops,9
+chilleetc,Misc. Crops,9
+greenonion,Misc. Crops,9
+onion,Misc. Crops,9
+garlic,Misc. Crops,9
+greenbean,Misc. Crops,9
+greenpea,Misc. Crops,9
+greenbroadbean,Misc. Crops,9
+stringbean,Misc. Crops,9
+carrot,Misc. Crops,9
+okra,Misc. Crops,9
+greencorn,Misc. Crops,9
+chicory,Misc. Crops,9
+carob,Misc. Crops,9
+vegetablenes,Misc. Crops,9

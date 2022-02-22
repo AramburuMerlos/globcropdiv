@@ -49,6 +49,11 @@ d <- d[, .(area = sum(area)), by = .(lat, crop)]
 
 d[, prop:= area/sum(area), by = .(lat)]
 
+d8 <- d[lat == 8, ] # latitude with highest cD ~ 30
+fd(d8$prop)
+setorderv(d8, "area", order = -1L)
+fwrite(d8, "OutData/CropProp_lat8.csv")
+
 # compute diversity
 dd <- d[, .(tot.area = sum(area), act_Dg = fd(prop)), by = .(lat)]
 
