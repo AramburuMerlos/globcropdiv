@@ -6,7 +6,10 @@ gdal()
 
 library(data.table)
 
-setwd("D:/globcropdiv/")
+if(system('hostname', TRUE) %in% c("ESP-RH-9891", "LAPTOP-ST129J47")){
+  setwd("D:/globcropdiv/")
+} # else if { ... 
+
 
 dir <- "OutData/projected"
 dir.create(dir, F, T)
@@ -222,8 +225,6 @@ project(att_eco_prop, rproj, mask = TRUE,
  
  
 # Sum of proj Crop prop ######
-library(terra)
-setwd("D:/globcropdiv/")
 sdir <- "OutData/projected/sums"
 dir.create(sdir, F, T)
 
@@ -279,9 +280,6 @@ app(
 
 
 # Adjust prop to sum 1 ----------
-library(terra)
-setwd("D:/globcropdiv/")
-
 dir <- "OutData/projected"
 sdir <- "OutData/projected/sums"
 dir.create(sdir, F, T)
@@ -367,9 +365,6 @@ gc()
 
 
 # crop proportion gap SDM -----------
-library(terra)
-setwd("D:/globcropdiv/")
-
 dir <- "OutData/projected"
 
 # crop proportions in low diversity cells
@@ -389,9 +384,6 @@ writeRaster(
 )
 
 # crop proportion gap Eco -----------
-library(terra)
-setwd("D:/globcropdiv/")
-
 dir <- "OutData/projected"
 
 # crop proportions in low diversity cells

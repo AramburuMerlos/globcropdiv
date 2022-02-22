@@ -1,7 +1,9 @@
 library(data.table)
 library(terra)
 
-setwd("D:/globcropdiv/")
+if(system('hostname', TRUE) %in% c("ESP-RH-9891", "LAPTOP-ST129J47")){
+  setwd("D:/globcropdiv/")
+} # else if { ... 
 
 
 rpD <- rast("OutData/pot_D_sdm.tif")
