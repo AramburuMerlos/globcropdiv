@@ -4,7 +4,7 @@ R Scripts, functions, and auxiliary files to compute and analyze global crop spe
 
 ### Data
 
-Links to download global crop species diversity levels (GeoTIFF files):
+Links to download global crop species diversity levels (GeoTIFF files). Maps were created using the Equal Earth map projection (**GDAL ≥ 3.2.2**).
 
 - [Current diversity](https://drive.google.com/file/d/1xaUFJATkvRq9IavQ1oX0IIQw_M5LKwfX/view?usp=sharing).        
 - Attainable diversity
